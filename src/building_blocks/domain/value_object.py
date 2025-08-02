@@ -86,12 +86,10 @@ class ValueObject(ABC):
     @abstractmethod
     def _equality_components(self) -> Tuple[Hashable, ...]:
         """
-        Return the components used for equality comparison.
-
-        This method should return a tuple containing all the attributes
-        that define the value object's equality.
-
+        Get the components that define equality for the value object.
+        This method should be implemented by subclasses to return a Tuple
+        of Hashable components that uniquely identify the value object.
         Returns:
-            tuple[Hashable, ...]: Tuple of components for equality comparison
+            Tuple[Hashable, ...]: Components for equality comparison
         """
         pass
