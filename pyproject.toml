@@ -110,7 +110,6 @@ omit = [
     "*/__init__.py",
     "src/building_blocks/application/ports/**/*.py",
     "src/building_blocks/domain/ports/**/*.py",
-    "src/building_blocks/abstractions/**/*.py",
 ]
 
 [tool.coverage.report]
