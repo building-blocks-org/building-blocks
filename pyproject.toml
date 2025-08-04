@@ -116,5 +116,6 @@ omit = [
 exclude_lines = [
     "pragma: no cover",
     "@(abc\\.)?abstractmethod",
+    "@abstractmethod",
     "raise NotImplementedError"
 ]
