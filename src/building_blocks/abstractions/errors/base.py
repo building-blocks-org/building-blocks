@@ -1,3 +1,4 @@
+from abc import ABC, abstractmethod
 from typing import Collection, Iterator, Optional
 
 from .core import ErrorMessage, ErrorMetadata, FieldReference
@@ -30,10 +31,11 @@ class Error:
         return ""
 
 
-class Errors:
+class Errors(ABC):
     """
-    The base class for all collections of errors.
+    An abstract base class for all collections of errors.
     It provides a concrete implementation for wrapping a collection of 'Error' objects.
+    Subclasses must define a `field` property and a `_get_title_prefix` method.
     """
 
     def __init__(
@@ -58,7 +60,16 @@ class Errors:
 
     def __str__(self) -> str:
         error_messages = "\n".join(f" - {str(error)}" for error in self.errors)
-        return f"Errors for field '{self.field.value}':\n{error_messages}"
+
+        return (
+            f"{self._get_title_prefix()} for field '{self.field.value}':\n"
+            f"{error_messages}"
+        )
+
+    @abstractmethod
+    def _get_title_prefix(self) -> str:
+        """The prefix for the string representation of the error collection."""
+        raise NotImplementedError
 
     def _initialize_errors(self, errors: Optional[Collection[Error]]) -> None:
         if errors:

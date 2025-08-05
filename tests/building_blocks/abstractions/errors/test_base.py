@@ -41,24 +41,29 @@ class TestError:
         message = "An error occurred"
         error_message = ErrorMessage(message)
 
-        error_message = Error(error_message)
+        error = Error(error_message)
 
         expected = "An error occurred"
-        assert str(error_message) == expected
+        assert str(error) == expected
 
     def test__str__when_message_is_empty_string_then_returns_empty_string(self) -> None:
         error_message = ErrorMessage("")
 
-        error_message = Error(error_message)
+        error = Error(error_message)
 
         expected = ""
-        assert str(error_message) == expected
+        assert str(error) == expected
+
+
+class FakeErrors(Errors):
+    def _get_title_prefix(self) -> str:
+        return "Fake Errors"
 
 
 class TestErrors:
     def test_field_when_field_defined_then_returns_field(self) -> None:
         field = FieldReference("username")
-        errors = Errors(field=field, errors=[])
+        errors = FakeErrors(field=field, errors=[])
 
         actual_field = errors.field
 
@@ -68,7 +73,7 @@ class TestErrors:
     def test_errors_when_errors_defined_then_returns_errors(self) -> None:
         error_message = ErrorMessage("An error occurred")
         error = Error(error_message)
-        errors = Errors(errors=[error], field=FieldReference("username"))
+        errors = FakeErrors(errors=[error], field=FieldReference("username"))
 
         actual_errors = errors.errors
 
@@ -78,7 +83,7 @@ class TestErrors:
     def test__iter__when_errors_defined_then_iterates_over_errors(self) -> None:
         error_message = ErrorMessage("An error occurred")
         error = Error(error_message)
-        errors = Errors(errors=[error], field=FieldReference("username"))
+        errors = FakeErrors(errors=[error], field=FieldReference("username"))
 
         actual_errors = list(errors)
 
@@ -86,7 +91,7 @@ class TestErrors:
         assert actual_errors == expected_errors
 
     def test__iter__when_no_errors_then_iterates_over_empty_list(self) -> None:
-        errors = Errors(errors=[], field=FieldReference("username"))
+        errors = FakeErrors(errors=[], field=FieldReference("username"))
 
         actual_errors = list(errors)
 
@@ -97,9 +102,9 @@ class TestErrors:
         field = FieldReference("username")
         error_message = ErrorMessage("An error occurred")
         error = Error(error_message)
-        errors = Errors(errors=[error], field=field)
+        errors = FakeErrors(errors=[error], field=field)
 
         actual_str = str(errors)
 
-        expected_str = f"Errors for field '{field.value}':\n - An error occurred"
+        expected_str = f"Fake Errors for field '{field.value}':\n - An error occurred"
         assert actual_str == expected_str

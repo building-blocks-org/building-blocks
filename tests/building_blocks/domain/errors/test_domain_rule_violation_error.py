@@ -1,38 +1,41 @@
-import pytest
-
+from building_blocks.abstractions.errors.core import ErrorMessage, FieldReference
 from building_blocks.domain.errors import DomainRuleViolationError
+from building_blocks.domain.errors.domain_rule_violation_error import (
+    DomainRuleViolationErrors,
+)
 
 
 class TestDomainRuleViolationError:
-    def test_initialization_with_custom_message(self):
-        custom_message = "Custom rule violation message."
+    def test_layer_name_property(self) -> None:
+        error = DomainRuleViolationError(ErrorMessage("Test error."))
+        assert error.layer_name == "Domain"
 
-        error = DomainRuleViolationError(message=custom_message)
+    def test_error_type_property(self) -> None:
+        error = DomainRuleViolationError(ErrorMessage("Test error."))
+        assert error.error_type == "Rule Violation"
 
-        assert error.message == custom_message
-        assert error.context == {}
+    def test__str__representation(self) -> None:
+        error = DomainRuleViolationError(ErrorMessage("A business rule was violated."))
+        assert str(error) == "Domain Rule Violation: A business rule was violated."
 
-    def test_initialization_with_context(self):
-        custom_message = "Custom rule violation with context."
-        context = {"key": "value"}
 
-        error = DomainRuleViolationError(custom_message, context=context)
-
-        assert error.context == context
-
-    def test_str_representation(self):
-        error = DomainRuleViolationError(
-            message="Test message", context={"key": "value"}
+class TestDomainRuleViolationErrors:
+    def test_get_title_prefix(self) -> None:
+        errors = DomainRuleViolationErrors(
+            field=FieldReference("order_number"), errors=[]
         )
-        assert str(error) == "Test message | Context: {'key': 'value'}"
+        assert errors._get_title_prefix() == "Domain Rule Violations"
 
-    def test_raise_and_catch(self):
-        with pytest.raises(DomainRuleViolationError) as exc_info:
-            raise DomainRuleViolationError(
-                "Test exception", context={"error": "details"}
-            )
+    def test__str__representation(self) -> None:
+        field = FieldReference("order_number")
+        error = DomainRuleViolationError(
+            ErrorMessage("Order must be placed by an authenticated user.")
+        )
 
-        error = exc_info.value
-        assert error.message == "Test exception"
-        assert error.context == {"error": "details"}
-        assert str(error) == "Test exception | Context: {'error': 'details'}"
+        errors = DomainRuleViolationErrors(field, errors=[error])
+
+        expected_str = (
+            "Domain Rule Violations for field 'order_number':\n - "
+            "Domain Rule Violation: Order must be placed by an authenticated user."
+        )
+        assert str(errors) == expected_str

@@ -1,28 +1,29 @@
-from typing import Dict, Optional
+from typing import Literal
 
-from .domain_error import DomainError
+from building_blocks.abstractions.errors.layered_error import LayeredError
+from building_blocks.domain.errors.domain_error import DomainErrors
 
 
-class DomainValidationError(DomainError):
+class DomainValidationError(
+    LayeredError[Literal["Domain"], Literal["Validation Error"]]
+):
     """
-    Raised when one or more fields fail domain validation.
-    Contains a mapping of field_name -> error_message(s).
+    Indicates a failure of a specific domain validation rule.
     """
 
-    def __init__(
-        self,
-        message: str,
-        context: Optional[Dict] = None,
-    ) -> None:
-        if context is not None and not isinstance(context, dict):
-            raise TypeError(
-                "Context must be a dictionary mapping field names to error messages."
-            )
-        super().__init__(message)
-        self.message = message
-        self.context = context or {}
+    @property
+    def layer_name(self) -> Literal["Domain"]:
+        return "Domain"
 
-    def __str__(self) -> str:
-        if self.context:
-            return f"{self.message} | Context: {self.context}"
-        return self.message
+    @property
+    def error_type(self) -> Literal["Validation Error"]:
+        return "Validation Error"
+
+
+class DomainValidationErrors(DomainErrors):
+    """
+    A collection of domain validation errors.
+    """
+
+    def _get_title_prefix(self) -> str:
+        return "Domain Validation Errors"
