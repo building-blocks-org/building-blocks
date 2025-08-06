@@ -4,6 +4,8 @@ from .core import (
     ErrorMetadata,
     FieldReference,
 )
+from .rule_violation_error import RuleViolationError
+from .validation_error import ValidationError, ValidationErrors
 
 __all__ = [
     "Error",
@@ -11,4 +13,7 @@ __all__ = [
     "ErrorMessage",
     "ErrorMetadata",
     "FieldReference",
+    "ValidationError",
+    "ValidationErrors",
+    "RuleViolationError",
 ]
