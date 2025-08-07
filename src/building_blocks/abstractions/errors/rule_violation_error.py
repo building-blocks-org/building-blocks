@@ -1,11 +1,14 @@
-from building_blocks.abstractions.errors.base import Error
+from .base import CombinedErrors, Error
 
 
 class RuleViolationError(Error):
     """
-    Base class for rule/invariant violations.
-    ...
+    Base class for rule violation errors, indicating that a specific rule has been
+    violated.
     """
 
-    def __str__(self) -> str:
-        return f"Rule Violation: {super().__str__()}"
+
+class CombinedRuleViolationErrors(CombinedErrors[RuleViolationError]):
+    """
+    Aggregates multiple rule violation errors for easier handling and reporting.
+    """

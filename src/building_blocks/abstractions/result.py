@@ -44,7 +44,7 @@ class Result(ABC, Generic[ResultType, ErrorType]):
         return isinstance(self, Err)
 
 
-class Ok(Result[ResultType, None], Generic[ResultType]):
+class Ok(Result[ResultType, ErrorType], Generic[ResultType, ErrorType]):
     def __init__(self, value) -> None:
         self._value = value
 
@@ -57,7 +57,7 @@ class Ok(Result[ResultType, None], Generic[ResultType]):
         raise ResultAccessError.cannot_access_error()
 
 
-class Err(Result[None, ErrorType], Generic[ErrorType]):
+class Err(Result[ResultType, ErrorType], Generic[ResultType, ErrorType]):
     def __init__(self, error) -> None:
         self._error = error
 

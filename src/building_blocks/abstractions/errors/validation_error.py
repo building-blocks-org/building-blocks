@@ -1,4 +1,4 @@
-from building_blocks.abstractions.errors.base import Error, Errors
+from .base import CombinedErrors, Error, FieldErrors
 
 
 class ValidationError(Error):
@@ -6,17 +6,14 @@ class ValidationError(Error):
     Base class for validation errors.
     """
 
-    def __str__(self) -> str:
-        return f"Validation Error: {super().__str__()}"
 
-
-class ValidationErrors(Errors):
+class ValidationFieldErrors(FieldErrors):
     """
-    A collection of validation errors.
-    This class is used to group multiple validation errors together,
-    allowing for easier handling and reporting of validation issues.
+    Validation errors associated with a specific field.
     """
 
-    def __str__(self) -> str:
-        error_messages = "\n".join(f" - {str(error)}" for error in self.errors)
-        return f"Validation errors for field '{self.field.value}':\n{error_messages}"
+
+class CombinedValidationErrors(CombinedErrors[ValidationFieldErrors]):
+    """
+    Aggregates multiple validation errors for easier handling and reporting.
+    """

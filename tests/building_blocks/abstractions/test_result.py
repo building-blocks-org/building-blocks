@@ -3,12 +3,12 @@ import pytest
 from building_blocks.abstractions.result import Err, Ok, ResultAccessError
 
 
-class FakeOk(Ok[str]):
+class FakeOk(Ok[str, str]):
     def __init__(self, value: str) -> None:
         super().__init__(value)
 
 
-class FakeErr(Err[str]):
+class FakeErr(Err[str, str]):
     def __init__(self, error: str) -> None:
         super().__init__(error)
 
