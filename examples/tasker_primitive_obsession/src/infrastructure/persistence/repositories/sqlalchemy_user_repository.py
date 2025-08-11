@@ -1,12 +1,8 @@
 from typing import Any, Dict, List, Optional, cast
 from uuid import UUID
 
-from sqlalchemy import Table, select
-from sqlalchemy.exc import IntegrityError
-from sqlalchemy.ext.asyncio import AsyncSession
-
 from examples.tasker_primitive_obsession.src.domain.entities.user import User
-from examples.tasker_primitive_obsession.src.domain.errors import (
+from examples.tasker_primitive_obsession.src.domain.errors.user_email_errors import (
     UserEmailAlreadyExistsError,
 )
 from examples.tasker_primitive_obsession.src.domain.ports import UserRepository
@@ -16,6 +12,9 @@ from examples.tasker_primitive_obsession.src.infrastructure.persistence import (
 from examples.tasker_primitive_obsession.src.infrastructure.persistence.models import (
     UserModel,
 )
+from sqlalchemy import Table, select
+from sqlalchemy.exc import IntegrityError
+from sqlalchemy.ext.asyncio import AsyncSession
 
 
 class SQLAlchemyUserRepository(UserRepository):

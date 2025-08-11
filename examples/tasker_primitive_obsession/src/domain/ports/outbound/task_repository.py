@@ -1,8 +1,9 @@
 from abc import ABC, abstractmethod
-from typing import List, Optional
+from typing import List, Optional, Union
+
+from examples.tasker_primitive_obsession.src.domain.entities.task import DraftTask, Task
 
 from building_blocks.domain.ports.outbound.repository import AsyncRepository
-from examples.tasker_primitive_obsession.src.domain.entities.task import Task
 
 
 class TaskRepository(AsyncRepository[Task, int], ABC):
@@ -26,25 +27,11 @@ class TaskRepository(AsyncRepository[Task, int], ABC):
         pass
 
     @abstractmethod
-    async def save(self, aggregate: Task) -> None:
+    async def save(self, task: Union[Task, DraftTask]) -> None:
         """
         Save a Task aggregate to the repository.
-
-        This method handles both create and update operations.
-        If the Task already exists, it updates the existing record.
-        If it does not exist, it creates a new record.
-        It is expected that the Task aggregate has a valid ID before calling this
-        method.
-        If the ID is None, it should be set to a new unique identifier by the Repository
-        implementation.
-
         Args:
-            aggregate (Task): The Task aggregate to save.
-
-        Returns:
-            None: This method does not return a value. It raises an exception if the
-            save operations fails, such as due to a database error or validation issue.
-
+            task (Union[Task, DraftTask]): The Task aggregate to save.
         """
         pass
 

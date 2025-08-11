@@ -41,7 +41,9 @@ class RegisterUserService(RegisterUserUseCase):
 
         await self._user_repository.save(user)
 
-        return RegisterUserResponse(user_id=user.id.hex)
+        id = user.id.hex if user.id else user.id
+
+        return RegisterUserResponse(user_id=id)  # type: ignore
 
     async def _create_user(self, request: RegisterUserRequest) -> User:
         """
@@ -61,14 +63,19 @@ class RegisterUserService(RegisterUserUseCase):
         )
 
         if isinstance(user_result, Err):
-            self._logger.error("Failed to create user: %s", user_result.error.message)
             raise user_result.error
         else:
             user = user_result.value
             encrypted_password = await self._password_hasher.hash(user.password)
 
-            user.password = encrypted_password
+            user = User.create(
+                user_id=user.id,
+                name=user.name,
+                email=user.email,
+                password=encrypted_password,
+                role=user.role,
+            )
 
             self._logger.info("User created successfully: %s", user)
 
-            return user
+            return user.value

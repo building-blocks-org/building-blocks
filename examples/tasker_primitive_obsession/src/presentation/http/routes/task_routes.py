@@ -1,5 +1,3 @@
-from fastapi import APIRouter, Depends, status
-
 from examples.tasker_primitive_obsession.src.application.ports import (
     CreateTaskUseCase,
 )
@@ -12,22 +10,17 @@ from examples.tasker_primitive_obsession.src.presentation.http.mappers import (
 from examples.tasker_primitive_obsession.src.presentation.http.requests import (
     CreateTaskHttpRequest,
 )
-from examples.tasker_primitive_obsession.src.presentation.http.responses import (
-    CreateTaskHttpResponse,
-)
+from fastapi import APIRouter, Depends, Response, status
 
 router = APIRouter(prefix="/tasks", tags=["tasks"])
 
 
-@router.post(
-    "", status_code=status.HTTP_201_CREATED, response_model=CreateTaskHttpResponse
-)
+@router.post("", status_code=status.HTTP_204_NO_CONTENT)
 async def create_task(
     request: CreateTaskHttpRequest,
     use_case: CreateTaskUseCase = Depends(get_create_task_use_case),
-) -> CreateTaskHttpResponse:
+) -> Response:
     service_request = CreateTaskDtoMapper.from_http_request(request)
-    service_response = await use_case.execute(service_request)
-    response = CreateTaskDtoMapper.to_http_response(service_response)
+    await use_case.execute(service_request)
 
-    return response
+    return Response(status_code=status.HTTP_204_NO_CONTENT)

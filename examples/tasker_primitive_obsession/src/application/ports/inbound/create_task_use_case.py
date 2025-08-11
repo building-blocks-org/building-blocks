@@ -20,7 +20,7 @@ class CreateTaskRequest:
 
 @dataclass(frozen=True)
 class CreateTaskResponse:
-    task_id: str
+    pass
 
 
 class CreateTaskUseCase(UseCase[CreateTaskRequest, CreateTaskResponse]):

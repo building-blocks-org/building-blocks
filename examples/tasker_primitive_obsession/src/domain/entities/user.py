@@ -1,38 +1,57 @@
 from __future__ import annotations
 
 import re
-from collections import defaultdict
 from typing import List, Optional
 from uuid import UUID, uuid4
 
-from examples.tasker_primitive_obsession.src.domain.errors import ChangeUserRoleError
+from examples.tasker_primitive_obsession.src.domain.errors.user_email_errors import (
+    EmptyEmailError,
+    InvalidEmailFormatError,
+)
+from examples.tasker_primitive_obsession.src.domain.errors.user_name_errors import (
+    EmptyNameError,
+    InvalidNameCharactersError,
+    OutOfLimitsUserNameError,
+)
+from examples.tasker_primitive_obsession.src.domain.errors.user_password_errors import (
+    DigitCharacterRequiredPasswordError,
+    EmptyPasswordError,
+    MixedCasePasswordError,
+    PasswordMustNotContainWhitespaceError,
+    PasswordTooShortError,
+    SpecialCharacterRequiredPasswordError,
+)
+from examples.tasker_primitive_obsession.src.domain.errors.user_role_errors import (
+    InvalidRoleError,
+    UserAlreadyHasRoleError,
+)
 
+from building_blocks.abstractions.errors.base import CombinedErrors
+from building_blocks.abstractions.errors.core import FieldReference
+from building_blocks.abstractions.errors.rule_violation_error import (
+    CombinedRuleViolationErrors,
+)
+from building_blocks.abstractions.errors.validation_error import (
+    CombinedValidationErrors,
+    ValidationFieldErrors,
+)
 from building_blocks.abstractions.result import Err, Ok, Result
 from building_blocks.domain.aggregate_root import AggregateRoot, AggregateVersion
-from building_blocks.domain.errors import DomainValidationError
 
 
 class User(AggregateRoot[UUID]):
-    """
-    Represents a user in the domain model.
-    This class extends AggregateRoot to provide a unique identifier and versioning
-    for optimistic concurrency control.
-    Args:
-        user_id (UUID): Unique identifier for the user.
-        name (str): Name of the user.
-        email (str): Email address of the user.
-        password (str): Password for the user account.
-        role (str): Role of the user, default is "user".
-        version (Optional[AggregateVersion]): Version number for optimistic concurrency
-        control.
-    """
-
-    _valid_roles = [
+    _VALID_ROLE = [
         "admin",
         "engineer",
         "designer",
         "manager",
     ]
+    _NAME_LENGTHS = {
+        "min": 3,
+        "max": 50,
+    }
+    _min_name_length = 3
+    _max_name_length = 50
 
     def __init__(
         self,
@@ -84,36 +103,27 @@ class User(AggregateRoot[UUID]):
         password: str,
         role: str = "engineer",
         version: Optional[AggregateVersion] = None,
-    ) -> Result[User, DomainValidationError]:
-        errors = defaultdict(list)
+    ) -> Result[User, CombinedErrors]:
+        errors: List[ValidationFieldErrors] = []
 
         user_id_result = cls._validate_user_id(user_id)
-        if isinstance(user_id_result, Err):
-            errors["user_id"].extend(user_id_result.error)
-
         name_result = cls._validate_name(name)
-        if isinstance(name_result, Err):
-            errors["name"].extend(name_result.error)
-
         email_result = cls._validate_email(email)
-        if isinstance(email_result, Err):
-            errors["email"].extend(email_result.error)
-
         password_result = cls._validate_password(password)
-        if isinstance(password_result, Err):
-            errors["password"].extend(password_result.error)
-
         role_result = cls._validate_role(role)
-        if isinstance(role_result, Err):
-            errors["role"].extend(role_result.error)
+
+        for result in [
+            user_id_result,
+            name_result,
+            email_result,
+            password_result,
+            role_result,
+        ]:
+            if isinstance(result, Err):
+                errors.append(result.error)
 
         if errors:
-            return Err(
-                DomainValidationError(
-                    "User creation failed due to validation errors.",
-                    context=dict(errors),
-                )
-            )
+            return Err(CombinedValidationErrors(errors))
 
         user = cls(user_id, name, email, password, role, version)
 
@@ -127,10 +137,14 @@ class User(AggregateRoot[UUID]):
         password: str,
         role: str = "engineer",
         version: Optional[AggregateVersion] = None,
-    ) -> Result[User, DomainValidationError]:
+    ) -> Result[User, CombinedErrors]:
         user_id = uuid4()
 
         return cls.create(user_id, name, email, password, role, version)
+
+    @property
+    def id(self) -> UUID:
+        return self._id  # type: ignore[return-value]
 
     @property
     def name(self) -> str:
@@ -144,59 +158,60 @@ class User(AggregateRoot[UUID]):
     def password(self) -> str:
         return self._password
 
-    @password.setter
-    def password(self, new_password: str) -> None:
+    def change_password(self, new_password: str) -> None:
         password_result = self._validate_password(new_password)
+
         if isinstance(password_result, Err):
-            raise DomainValidationError(
-                "Password validation failed.",
-                context={"password": password_result.error},
-            )
+            raise CombinedValidationErrors([password_result.error])
         self._password = new_password
 
     @property
     def role(self) -> str:
         return self._role
 
-    @role.setter
-    def role(self, new_role: str) -> None:
+    def change_role(self, new_role: str) -> None:
         role_result = self._validate_role(new_role)
+
         if isinstance(role_result, Err):
-            raise DomainValidationError(
-                "Role validation failed.",
-                context={"role": role_result.error},
-            )
+            raise CombinedValidationErrors([role_result.error])
 
         if new_role == self._role:
-            raise ChangeUserRoleError(f"User already has the role '{new_role}'.")
+            raise CombinedRuleViolationErrors(
+                errors=[
+                    UserAlreadyHasRoleError(new_role=new_role, current_role=self._role)
+                ]
+            )
 
         self._role = new_role
 
     @classmethod
-    def _validate_user_id(cls, user_id: UUID) -> Result[UUID, List[str]]:
+    def _validate_user_id(cls, user_id: UUID) -> Result[UUID, ValidationFieldErrors]:
         errors = []
 
-        if not user_id:
-            errors.append("User ID cannot be empty.")
-
         if errors:
-            return Err(errors)
+            return Err(
+                ValidationFieldErrors(field=FieldReference("user_id"), errors=errors)
+            )
 
         return Ok(user_id)
 
     @classmethod
-    def _validate_name(cls, name: str) -> Result[str, List[str]]:
+    def _validate_name(cls, name: str) -> Result[str, ValidationFieldErrors]:
+        min_length = cls._NAME_LENGTHS["min"]
+        max_length = cls._NAME_LENGTHS["max"]
         errors = []
 
         if not name or not name.strip():
-            errors.append("cannot be empty.")
-        if len(name) < 3:
-            errors.append("must be at least 3 characters long.")
+            errors.append(EmptyNameError())
+        if len(name) < min_length or len(name) > max_length:
+            errors.append(OutOfLimitsUserNameError(min_length, max_length))
         if not all(char.isalpha() or char.isspace() for char in name):
-            errors.append("must contain only alphabetic characters.")
+            errors.append(InvalidNameCharactersError())
 
         if errors:
-            return Err(errors)
+            return Err(
+                ValidationFieldErrors(field=FieldReference("name"), errors=errors)
+            )
 
         return Ok(name)
 
@@ -204,16 +219,18 @@ class User(AggregateRoot[UUID]):
     def _validate_email(
         cls,
         email: str,
-    ) -> Result[str, List[str]]:
+    ) -> Result[str, ValidationFieldErrors]:
         errors = []
 
         if not email or not email.strip():
-            errors.append("cannot be empty.")
+            errors.append(EmptyEmailError())
         if "@" not in email or "." not in email.split("@")[-1]:
-            errors.append("must be a valid email format.")
+            errors.append(InvalidEmailFormatError())
 
         if errors:
-            return Err(errors)
+            return Err(
+                ValidationFieldErrors(field=FieldReference("email"), errors=errors)
+            )
 
         return Ok(email)
 
@@ -221,36 +238,39 @@ class User(AggregateRoot[UUID]):
     def _validate_password(
         cls,
         password: str,
-    ) -> Result[str, List[str]]:
+    ) -> Result[str, ValidationFieldErrors]:
         errors = []
 
         if not password or not password.strip():
-            errors.append("cannot be empty.")
+            errors.append(EmptyPasswordError())
         if re.search(r"\s", password):
-            errors.append("must not contain whitespace.")
+            errors.append(PasswordMustNotContainWhitespaceError())
         if len(password) < 8:
-            errors.append("must be at least 8 characters long.")
+            errors.append(PasswordTooShortError())
         if not any(char.isdigit() for char in password):
-            errors.append("must contain at least one digit.")
+            errors.append(DigitCharacterRequiredPasswordError())
         if not any(char.islower() for char in password) or not any(
             char.isupper() for char in password
         ):
-            errors.append("must contain both uppercase and lowercase letters.")
+            errors.append(MixedCasePasswordError())
         if not re.search(r"[!@#$%^&*(),.?\":{}|<>_\-+=~`[\]\\;/']", password):
-            errors.append("must contain at least one special character.")
+            errors.append(SpecialCharacterRequiredPasswordError())
 
         if errors:
-            return Err(errors)
+            field_reference = FieldReference("password")
+            return Err(ValidationFieldErrors(field_reference, errors))
 
         return Ok(password)
 
     @classmethod
-    def _validate_role(cls, role: str) -> Result[str, List[str]]:
+    def _validate_role(cls, role: str) -> Result[str, ValidationFieldErrors]:
         errors = []
 
-        if role not in cls._valid_roles:
-            errors.append(f"Invalid role: {role}. Valid roles are: {cls._valid_roles}")
+        if role not in cls._VALID_ROLE:
+            errors.append(InvalidRoleError(cls._VALID_ROLE))
 
         if errors:
-            return Err(errors)
+            return Err(
+                ValidationFieldErrors(field=FieldReference("role"), errors=errors)
+            )
         return Ok(role)

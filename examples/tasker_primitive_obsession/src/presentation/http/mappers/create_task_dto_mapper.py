@@ -32,7 +32,4 @@ class CreateTaskDtoMapper:
         """
         Maps the response object to a HTTP response object.
         """
-
-        return CreateTaskHttpResponse(
-            task_id=response.task_id,
-        )
+        return CreateTaskHttpResponse()

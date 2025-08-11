@@ -40,14 +40,9 @@ class ChangeUserRoleService(ChangeUserRoleUseCase):
                 reason="User not found", code="USER_NOT_FOUND"
             )
 
-        if user.role == request.new_role:
-            return ChangeUserRoleFailedResponse(
-                reason="User already has the requested role", code="ROLE_ALREADY_SET"
-            )
-
         previous_role = user.role
 
-        user.role = request.new_role
+        user.change_role(request.new_role)
 
         await self._user_repository.save(user)
 

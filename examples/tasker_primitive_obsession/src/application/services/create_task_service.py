@@ -1,11 +1,9 @@
-import uuid
-
 from examples.tasker_primitive_obsession.src.application.ports import (
     CreateTaskRequest,
     CreateTaskResponse,
     CreateTaskUseCase,
 )
-from examples.tasker_primitive_obsession.src.domain.entities.task import Task
+from examples.tasker_primitive_obsession.src.domain.entities.task import DraftTask
 from examples.tasker_primitive_obsession.src.domain.ports import (
     TaskRepository,
 )
@@ -38,9 +36,8 @@ class CreateTaskService(CreateTaskUseCase):
         Returns:
             CreateTaskResponse: The response containing the created task ID.
         """
-        task_id = uuid.uuid4()
-        task = Task(
-            task_id=task_id,
+        task_result = DraftTask.create(
+            id=None,
             title=request.title,
             description=request.description,
             due_date=request.due_date,
@@ -49,6 +46,11 @@ class CreateTaskService(CreateTaskUseCase):
             progress=request.progress,
             assignee_email=request.assignee_email,
         )
+
+        if task_result.is_err:
+            raise task_result.error
+
+        task = task_result.value
         await self._task_repository.save(task)
 
-        return CreateTaskResponse(task_id=str(task.id))
+        return CreateTaskResponse()

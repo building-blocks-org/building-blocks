@@ -13,9 +13,7 @@ from examples.tasker_primitive_obsession.src.presentation.http.routes import (
 )
 from fastapi import FastAPI
 
-from building_blocks.domain.errors.domain_error import DomainError
-
-from .exception_handlers import domain_error_handler, fallback_error_handler
+from .exception_handlers import generic_error_handler
 
 
 @asynccontextmanager
@@ -30,9 +28,9 @@ app = FastAPI(
     version="1.0.0",
     lifespan=lifespan,
 )
-app.add_exception_handler(DomainError, domain_error_handler)
-app.add_exception_handler(Exception, fallback_error_handler)
+app.add_exception_handler(Exception, generic_error_handler)
 
+#
 validate_token_use_case = get_validate_token_use_case()
 
 app.add_middleware(

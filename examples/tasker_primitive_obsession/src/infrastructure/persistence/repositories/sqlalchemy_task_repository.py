@@ -1,11 +1,8 @@
 from __future__ import annotations
 
-from typing import List, Optional, cast
+from typing import List, Optional, Union, cast
 
-from sqlalchemy import Table, select
-from sqlalchemy.ext.asyncio import AsyncSession
-
-from examples.tasker_primitive_obsession.src.domain.entities.task import Task
+from examples.tasker_primitive_obsession.src.domain.entities.task import DraftTask, Task
 from examples.tasker_primitive_obsession.src.domain.ports import (
     TaskRepository,
 )
@@ -15,6 +12,8 @@ from examples.tasker_primitive_obsession.src.infrastructure.persistence import (
 from examples.tasker_primitive_obsession.src.infrastructure.persistence.models import (
     TaskModel,
 )
+from sqlalchemy import Table, select
+from sqlalchemy.ext.asyncio import AsyncSession
 
 
 class SQLAlchemyTaskRepository(TaskRepository):
@@ -36,8 +35,11 @@ class SQLAlchemyTaskRepository(TaskRepository):
         """
         self._session = session
 
-    async def save(self, aggregate: Task) -> None:
-        values = self._build_values(aggregate)
+    async def save(self, task: Union[Task, DraftTask]) -> None:
+        values = self._build_values(task)
+
+        if values.get("id") is None:
+            values.pop("id")
 
         dialect_name = self._session.bind.dialect.name
 
@@ -68,12 +70,17 @@ class SQLAlchemyTaskRepository(TaskRepository):
             await self._session.delete(model)
             await self._session.commit()
 
-    def _build_values(self, task: Task) -> dict:
+    def _build_values(self, task: Union[Task, DraftTask]) -> dict:
+        version = 0
+
+        if isinstance(task, Task):
+            version = task.version.value if task.version else 0
+
         return {
             "id": task.id,
             "title": task.title,
             "description": task.description,
             "status": task.status,
             "due_date": task.due_date,
-            "version": task.version.value,
+            "version": version,
         }
