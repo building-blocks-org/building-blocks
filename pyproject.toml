@@ -109,9 +109,7 @@ addopts = [
 omit = [
     "*/__init__.py",
     "src/building_blocks/foundation/mapper.py",
-    "src/building_blocks/application/ports/**/*.py",
-    "src/building_blocks/domain/ports/**/*.py",
-
+    "src/building_blocks/application/ports/repository.py",
 ]
 
 [tool.coverage.report]
