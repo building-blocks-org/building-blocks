@@ -1,8 +1,8 @@
 from typing import List
 
-from building_blocks.abstractions.errors.core import ErrorMessage, ErrorMetadata
-from building_blocks.abstractions.errors.rule_violation_error import RuleViolationError
-from building_blocks.abstractions.errors.validation_error import ValidationError
+from building_blocks.foundation.errors.core import ErrorMessage, ErrorMetadata
+from building_blocks.foundation.errors.rule_violation_error import RuleViolationError
+from building_blocks.foundation.errors.validation_error import ValidationError
 
 
 class InvalidRoleError(ValidationError):
