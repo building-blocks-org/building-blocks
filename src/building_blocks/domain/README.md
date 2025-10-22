@@ -93,9 +93,9 @@ domain/
    Specify repository interfaces in `ports/outbound/`.
 
    ```python
-   from building_blocks.domain.ports.outbound.repository import SyncRepository
+   from building_blocks.application.ports.outbound.repository import Repository
 
-   class UserRepository(SyncRepository[User, str]):
+   class UserRepository(Repository[User, str]):
          def find_by_email(self, email: str) -> User | None:
               """Find a user by email."""
               pass

@@ -15,6 +15,7 @@ TAggregateRoot = TypeVar("TAggregateRoot")
 TId = TypeVar("TId", contravariant=True)
 
 # For read-only repos (only output): covariant
+TReadResult = TypeVar("TReadResult", covariant=True)
 TReadAggregateRoot = TypeVar("TReadAggregateRoot", covariant=True)
 TReadId = TypeVar("TReadId", contravariant=True)
 
@@ -23,7 +24,7 @@ TWriteAggregateRoot = TypeVar("TWriteAggregateRoot", contravariant=True)
 TWriteId = TypeVar("TWriteId", contravariant=True)
 
 
-class ReadOnlyRepository(Protocol, Generic[TReadAggregateRoot, TId]):
+class ReadOnlyRepository(Generic[TReadAggregateRoot, TId], Protocol):
     """
     Read-only async repository interface for CQRS query scenarios.
 
@@ -55,7 +56,7 @@ class ReadOnlyRepository(Protocol, Generic[TReadAggregateRoot, TId]):
         ...         return self._total
         >>>
         >>> class OrderQueryRepository(AsyncReadOnlyRepository[Order, UUID]):
-        ...     async def find_by_id(self, id: UUID) -> Order | None:
+        ...     async def get_by_id(self, id: UUID) -> Order | None:
         ...         # Query implementation - read from optimized read model
         ...         pass
         ...
@@ -147,12 +148,6 @@ class WriteOnlyRepository(Protocol, Generic[TWriteAggregateRoot, TWriteId]):
         ...         pass
     """
 
-    async def save(self, aggregate: TWriteAggregateRoot) -> None:
-        """
-        Save an aggregate.
-        """
-        ...
-
     async def delete_by_id(self, id: TWriteId) -> None:
         """
         Delete an aggregate using its id.
@@ -165,10 +160,17 @@ class WriteOnlyRepository(Protocol, Generic[TWriteAggregateRoot, TWriteId]):
         """
         ...
 
+    async def save(self, aggregate: TWriteAggregateRoot) -> None:
+        """
+        Save an aggregate.
+        """
+        ...
 
-class CrudRepository(
+
+class Repository(
     ReadOnlyRepository[TAggregateRoot, TId],
     WriteOnlyRepository[TAggregateRoot, TId],
+    Protocol,
 ):
     """
     Full CRUD async repository interface.

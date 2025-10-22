@@ -19,7 +19,7 @@ def now() -> datetime:
     return datetime.now(timezone.utc)
 
 
-class MessageMetadata(ValueObject):
+class MessageMetadata(ValueObject[dict[str, Any]]):
     """
     Metadata associated with domain messages.
 
@@ -34,9 +34,10 @@ class MessageMetadata(ValueObject):
     infrastructure concerns in metadata.
 
     Example:
-        >>> metadata = MessageMetadata()
+        >>> metadata = MessageMetadata(message_type="OrderCreated")
         >>> # Or with custom values
         >>> custom_metadata = MessageMetadata(
+        ...     message_type="UserCreated",
         ...     message_id=UUID("123e4567-e89b-12d3-a456-426614174000"),
         ...     created_at=datetime(2025, 6, 11, 19, 36, 6, tzinfo=timezone.utc)
         ... )
@@ -44,6 +45,7 @@ class MessageMetadata(ValueObject):
 
     def __init__(
         self,
+        message_type: str,
         message_id: UUID | None = None,
         created_at: datetime | None = None,
         correlation_id: UUID | None = None,
@@ -53,9 +55,15 @@ class MessageMetadata(ValueObject):
         Initialize message metadata.
 
         Args:
+            message_type: The type/name of the message.
+            correlation_id: Identifier to correlate related messages. If None, generates
+            a new UUID.
+            causation_id: Identifier of the message that caused this one. If None,
+            generates a new UUID.
             message_id: Uniqu identifier for the message. If None, generates a new UUID.
             created_at: When the message was created. If None, uses current UTC time.
         """
+        self._message_type = message_type
         self._message_id = message_id or uuid4()
         self._created_at = created_at or now()
         self._correlation_id = correlation_id or uuid4()
@@ -72,6 +80,26 @@ class MessageMetadata(ValueObject):
         return self._message_id
 
     @property
+    def message_type(self) -> str:
+        """
+        Get the type of this message.
+
+        Returns:
+            str: The message type name
+        """
+        return self._message_type
+
+    @property
+    def causation_id(self) -> UUID:
+        """
+        Get the causation ID for this message.
+
+        Returns:
+            UUID: The causation identifier
+        """
+        return self._causation_id
+
+    @property
     def created_at(self) -> datetime:
         """
         Get the timestamp when this message was created.
@@ -81,6 +109,31 @@ class MessageMetadata(ValueObject):
         """
         return self._created_at
 
+    @property
+    def correlation_id(self) -> UUID:
+        """
+        Get the correlation ID for this message.
+
+        Returns:
+            UUID: The correlation identifier
+        """
+        return self._correlation_id
+
+    @property
+    def value(self) -> dict[str, Any]:
+        return {
+            "created_at": self._created_at.isoformat(),
+            "correlation_id": str(self._correlation_id),
+            "causation_id": str(self._causation_id),
+            "message_id": str(self._message_id),
+            "message_type": self._message_type,
+        }
+
+    @classmethod
+    def create(cls, message_type: str) -> MessageMetadata:
+        """Factory for creating a new metadata instance with a given type."""
+        return cls(message_type=message_type)
+
     def to_dict(self) -> dict[str, Any]:
         """
         Convert metadata to dictionary representation.
@@ -88,10 +141,7 @@ class MessageMetadata(ValueObject):
         Returns:
             dict[str, Any]: dictionary representation of the metadata
         """
-        return {
-            "message_id": str(self._message_id),
-            "created_at": self._created_at.isoformat(),
-        }
+        return self.value
 
     def _equality_components(self) -> tuple[Any, ...]:
         """
@@ -103,7 +153,7 @@ class MessageMetadata(ValueObject):
         return (self._message_id, self._created_at)
 
 
-class Message(ValueObject, ABC):
+class Message(ABC):
     """
     Base class for all domain messages.
 
@@ -128,7 +178,16 @@ class Message(ValueObject, ABC):
             metadata: Message metadata. If None, creates new metadata with generated ID
             and current timestamp.
         """
-        self._metadata = metadata or MessageMetadata()
+        effective_type = self.__class__.__name__
+        self._metadata = metadata or MessageMetadata(message_type=effective_type)
+
+    def __eq__(self, other):
+        if not isinstance(other, Message):
+            return NotImplemented
+        return self._equality_components() == other._equality_components()
+
+    def __hash__(self):
+        return hash(self._equality_components())
 
     @property
     def metadata(self) -> MessageMetadata:
@@ -161,18 +220,6 @@ class Message(ValueObject, ABC):
         return self._metadata.created_at
 
     @property
-    def message_type(self) -> str:
-        """
-        Get the type of this message.
-
-        Returns the class name of the concrete message implementation.
-
-        Returns:
-            str: The message type name (class name)
-        """
-        return self.__class__.__name__
-
-    @property
     @abstractmethod
     def _payload(self) -> dict[str, Any]:
         """
@@ -196,8 +243,7 @@ class Message(ValueObject, ABC):
             dict[str, Any]: Complete dictionary representation of the message
         """
         return {
-            **self._metadata.to_dict(),
-            "message_type": self.message_type,
+            "metadata": self._metadata.to_dict(),
             "payload": self._payload,
         }
 

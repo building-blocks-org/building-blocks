@@ -345,7 +345,7 @@ class TestDomainmessageManagement:
         message = aggregate.uncommitted_changes()[0]
         assert message.message_id is not None
         assert message.occurred_at is not None
-        assert message.message_type == "FakeEvent"
+        assert message.metadata.message_type == "FakeEvent"
 
     def test_vernon_approach_method_names_follows_conventions(self):
         """Test that we're following Vernon's naming conventions."""

@@ -37,7 +37,7 @@ class Command(Message):
         ...         return self._items
         ...
         ...     @property
-        ...     def payload(self) -> dict[str, Any]:
+        ...     def _payload(self) -> dict[str, Any]:
         ...         return {
         ...             "customer_id": self._customer_id,
         ...             "items": self._items

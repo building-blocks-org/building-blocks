@@ -22,6 +22,28 @@ class FakeValueObject(ValueObject):
         return (self._value,)
 
 
+class EmptyValueObject(ValueObject):
+    @property
+    def value(self) -> None:
+        return None
+
+    def _equality_components(self) -> tuple[Hashable, ...]:
+        return ()
+
+
+class MultiValueObject(ValueObject):
+    def __init__(self, value1: str, value2: int):
+        self._value1 = value1
+        self._value2 = value2
+
+    @property
+    def value(self) -> tuple[str, int]:
+        return (self._value1, self._value2)
+
+    def _equality_components(self) -> tuple[Hashable, ...]:
+        return (self._value1, self._value2)
+
+
 class TestValueObject:
     def test_eq_when_another_value_object_with_same_value_then_true(self):
         vo1 = FakeValueObject("test")
@@ -132,10 +154,6 @@ class TestValueObject:
         assert result_assertion, "Hash values should be diff for VOs with diff values"
 
     def test_str_when_no_value_then_empty_string(self):
-        class EmptyValueObject(ValueObject):
-            def _equality_components(self) -> tuple[Hashable, ...]:
-                return ()
-
         vo = EmptyValueObject()
 
         result = str(vo)
@@ -146,10 +164,6 @@ class TestValueObject:
         ), f"String representation should be '{expected_result}'"
 
     def test_repr_when_no_value_then_empty_string(self):
-        class EmptyValueObject(ValueObject):
-            def _equality_components(self) -> tuple[Hashable, ...]:
-                return ()
-
         vo = EmptyValueObject()
 
         result = repr(vo)
@@ -160,14 +174,6 @@ class TestValueObject:
         ), f"Repr representation should be '{expected_result}'"
 
     def test_str_when_multiple_values_then_tuple_representation(self):
-        class MultiValueObject(ValueObject):
-            def __init__(self, value1: str, value2: int):
-                self._value1 = value1
-                self._value2 = value2
-
-            def _equality_components(self) -> tuple[Hashable, ...]:
-                return (self._value1, self._value2)
-
         vo = MultiValueObject("test", 42)
 
         # Debug the components
@@ -182,19 +188,3 @@ class TestValueObject:
         assert (
             result == expected_result
         ), f"String representation should be '{expected_result}'"
-
-    def test_debug_line_95_coverage(self):
-        """Explicit test to hit the multi-component string representation."""
-
-        class TwoComponentVO(ValueObject):
-            def _equality_components(self) -> tuple[Hashable, ...]:
-                return ("first", "second")  # Exactly 2 components
-
-        vo = TwoComponentVO()
-        result = str(vo)
-
-        # This should hit: return f"{self.__class__.__name__}{components}"
-        # Expected: "TwoComponentVO('first', 'second')"
-        assert "TwoComponentVO" in result
-        assert "first" in result
-        assert "second" in result

@@ -8,9 +8,12 @@ from __future__ import annotations
 
 from abc import ABC, abstractmethod
 from collections.abc import Hashable
+from typing import Generic, TypeVar
+
+TValue = TypeVar("TValue", covariant=True)
 
 
-class ValueObject(ABC):
+class ValueObject(ABC, Generic[TValue]):
     """
     Base class for all domain value objects.
 
@@ -37,6 +40,15 @@ class ValueObject(ABC):
         ...     def _equality_components(self) -> tuple[Hashable, ...]:
         ...         return (self._value,)
     """
+
+    @property
+    @abstractmethod
+    def value(self) -> TValue:
+        """
+        Get the primary raw value encapsulated by the ValueObject.
+        This method must be implemented by concrete classes
+        """
+        pass
 
     def __eq__(self, other: object) -> bool:
         """

@@ -4,7 +4,7 @@ SourceType = TypeVar("SourceType", contravariant=True)
 TargetType = TypeVar("TargetType", covariant=True)
 
 
-class Mapper(Protocol, Generic[SourceType, TargetType]):  # pragma: no cover
+class Mapper(Protocol, Generic[SourceType, TargetType]):
     """
     A generic contract for mapping objects from one representation to another.
 

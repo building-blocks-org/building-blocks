@@ -44,6 +44,7 @@ black = "^25.1.0"
 bcrypt = "^4.3.0"
 pyjwt = "^2.10.1"
 pyright = "^1.1.404"
+poethepoet = "^0.37.0"
 
 [build-system]
 requires = ["poetry-core"]
@@ -72,6 +73,9 @@ ignore = [
     "D213",
     "B008"
 ]
+
+[tool.ruff.lint.isort]
+known-first-party = ["building_blocks", "examples"]
 
 [tool.mypy]
 python_version = "3.12"
@@ -108,8 +112,14 @@ addopts = [
 [tool.coverage.run]
 omit = [
     "*/__init__.py",
+    "src/building_blocks/application/ports/inbound/message_handler.py",
+    "src/building_blocks/application/ports/inbound/use_case.py",
+    "src/building_blocks/application/ports/outbound/message_bus.py",
+    "src/building_blocks/application/ports/outbound/repository.py",
+    "src/building_blocks/application/ports/outbound/notifier.py",
+    "src/building_blocks/foundation/debuggable.py",
     "src/building_blocks/foundation/mapper.py",
-    "src/building_blocks/application/ports/repository.py",
+    "src/building_blocks/foundation/result_mapper.py",
 ]
 
 [tool.coverage.report]
@@ -119,3 +129,14 @@ exclude_lines = [
     "@abstractmethod",
     "raise NotImplementedError"
 ]
+
+[tool.poe.tasks]
+lint = "ruff check ."
+format = "ruff check . --fix"
+mypy = "mypy --config-file pyproject.toml src tests examples scripts"
+bandit = "bandit -r src -x tests"
+pre-commit = "pre-commit run --all-files"
+test = "pytest -q"
+"test:quick" = "pytest -x -q"
+"test:strict" = "pytest -x --strict-markers"
+"test:nocov" = "pytest -q --no-cov"

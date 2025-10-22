@@ -42,7 +42,7 @@ class UnitOfWork(ABC):
         The current transaction/session/context for this unit of work.
         Concrete implementations should override this if a session/context is used.
         """
-        pass
+        ...
 
     async def __aenter__(self) -> UnitOfWork:
         """
