@@ -298,7 +298,7 @@ class TestAggregateRoot:
         assert aggregate.version.value == 2  # Version only incremented on commit
 
 
-class TestDomainmessageManagement:
+class TestDomainMessageManagement:
     """Tests focused on domain message management using Vernon's approach."""
 
     def test_message_ordering_when_multiple_messages_then_preserves_order(self):
