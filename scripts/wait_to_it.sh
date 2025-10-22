@@ -16,7 +16,7 @@ fi
 
 # Function to check if PostgreSQL is ready
 check_postgres() {
-  pg_isready -h "$HOST" -p "$PORT" -U PostgreSQL
+  pg_isready -h "$HOST" -p "$PORT" -U postgres
 }
 
 # Wait for PostgreSQL to become available
