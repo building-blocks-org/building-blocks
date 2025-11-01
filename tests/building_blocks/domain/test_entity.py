@@ -22,7 +22,7 @@ class IdToDefineEntity(DraftEntity[int]):
         super().__init__(id)
 
 
-class TestBaseEntitty:
+class TestBaseEntity:
     def test_init_when_id_then_set_id(self):
         id_ = "123"
 
@@ -114,7 +114,7 @@ class TestEntity:
 
         assert entity.id == id_, "Entity ID should be set correctly"
 
-    def test_init_wheh_id_is_none_then_raises_type_error(self):
+    def test_init_when_id_is_none_then_raises_type_error(self):
         with pytest.raises(EntityIdCannotBeNoneError):
             DefinedIdEntity(None)  # type: ignore
 

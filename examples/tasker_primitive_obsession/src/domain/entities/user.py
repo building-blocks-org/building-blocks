@@ -26,16 +26,16 @@ from examples.tasker_primitive_obsession.src.domain.errors.user_role_errors impo
     UserAlreadyHasRoleError,
 )
 
-from building_blocks.abstractions.errors.base import CombinedErrors
-from building_blocks.abstractions.errors.core import FieldReference
-from building_blocks.abstractions.errors.rule_violation_error import (
+from building_blocks.foundation.errors.base import CombinedErrors
+from building_blocks.foundation.errors.core import FieldReference
+from building_blocks.foundation.errors.rule_violation_error import (
     CombinedRuleViolationErrors,
 )
-from building_blocks.abstractions.errors.validation_error import (
+from building_blocks.foundation.errors.validation_error import (
     CombinedValidationErrors,
     ValidationFieldErrors,
 )
-from building_blocks.abstractions.result import Err, Ok, Result
+from building_blocks.foundation.result import Err, Ok, Result
 from building_blocks.domain.aggregate_root import AggregateRoot, AggregateVersion
 
 
