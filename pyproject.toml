@@ -171,7 +171,7 @@ test = "pytest -q"
 "mkdocs:serve" = "mkdocs serve"
 "mkdocs:build" = "mkdocs build"
 "mkdocs:deploy" = "mkdocs gh-deploy --clean"
-"docs:check" = [
+docs:check.sequence = [
   { cmd = "ruff check --select D" },
   { cmd = "mkdocs build --strict" },
 ]
