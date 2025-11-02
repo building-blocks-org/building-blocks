@@ -1079,6 +1079,10 @@ files = [
 nodeenv = ">=1.6.0"
 typing-extensions = ">=4.1"
 
+[package.dependencies]
+nodeenv = ">=1.6.0"
+typing-extensions = ">=4.1"
+
 [package.extras]
 all = ["nodejs-wheel-binaries", "twine (>=3.4.1)"]
 dev = ["twine (>=3.4.1)"]
