@@ -35,8 +35,7 @@ class TestUnitOfWork:
     async def test_aexit_when_no_exception_then_commit_is_called(
         self, unit_of_work: FakeUnitOfWork
     ) -> None:
-        """
-        Tests that `commit()` is called when exiting the context manager without an
+        """Tests that `commit()` is called when exiting the context manager without an
         exception.
         """
         unit_of_work.commit = AsyncMock()
@@ -52,8 +51,7 @@ class TestUnitOfWork:
     async def test_aexit_when_exception_occurs_then_rollback_is_called(
         self, unit_of_work: FakeUnitOfWork
     ) -> None:
-        """
-        Tests that `rollback()` is called when exiting the context manager with an
+        """Tests that `rollback()` is called when exiting the context manager with an
         exception.
         """
         unit_of_work.commit = AsyncMock()

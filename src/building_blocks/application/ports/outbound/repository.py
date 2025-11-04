@@ -1,5 +1,4 @@
-"""
-Generic repository interfaces for Domain-Driven Design.
+"""Generic repository interfaces for Domain-Driven Design.
 
 This module provides a generic repository interface that is parameterized
 by the aggregate root type and its ID type, providing both flexibility
@@ -25,8 +24,7 @@ TWriteId = TypeVar("TWriteId", contravariant=True)
 
 
 class ReadOnlyRepository(Generic[TReadAggregateRoot, TId], Protocol):
-    """
-    Read-only async repository interface for CQRS query scenarios.
+    """Read-only async repository interface for CQRS query scenarios.
 
     This interface is parameterized by both the aggregate root type and its ID type,
     providing type safety for query-side operations in CQRS architectures.
@@ -77,8 +75,7 @@ class ReadOnlyRepository(Generic[TReadAggregateRoot, TId], Protocol):
     """
 
     async def get_by_id(self, id: TId) -> TReadAggregateRoot | None:
-        """
-        Find an aggregate by its unique identifier.
+        """Find an aggregate by its unique identifier.
 
         This is optimized for query performance and may read from:
         - Read replicas
@@ -95,8 +92,7 @@ class ReadOnlyRepository(Generic[TReadAggregateRoot, TId], Protocol):
         ...
 
     async def find_all(self) -> Sequence[TReadAggregateRoot]:
-        """
-        Find all aggregates in the repository.
+        """Find all aggregates in the repository.
 
         Note: In CQRS scenarios, this might be reading from optimized
         read models rather than the authoritative command store.
@@ -108,8 +104,7 @@ class ReadOnlyRepository(Generic[TReadAggregateRoot, TId], Protocol):
 
 
 class WriteOnlyRepository(Protocol, Generic[TWriteAggregateRoot, TWriteId]):
-    """
-    Write-only async repository interface for CQRS command scenarios.
+    """Write-only async repository interface for CQRS command scenarios.
 
     This interface is parameterized by the aggregate root type, providing
     type safety for command-side operations in CQRS architectures.
@@ -149,8 +144,7 @@ class WriteOnlyRepository(Protocol, Generic[TWriteAggregateRoot, TWriteId]):
     """
 
     async def delete_by_id(self, id: TWriteId) -> None:
-        """
-        Delete an aggregate using its id.
+        """Delete an aggregate using its id.
 
         Args:
             id: The ID of the aggregate to delete.
@@ -161,9 +155,7 @@ class WriteOnlyRepository(Protocol, Generic[TWriteAggregateRoot, TWriteId]):
         ...
 
     async def save(self, aggregate: TWriteAggregateRoot) -> None:
-        """
-        Save an aggregate.
-        """
+        """Save an aggregate."""
         ...
 
 
@@ -172,15 +164,16 @@ class Repository(
     WriteOnlyRepository[TAggregateRoot, TId],
     Protocol,
 ):
-    """
-    Full CRUD async repository interface.
-    This interface combines both read and write operations, providing and
-    end-to-end repository contract.
+    """Full CRUD async repository interface.
+
+    This interface combines both read and write operations, providing and end-to-end repository
+    contract.
+
     Perfect for:
     - Standard CRUD operations in non-CQRS scenarios
     - Simple applications without strict read/write separation
     - Prototyping and rapid development
-    - When both read and write capabilities are needed
+    - When both read and write capabilities are needed.
     """
 
     ...

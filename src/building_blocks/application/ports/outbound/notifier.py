@@ -1,11 +1,12 @@
+"""Asynchronous notifier interface for sending notifications."""
+
 from typing import Generic, Protocol, TypeVar
 
 TNotification = TypeVar("TNotification", contravariant=True)
 
 
 class Notifier(Protocol, Generic[TNotification]):
-    """
-    Asynchronous notifier interface for sending notifications.
+    """Asynchronous notifier interface for sending notifications.
 
     This interface defines the contract for sending notifications in an asynchronous
     manner.
@@ -14,8 +15,7 @@ class Notifier(Protocol, Generic[TNotification]):
     """
 
     async def notify(self, message: TNotification) -> None:
-        """
-        Send a notification with the given message.
+        """Send a notification with the given message.
 
         Args:
             message: The message to be sent in the notification.

@@ -21,9 +21,7 @@ class TestEventPublisher:
 
         return bus
 
-    def test_init_when_called_then_set_message_bus(
-        self, message_bus: MagicMock
-    ) -> None:
+    def test_init_when_called_then_set_message_bus(self, message_bus: MagicMock) -> None:
         publisher = EventPublisher(message_bus)
 
         assert publisher._message_bus == message_bus

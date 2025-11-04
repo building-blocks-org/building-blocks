@@ -21,9 +21,7 @@ class TestCommandSender:
 
         return bus
 
-    def test_init_when_called_then_set_message_bus(
-        self, message_bus: MagicMock
-    ) -> None:
+    def test_init_when_called_then_set_message_bus(self, message_bus: MagicMock) -> None:
         sender = CommandSender(message_bus)
 
         assert sender._message_bus == message_bus

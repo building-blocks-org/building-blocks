@@ -1,3 +1,5 @@
+"""Outbound port for a message bus."""
+
 from typing import Generic, Protocol, TypeVar
 
 from building_blocks.application.ports.inbound.message_handler import MessageHandler
@@ -7,6 +9,12 @@ TResponse = TypeVar("TResponse", covariant=True)
 
 
 class MessageBus(Protocol, Generic[TResponse]):
-    async def dispatch(self, message: Message) -> TResponse: ...
+    """Asynchronous outbound port for a message bus."""
 
-    async def register_handler(self, handler: MessageHandler) -> None: ...
+    async def dispatch(self, message: Message) -> TResponse:
+        """Dispatch a message asynchronously."""
+        ...
+
+    async def register_handler(self, handler: MessageHandler) -> None:
+        """Register a message handler asynchronously."""
+        ...

@@ -1,18 +1,20 @@
-from typing import Generic, Protocol, TypeVar
+"""Inbound port for handling messages asynchronously."""
+
+from typing import Protocol, TypeVar
 
 from building_blocks.domain.messages.command import Command
 from building_blocks.domain.messages.event import Event
 from building_blocks.domain.messages.message import Message
 from building_blocks.domain.messages.query import Query
+from building_blocks.foundation.ports import InboundPort
 
-TMessage = TypeVar("TMessage", contravariant=True, bound=Message)
-TMessageHandlerResult = TypeVar("TMessageHandlerResult", covariant=True)
-TQueryResult = TypeVar("TQueryResult", covariant=True)
+MessageType = TypeVar("MessageType", contravariant=True, bound=Message)
+MessageHandlerResultType = TypeVar("MessageHandlerResultType", covariant=True)
+QueryResultType = TypeVar("QueryResultType", covariant=True)
 
 
-class MessageHandler(Protocol, Generic[TMessage, TMessageHandlerResult]):
-    """
-    Inbound port for handling messages asynchronously.
+class MessageHandler(InboundPort[MessageType, MessageHandlerResultType], Protocol):  # type: ignore[misc]
+    """Inbound port for handling messages asynchronously.
 
     This interface defines the contract for handling messages in a CQRS
     architecture. It is designed to be implemented by message handlers that
@@ -25,9 +27,8 @@ class MessageHandler(Protocol, Generic[TMessage, TMessageHandlerResult]):
     - Any other message processing logic
     """
 
-    async def handle(self, message: TMessage) -> TMessageHandlerResult:
-        """
-        Handle a message asynchronously.
+    async def handle(self, message: MessageType) -> MessageHandlerResultType:
+        """Handle a message asynchronously.
 
         Args:
             message: The message to be handled.
@@ -36,5 +37,5 @@ class MessageHandler(Protocol, Generic[TMessage, TMessageHandlerResult]):
 
 
 CommandHandler = MessageHandler[Command, None]
-QueryHandler = MessageHandler[Query, TQueryResult]
+QueryHandler = MessageHandler[Query, QueryResultType]
 EventHandler = MessageHandler[Event, None]

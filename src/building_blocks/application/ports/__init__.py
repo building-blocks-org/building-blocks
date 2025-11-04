@@ -1,7 +1,4 @@
-"""
-Application inbound ports module.
-Contains inbound and outbound port definitions.
-"""
+"""Application layer ports package."""
 
 from building_blocks.application.ports.inbound.message_handler import (
     CommandHandler,
