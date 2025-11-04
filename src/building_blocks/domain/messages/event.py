@@ -1,3 +1,5 @@
+"""Domain Event base class implementation."""
+
 from abc import abstractmethod
 from datetime import datetime
 from typing import Any
@@ -6,8 +8,7 @@ from building_blocks.domain.messages.message import Message
 
 
 class Event(Message):
-    """
-    Base class for all domain events.
+    """Base class for all domain events.
 
     Domain events represent something significant that happened in the domain.
     They are immutable facts about the past that other parts of the system can react to.
@@ -52,8 +53,7 @@ class Event(Message):
 
     @property
     def occurred_at(self) -> datetime:
-        """
-        Get the timestamp when this event occurred.
+        """Get the timestamp when this event occurred.
 
         Returns:
             datetime: When the event occurred (UTC timezone)
@@ -63,8 +63,7 @@ class Event(Message):
     @property
     @abstractmethod
     def _payload(self) -> dict[str, Any]:
-        """
-        Get the domain-specific data carried by this event.
+        """Get the domain-specific data carried by this event.
 
         Returns:
             dict[str, object]: The event payload as a dictionary

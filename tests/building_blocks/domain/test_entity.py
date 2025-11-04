@@ -75,9 +75,7 @@ class TestBaseEntity:
         hash1 = hash(entity)
 
         expected_hash = hash(id_)
-        assert (
-            hash1 == expected_hash
-        ), "Hash values should be equal for entities with the same ID"
+        assert hash1 == expected_hash, "Hash values should be equal for entities with the same ID"
 
     def test_hash_when_id_is_not_set_then_raises_type_error(self):
         entity = FakeEntity(None)
@@ -91,9 +89,7 @@ class TestBaseEntity:
         result = str(entity)
 
         expected_result = "FakeEntity(id=123)"
-        assert (
-            result == expected_result
-        ), f"String representation should be '{expected_result}'"
+        assert result == expected_result, f"String representation should be '{expected_result}'"
 
     def test_repr_representation(self):
         entity = FakeEntity("123")
@@ -101,9 +97,7 @@ class TestBaseEntity:
         result = repr(entity)
 
         expected_result = "FakeEntity(id=123)"
-        assert (
-            result == expected_result
-        ), f"Repr representation should be '{expected_result}'"
+        assert result == expected_result, f"Repr representation should be '{expected_result}'"
 
 
 class TestEntity:
@@ -138,9 +132,7 @@ class TestDraftEntity:
         result = entity1 == entity2
 
         expected_result = True
-        assert (
-            result is expected_result
-        ), "DraftEntities with the same ID should be equal"
+        assert result is expected_result, "DraftEntities with the same ID should be equal"
 
     def test_eq_when_another_entity_with_different_id_then_false(self) -> None:
         entity1 = IdToDefineEntity(123)
@@ -160,9 +152,7 @@ class TestDraftEntity:
 
         expected_result = False
         result_assertion = result is expected_result
-        assert (
-            result_assertion
-        ), "DraftEntity should not be equal to a non-entity object"
+        assert result_assertion, "DraftEntity should not be equal to a non-entity object"
 
     def test_hash_when_draft_entity_then_raises_draft_entity_is_not_hashable(
         self,

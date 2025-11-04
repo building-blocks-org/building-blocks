@@ -1,3 +1,5 @@
+"""Module defining the base Query class for domain queries."""
+
 from abc import ABC, abstractmethod
 from typing import Any
 
@@ -5,8 +7,7 @@ from building_blocks.domain.messages.message import Message
 
 
 class Query(Message, ABC):
-    """
-    Base class for all domain queries.
+    """Base class for all domain queries.
 
     Queries represent a request to retrieve data from the domain.
     They are handled by query handlers and should not modify state.
@@ -38,8 +39,7 @@ class Query(Message, ABC):
     @property
     @abstractmethod
     def _payload(self) -> dict[str, Any]:
-        """
-        Get the domain-specific data carried by this query.
+        """Get the domain-specific data carried by this query.
 
         Returns:
             dict[str, Any]: The query payload as a dictionary

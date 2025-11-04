@@ -1,5 +1,5 @@
-"""
-Domain value objects module.
+"""Domain value objects module.
+
 This module provides the base ValueObject class for implementing domain value objects
 following the principles of Domain-Driven Design (DDD).
 """
@@ -14,8 +14,7 @@ TValue = TypeVar("TValue", covariant=True)
 
 
 class ValueObject(ABC, Generic[TValue]):
-    """
-    Base class for all domain value objects.
+    """Base class for all domain value objects.
 
     Value objects are immutable objects that are defined by their attributes
     rather than their identity. Two value objects with the same attributes
@@ -25,7 +24,7 @@ class ValueObject(ABC, Generic[TValue]):
     without setters and avoiding direct attribute modification.
 
     Example:
-        >>> class Email(ValueObject):
+        >>> class Email(ValueObject[str]):
         ...     __slots__ = ("_value",)
         ...
         ...     def __init__(self, value: str):
@@ -44,15 +43,17 @@ class ValueObject(ABC, Generic[TValue]):
     @property
     @abstractmethod
     def value(self) -> TValue:
-        """
-        Get the primary raw value encapsulated by the ValueObject.
-        This method must be implemented by concrete classes
+        """Get the primary raw value encapsulated by the ValueObject.
+
+        This method must be implemented by concrete classes.
+
+        Returns:
+            TValue: The raw value of the value object
         """
         pass
 
     def __eq__(self, other: object) -> bool:
-        """
-        Check equality based on equality components.
+        """Check equality based on equality components.
 
         Args:
             other: Object to compare with
@@ -65,8 +66,7 @@ class ValueObject(ABC, Generic[TValue]):
         return self._equality_components() == other._equality_components()
 
     def __hash__(self) -> int:
-        """
-        Generate hash based on equality components.
+        """Generate hash based on equality components.
 
         Returns:
             int: Hash value for the object
@@ -74,8 +74,7 @@ class ValueObject(ABC, Generic[TValue]):
         return hash(self._equality_components())
 
     def __str__(self) -> str:
-        """
-        String representation of the value object.
+        """String representation of the value object.
 
         Returns:
             str: String representation
@@ -86,8 +85,7 @@ class ValueObject(ABC, Generic[TValue]):
         return f"{self.__class__.__name__}{components}"
 
     def __repr__(self) -> str:
-        """
-        Developer representation of the value object.
+        """Developer representation of the value object.
 
         Returns:
             str: Developer representation
@@ -96,10 +94,11 @@ class ValueObject(ABC, Generic[TValue]):
 
     @abstractmethod
     def _equality_components(self) -> tuple[Hashable, ...]:
-        """
-        Get the components that define equality for the value object.
+        """Get the components that define equality for the value object.
+
         This method should be implemented by subclasses to return a tuple
         of Hashable components that uniquely identify the value object.
+
         Returns:
             tuple[Hashable, ...]: Components for equality comparison
         """

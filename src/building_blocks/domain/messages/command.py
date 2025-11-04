@@ -1,14 +1,13 @@
-from abc import abstractmethod
+"""Module defining the Command base class for domain commands."""
+
 from datetime import datetime
-from typing import Any
 from uuid import UUID
 
 from building_blocks.domain.messages.message import Message
 
 
 class Command(Message):
-    """
-    Base class for all domain commands.
+    """Base class for all domain commands.
 
     Commands represent an intent to do something in the domain.
     They are requests that may succeed or fail, and they are handled by command handler.
@@ -46,8 +45,8 @@ class Command(Message):
 
     @property
     def command_id(self) -> UUID:
-        """
-        Get the unique identifier for this command.
+        """Get the unique identifier for this command.
+
         Returns:
             UUID: The unique command identifier (same as message_id)
         """
@@ -55,11 +54,9 @@ class Command(Message):
 
     @property
     def issued_at(self) -> datetime:
-        """
-        Get the timestamp when this command was issued.
+        """Get the timestamp when this command was issued.
 
         Returns:
             datetime: When the command was issued (same as created_at)
         """
         return self.created_at
-

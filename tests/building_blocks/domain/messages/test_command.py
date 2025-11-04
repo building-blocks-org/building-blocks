@@ -1,5 +1,4 @@
-"""
-Unit tests for the Command module.
+"""Unit tests for the Command module.
 
 Tests for Command class.
 """

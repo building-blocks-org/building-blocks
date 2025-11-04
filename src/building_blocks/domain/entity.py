@@ -1,16 +1,13 @@
-"""
-Base entity classes for domain-driven design (DDD) entities.
-Includes:
-- _BaseEntity: Common logic for identity handling.
-- Entity: Persisted entities (must have ID at creation).
-- DraftEntity: Non-persisted entities (ID may be None until saved).
+"""Domain entity base classes.
+
+This module provides base classes for domain entities, including Entity and DraftEntity,
 """
 
 from __future__ import annotations
 
 from abc import ABC
 from collections.abc import Hashable
-from typing import Generic, TypeVar
+from typing import Any, Generic, TypeVar
 
 from building_blocks.domain.errors.entity_id_errors import (
     DraftEntityIsNotHashableError,
@@ -21,8 +18,8 @@ TId = TypeVar("TId", bound=Hashable)
 
 
 class _BaseEntity(Generic[TId], ABC):
-    """
-    Base class for domain entities.
+    """Base class for domain entities.
+
     Identity is immutable once set.
     """
 
@@ -30,6 +27,11 @@ class _BaseEntity(Generic[TId], ABC):
 
     def __init__(self, entity_id: TId | None) -> None:
         self._id: TId | None = entity_id
+
+    def __setattr__(self, name: str, value: Any) -> None:
+        if name == "_id" and hasattr(self, "_id"):
+            raise AttributeError("Cannot modify 'id' once it is set.")
+        super().__setattr__(name, value)
 
     @property
     def id(self) -> TId | None:
@@ -41,11 +43,7 @@ class _BaseEntity(Generic[TId], ABC):
         return self.id is not None
 
     def __eq__(self, other: object) -> bool:
-        """
-        Default equality:
-        - For persisted entities: same type & same ID.
-        - For drafts: overridden in DraftEntity.
-        """
+        """Entities are equal if they are of the same class and have the same ID."""
         if not isinstance(other, self.__class__):
             return NotImplemented
         return self.id == other.id
@@ -57,16 +55,16 @@ class _BaseEntity(Generic[TId], ABC):
         return hash(self.id)
 
     def __str__(self) -> str:
+        """Return a string representation of the entity."""
         return f"{self.__class__.__name__}(id={self.id})"
 
     def __repr__(self) -> str:
+        """Return a detailed string representation of the entity."""
         return str(self)
 
 
 class Entity(_BaseEntity[TId], ABC):
-    """
-    Base class for entities that must have an ID at creation.
-    """
+    """Base class for entities that must have an ID at creation."""
 
     def __init__(self, entity_id: TId) -> None:
         if entity_id is None:
@@ -75,24 +73,41 @@ class Entity(_BaseEntity[TId], ABC):
 
 
 class DraftEntity(_BaseEntity[TId], ABC):
-    """
-    Base class for entities that may start without an ID (drafts).
+    """Base class for entities that may start without an ID (drafts).
+
     Drafts:
-    - Compare equal only if they are the same instance when id is None.
-    - Are never hashable.
+    - Can have id as None initially.
+    - Superclass to be used for non-persisted entities that when persisted
+      will receive an ID.
+    - Equality:
+        - If both have non-null IDs: compare by ID.
+        - If either has null ID: compare by object identity (is).
+    - Hashing:
+        - Draft entities are not hashable to avoid issues with mutable identity.
+        - Raises DraftEntityIsNotHashableError on __hash__ calls.
+    - Intended for use cases where entities are created and manipulated
+      before being saved to a database or persistent store.
+
+    Examples:
+        >>> draft1 = DraftEntity()
+        >>> draft2 = DraftEntity()
+        >>> draft1 == draft2
+        False
     """
 
     def __init__(self, entity_id: TId | None = None) -> None:
         super().__init__(entity_id)
 
     def __eq__(self, other: object) -> bool:
+        """Draft entities equality logic."""
         if not isinstance(other, self.__class__):
-            return NotImplemented
+            return False
         if self.id is None or other.id is None:
             return self is other
         return self.id == other.id
 
     def __hash__(self) -> int:
+        """Draft entities are not hashable."""
         raise DraftEntityIsNotHashableError()
 
 

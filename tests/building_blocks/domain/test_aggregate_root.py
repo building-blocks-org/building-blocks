@@ -1,5 +1,4 @@
-"""
-Unit tests for the AggregateRoot module.
+"""Unit tests for the AggregateRoot module.
 
 Tests for AggregateRoot class using Vaughn Vernon's approach.
 """
@@ -35,9 +34,7 @@ class FakeEvent(Event):
 class FakeAggregateRoot(AggregateRoot[UUID]):
     """A fake aggregate root for testing."""
 
-    def __init__(
-        self, aggregate_id: UUID, name: str, version: AggregateVersion | None = None
-    ):
+    def __init__(self, aggregate_id: UUID, name: str, version: AggregateVersion | None = None):
         super().__init__(aggregate_id, version)
         if not isinstance(aggregate_id, UUID):
             raise TypeError(f"Expected UUID, got {type(aggregate_id).__name__}")
@@ -247,13 +244,9 @@ class TestAggregateRoot:
         aggregate_id = uuid4()
 
         aggregate1_version = AggregateVersion(value=1)
-        aggregate1 = FakeAggregateRoot(
-            aggregate_id, "test1", version=aggregate1_version
-        )
+        aggregate1 = FakeAggregateRoot(aggregate_id, "test1", version=aggregate1_version)
         aggregate2_version = AggregateVersion(value=5)
-        aggregate2 = FakeAggregateRoot(
-            aggregate_id, "test2", version=aggregate2_version
-        )
+        aggregate2 = FakeAggregateRoot(aggregate_id, "test2", version=aggregate2_version)
 
         # Should be equal because Entity equality is based on ID
         assert aggregate1 == aggregate2

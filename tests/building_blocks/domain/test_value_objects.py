@@ -4,8 +4,7 @@ from building_blocks.domain.value_object import ValueObject
 
 
 class FakeValueObject(ValueObject):
-    """
-    A fake value object for testing purposes.
+    """A fake value object for testing purposes.
 
     This class is used to create a mock value object with equality components.
     It inherits from the ValueObject class and implements the required methods.
@@ -52,14 +51,11 @@ class TestValueObject:
         result = vo1 == vo2
 
         expected_result = True
-        assert (
-            result is expected_result
-        ), "Value objects with the same value should be equal"
+        assert result is expected_result, "Value objects with the same value should be equal"
 
     def test_eq_when_different_value_object_with_same_value_then_false(self):
         class DifferentFakeValueObject(ValueObject):
-            """
-            A different fake value object for testing purposes.
+            """A different fake value object for testing purposes.
 
             This class is used to create a mock value object with a different equality
             component.
@@ -82,9 +78,7 @@ class TestValueObject:
         result = vo1 == vo2
 
         expected_result = False
-        assert (
-            result is expected_result
-        ), "Value objects with the same value should be equal"
+        assert result is expected_result, "Value objects with the same value should be equal"
 
     def test_eq_when_another_value_object_with_different_value_then_false(self):
         vo1 = FakeValueObject("test1")
@@ -93,9 +87,7 @@ class TestValueObject:
         result = vo1 == vo2
 
         expected_result = False
-        assert (
-            result is expected_result
-        ), "Value objects with different values should not be equal"
+        assert result is expected_result, "Value objects with different values should not be equal"
 
     def test_eq_when_another_object_then_false(self):
         vo = FakeValueObject("test")
@@ -104,9 +96,7 @@ class TestValueObject:
         result = vo == other_object
 
         expected_result = False
-        assert (
-            result is expected_result
-        ), "Value object should not be equal to a non-value object"
+        assert result is expected_result, "Value object should not be equal to a non-value object"
 
     def test_str_representation(self):
         vo = FakeValueObject("test")
@@ -114,9 +104,7 @@ class TestValueObject:
         result = str(vo)
 
         expected_result = "FakeValueObject(test)"
-        assert (
-            result == expected_result
-        ), f"String representation should be '{expected_result}'"
+        assert result == expected_result, f"String representation should be '{expected_result}'"
 
     def test_repr_representation(self):
         vo = FakeValueObject("test")
@@ -124,9 +112,7 @@ class TestValueObject:
         result = repr(vo)
 
         expected_result = "FakeValueObject(test)"
-        assert (
-            result == expected_result
-        ), f"Repr representation should be '{expected_result}'"
+        assert result == expected_result, f"Repr representation should be '{expected_result}'"
 
     def test_hash_when_value_then_hash_value(self):
         value = "test"
@@ -159,9 +145,7 @@ class TestValueObject:
         result = str(vo)
 
         expected_result = "EmptyValueObject()"
-        assert (
-            result == expected_result
-        ), f"String representation should be '{expected_result}'"
+        assert result == expected_result, f"String representation should be '{expected_result}'"
 
     def test_repr_when_no_value_then_empty_string(self):
         vo = EmptyValueObject()
@@ -169,9 +153,7 @@ class TestValueObject:
         result = repr(vo)
 
         expected_result = "EmptyValueObject()"
-        assert (
-            result == expected_result
-        ), f"Repr representation should be '{expected_result}'"
+        assert result == expected_result, f"Repr representation should be '{expected_result}'"
 
     def test_str_when_multiple_values_then_tuple_representation(self):
         vo = MultiValueObject("test", 42)
@@ -185,6 +167,4 @@ class TestValueObject:
         print(f"Actual result: {repr(result)}")
 
         expected_result = "MultiValueObject('test', 42)"
-        assert (
-            result == expected_result
-        ), f"String representation should be '{expected_result}'"
+        assert result == expected_result, f"String representation should be '{expected_result}'"
