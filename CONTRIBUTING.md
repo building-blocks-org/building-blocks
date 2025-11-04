@@ -36,7 +36,7 @@ To get started with development, follow these steps:
     ```bash
     git push origin my-feature-branch
     ```
-5.  **Create a pull request** to the `main` branch of the `gbrennon/building-blocks` repository.
+5.  **Create a pull request** to the `main` branch of the `building-blocks-org/building-blocks` repository.
 
 ## Code Style & Quality
 
