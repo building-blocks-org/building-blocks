@@ -1,0 +1,138 @@
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap");
+
+/* --- Badwolf-inspired palette --- */
+:root {
+  --md-primary-fg-color: #d7af5f;  /* Softer amber */
+  --md-typeset-link-color: #d7af5f;
+  --md-accent-fg-color: #d7875f;   /* Warm secondary */
+}
+
+/* --- Typography --- */
+.md-typeset {
+  font-family: "JetBrains Mono", monospace;
+  line-height: 1.6;
+}
+
+/* --- Headings --- */
+.md-typeset h1,
+.md-typeset h2,
+.md-typeset h3 {
+  color: #ffaf00;
+  border-bottom: 1px solid #3a3a3a;
+  padding-bottom: 0.2em;
+}
+
+/* --- Code blocks --- */
+.md-typeset code,
+pre code {
+  background-color: #2a2a2a !important;
+  color: #d7d7af !important;
+  border-radius: 6px;
+  padding: 0.2em 0.4em;
+}
+
+.md-typeset pre {
+  background-color: #262626 !important;
+  border-left: 3px solid #ffaf00;
+  padding: 0.8em;
+}
+
+/* --- Links --- */
+a, a:hover, a:focus {
+  color: #ffaf00;
+  text-decoration: none;
+}
+
+/* --- Sidebar / Nav --- */
+.md-nav__link,
+.md-nav__title {
+  color: #d7d7af !important;
+}
+
+.md-sidebar__scrollwrap {
+  background-color: #1c1c1c;
+}
+
+/* --- Tables --- */
+.md-typeset table {
+  border-color: #3a3a3a;
+}
+.md-typeset th {
+  background-color: #303030;
+  color: #ffaf00;
+}
+.md-typeset td {
+  background-color: #1c1c1c;
+  color: #d7d7af;
+}
+
+/* --- Footer --- */
+.md-footer {
+  background-color: #1c1c1c;
+  color: #808080;
+  border-top: 1px solid #3a3a3a;
+}
+
+/* --- Scrollbar --- */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #444;
+  border-radius: 8px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: #666;
+}
+
+/* --- Spacing adjustments (FastAPI-like rhythm) --- */
+.md-typeset p,
+.md-typeset ul,
+.md-typeset ol,
+.md-typeset pre,
+.md-typeset table {
+  margin-top: 0.75em;
+  margin-bottom: 0.75em;
+}
+
+.md-typeset h1,
+.md-typeset h2,
+.md-typeset h3,
+.md-typeset h4 {
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+}
+
+/* --- Lists --- */
+.md-typeset ul li,
+.md-typeset ol li {
+  margin-bottom: 0.3em;
+}
+
+/* --- Code blocks spacing --- */
+.md-typeset pre {
+  margin-top: 1em;
+  margin-bottom: 1em;
+  border-radius: 8px;
+}
+
+/* --- Increase line height for readability --- */
+.md-typeset {
+  line-height: 1.8;
+  letter-spacing: 0.015em;
+}
+
+/* --- Section dividers for readability --- */
+.md-typeset hr {
+  border: 0;
+  height: 1px;
+  background-color: #3a3a3a;
+  margin: 2em 0;
+}
+
+/* --- Page container --- */
+.md-content {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1.5rem;
+}

@@ -1,0 +1,77 @@
+site_name: Building Blocks
+site_description: "Composable building blocks for clean, testable, and maintainable Python applications."
+repo_url: https://github.com/building-blocks-org/building-blocks
+repo_name: building-blocks-org/building-blocks
+
+theme:
+  name: material
+  language: en
+  features:
+    - navigation.instant
+    - navigation.tabs
+    - navigation.top
+    - content.code.annotate
+  font:
+    text: JetBrains Mono
+    code: JetBrains Mono
+  palette:
+    - scheme: slate
+      primary: amber
+      accent: amber
+      background: "#1c1c1c"
+      surface: "#2a2a2a"
+      text: "#ffffff"
+      code-bg: "#2a2a2a"
+      code-text: "#d7d7af"
+
+extra_css:
+  - stylesheets/badwolf.css
+
+markdown_extensions:
+  - admonition
+  - footnotes
+  - toc:
+      permalink: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+      linenums: true
+      pygments_style: paraiso-dark
+  - pymdownx.superfences
+  - pymdownx.tabbed
+  - pymdownx.details
+  - pymdownx.snippets
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.extra
+  - pymdownx.tilde
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - md_in_html
+
+plugins:
+  - search
+  - mkdocstrings:
+      handlers:
+        python:
+          options:
+            show_source: true
+            docstring_style: google
+            separate_signature: true
+            show_if_no_docstring: false
+            heading_level: 2
+  - gen-files:
+      scripts:
+        - scripts/gen_ref_pages.py
+  - literate-nav
+  - section-index
+
+nav:
+  - Home: index.md
+  - Guide:
+      - Architecture: guide/architecture.md
+  - Reference:
+      - Foundation: reference/foundation.md
+      - Domain: reference/domain.md
+      - Application: reference/application.md
+      - Infrastructure: reference/infrastructure.md
+      - Presentation: reference/presentation.md
