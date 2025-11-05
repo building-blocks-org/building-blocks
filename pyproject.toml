@@ -115,8 +115,8 @@ mypy_path = "src"
 
 [[tool.mypy.overrides]]
 module = "tests.*"
-ignore_missing_imports = true
 disallow_untyped_defs = false
+disallow_incomplete_defs = false
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
