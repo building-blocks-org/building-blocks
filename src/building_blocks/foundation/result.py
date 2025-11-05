@@ -14,28 +14,36 @@ ErrorType = TypeVar("ErrorType", covariant=True)
 class ResultAccessError(Error):
     """Exception raised when trying to access value or err from an inappropriate Result variant."""
 
-    def __init__(self, message: ErrorMessage | None = None) -> None:
+    def __init__(self, message: ErrorMessage | str | None = None) -> None:
         """Initialize ResultAccessError with a message."""
-        message = message or ErrorMessage("Invalid access on Result.")
-        print(message)
-        super().__init__(message)
+        if isinstance(message, ErrorMessage):
+            msg_str = str(message)
+        elif isinstance(message, str):
+            msg_str = message
+        else:
+            msg_str = "Invalid access on Result."
+
+        self._error_message: str = msg_str
+        super().__init__(ErrorMessage(msg_str))
 
     @classmethod
     def cannot_access_value(cls) -> ResultAccessError:
         """Create an error for accessing value from an Err Result."""
-        error_message = ErrorMessage("Cannot access value from an Err Result.")
-        return cls(error_message)
+        return cls("Cannot access value from an Err Result.")
 
     @classmethod
     def cannot_access_error(cls) -> ResultAccessError:
         """Create an error for accessing error from an Ok Result."""
-        error_message = ErrorMessage("Cannot access error from an Ok Result.")
-        return cls(error_message)
+        return cls("Cannot access error from an rr Result.")
 
-    @property
+    @property  # ✅ force override to string
     def message(self) -> str:
-        """Property to return the actual message."""
-        return str(self.args[0])
+        """Return the stored message as a string."""
+        return self._error_message
+
+    def __str__(self) -> str:
+        """Readable string representation."""
+        return self._error_message
 
 
 class Result(Protocol, Generic[ResultType, ErrorType]):
@@ -149,4 +157,4 @@ class Err(Result[ResultType, ErrorType], Generic[ResultType, ErrorType]):
 
     def __str__(self) -> str:
         """Return a string representation of the Ok result."""
-        return f"Ok({self._error})"
+        return f"Err({self._error})"

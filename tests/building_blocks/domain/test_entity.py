@@ -1,163 +1,197 @@
 import pytest
 
-from building_blocks.domain.entity import DraftEntity, Entity, _BaseEntity
-from building_blocks.domain.errors.entity_id_errors import (
+from building_blocks.domain.entity import Entity
+from building_blocks.domain.errors.draft_entity_is_not_hashable_error import (
     DraftEntityIsNotHashableError,
-    EntityIdCannotBeNoneError,
 )
 
 
-class FakeEntity(_BaseEntity[str]):
-    def __init__(self, id: str | None):
-        super().__init__(id)
-
-
-class DefinedIdEntity(Entity[str]):
-    def __init__(self, id: str):
-        super().__init__(id)
-
-
-class IdToDefineEntity(DraftEntity[int]):
-    def __init__(self, id: int | None = None):
-        super().__init__(id)
-
-
-class TestBaseEntity:
-    def test_init_when_id_then_set_id(self):
-        id_ = "123"
-
-        entity = FakeEntity(id_)
-
-        assert entity.id == id_, "Entity ID should be set correctly"
-
-    def test_id_property_when_id_exists_then_return_id(self):
-        id_ = "123"
-        entity = FakeEntity(id_)
-
-        result = entity.id
-
-        expected_result = id_
-        assert result == expected_result, "ID property should return the correct ID"
-
-    def test__eq_when_another_entity_with_the_same_id_then_true(self):
-        entity1 = FakeEntity("123")
-        entity2 = FakeEntity("123")
-
-        result = entity1 == entity2
-
-        expected_result = True
-        assert result is expected_result, "Entities with the same ID should be equal"
-
-    def test__eq_when_another_entity_with_different_id_then_false(self):
-        entity1 = FakeEntity("123")
-        entity2 = FakeEntity("456")
-
-        result = entity1 == entity2
-
-        expected_result = False
-        result_assertion = result is expected_result
-        assert result_assertion, "Entities with different IDs should not be equal"
-
-    def test__eq_when_another_object_then_false(self):
-        entity = FakeEntity("123")
-        other_object = object()
-
-        result = entity == other_object
-
-        expected_result = False
-        result_assertion = result is expected_result
-        assert result_assertion, "Entity should not be equal to a non-entity object"
-
-    def test_hash_when_id_then_hash_id(self):
-        id_ = "123"
-        entity = FakeEntity(id_)
-
-        hash1 = hash(entity)
-
-        expected_hash = hash(id_)
-        assert hash1 == expected_hash, "Hash values should be equal for entities with the same ID"
-
-    def test_hash_when_id_is_not_set_then_raises_type_error(self):
-        entity = FakeEntity(None)
-
-        with pytest.raises(TypeError, match="Unhashable FakeEntity: id is None"):
-            hash(entity)
-
-    def test_str_representation(self):
-        entity = FakeEntity("123")
-
-        result = str(entity)
-
-        expected_result = "FakeEntity(id=123)"
-        assert result == expected_result, f"String representation should be '{expected_result}'"
-
-    def test_repr_representation(self):
-        entity = FakeEntity("123")
-
-        result = repr(entity)
-
-        expected_result = "FakeEntity(id=123)"
-        assert result == expected_result, f"Repr representation should be '{expected_result}'"
+class User(Entity[int]):
+    def __init__(self, entity_id: int | None = None, name: str = "") -> None:
+        super().__init__(entity_id)
+        self.name = name
 
 
 class TestEntity:
-    def test_init_when_id_then_set_id(self):
-        id_ = "123"
+    @pytest.fixture
+    def draft_user(self) -> User:
+        return User(None, "Alice")
 
-        entity = DefinedIdEntity(id_)
+    @pytest.fixture
+    def persisted_user(self) -> User:
+        return User(1, "Alice")
 
-        assert entity.id == id_, "Entity ID should be set correctly"
+    def test___init___when_id_is_none_then_creates_draft_entity(self, draft_user: User) -> None:
+        # Arrange done by fixture
 
-    def test_init_when_id_is_none_then_raises_type_error(self):
-        with pytest.raises(EntityIdCannotBeNoneError):
-            DefinedIdEntity(None)  # type: ignore
+        # Act done by constructor
 
+        # Assert
+        assert draft_user._id is None
 
-class TestDraftEntity:
-    def test_init_when_id_is_none_then_set_id_to_none(self):
-        entity = IdToDefineEntity()
-
-        assert entity.id is None, "ID should be None for DraftEntity without ID"
-
-    def test_init_when_id_is_provided_then_set_id(self):
-        id_ = 123
-        entity = IdToDefineEntity(id_)
-
-        assert entity.id == id_, "ID should be set correctly for DraftEntity with ID"
-
-    def test_eq_when_another_entity_with_the_same_id_then_true(self) -> None:
-        entity1 = IdToDefineEntity(123)
-        entity2 = IdToDefineEntity(123)
-
-        result = entity1 == entity2
-
-        expected_result = True
-        assert result is expected_result, "DraftEntities with the same ID should be equal"
-
-    def test_eq_when_another_entity_with_different_id_then_false(self) -> None:
-        entity1 = IdToDefineEntity(123)
-        entity2 = IdToDefineEntity(456)
-
-        result = entity1 == entity2
-
-        expected_result = False
-        result_assertion = result is expected_result
-        assert result_assertion, "DraftEntities with different IDs should not be equal"
-
-    def test_eq_when_another_object_then_false(self) -> None:
-        entity = IdToDefineEntity(123)
-        other_object = object()
-
-        result = entity == other_object
-
-        expected_result = False
-        result_assertion = result is expected_result
-        assert result_assertion, "DraftEntity should not be equal to a non-entity object"
-
-    def test_hash_when_draft_entity_then_raises_draft_entity_is_not_hashable(
-        self,
+    def test___init___when_id_is_defined_then_assigns_id_correctly(
+        self, persisted_user: User
     ) -> None:
-        entity = IdToDefineEntity()
+        # Arrange done by fixture
 
+        # Act done by constructor
+
+        # Assert
+        assert persisted_user._id == 1
+
+    def test___setattr___when_setting_id_after_init_then_raises_attribute_error(
+        self, persisted_user: User
+    ) -> None:
+        # Arrange
+
+        # Act / Assert
+        with pytest.raises(AttributeError) as exc_info:
+            persisted_user.__setattr__("_id", 99)
+        # Assert
+        assert "Cannot modify" in str(exc_info.value)
+
+    def test___setattr___when_setting_non_id_attribute_then_allows_assignment(
+        self, persisted_user: User
+    ) -> None:
+        # Arrange
+
+        # Act
+        persisted_user.__setattr__("name", "Bob")
+        # Assert
+        assert persisted_user.name == "Bob"
+
+    def test___delattr___when_deleting_id_then_raises_attribute_error(
+        self, persisted_user: User
+    ) -> None:
+        # Arrange
+
+        # Act / Assert
+        with pytest.raises(AttributeError) as exc_info:
+            persisted_user.__delattr__("_id")
+        # Assert
+        assert "Cannot delete" in str(exc_info.value)
+
+    def test___delattr___when_deleting_non_id_attribute_then_deletes_successfully(
+        self, persisted_user: User
+    ) -> None:
+        # Arrange
+        persisted_user.extra = "data"
+
+        # Act
+        persisted_user.__delattr__("extra")
+
+        # Assert
+        assert not hasattr(persisted_user, "extra")
+
+    def test_id_when_called_then_returns_current_identifier(self, persisted_user: User) -> None:
+        # Arrange
+
+        # Act
+        result = persisted_user.id
+
+        # Assert
+        assert result == 1
+
+    def test_is_persisted_when_id_is_none_then_returns_false(self, draft_user: User) -> None:
+        # Arrange
+
+        # Act
+        result = draft_user.is_persisted()
+
+        # Assert
+        assert result is False
+
+    def test_is_persisted_when_id_is_defined_then_returns_true(self, persisted_user: User) -> None:
+        # Arrange
+
+        # Act
+        result = persisted_user.is_persisted()
+
+        # Assert
+        assert result is True
+
+    def test___eq___when_same_class_and_same_id_then_returns_true(self) -> None:
+        # Arrange
+        user1 = User(1, "A")
+        user2 = User(1, "B")
+
+        # Act
+        result = user1.__eq__(user2)
+
+        # Assert
+        assert result is True
+
+    def test___eq___when_same_class_and_different_ids_then_returns_false(self) -> None:
+        # Arrange
+        user1 = User(1, "A")
+        user2 = User(2, "B")
+
+        # Act
+        result = user1.__eq__(user2)
+
+        # Assert
+        assert result is False
+
+    def test___eq___when_draft_entities_then_only_equal_if_same_instance(
+        self, draft_user: User
+    ) -> None:
+        # Arrange
+        other_draft = User(None, "Alice")
+
+        # Act
+        result_same = draft_user.__eq__(draft_user)
+        result_different = draft_user.__eq__(other_draft)
+
+        # Assert
+        assert result_same is True
+        assert result_different is False
+
+    def test___eq___when_comparing_with_different_class_then_returns_not_implemented(
+        self, persisted_user: User
+    ) -> None:
+        # Arrange
+        other = object()
+
+        # Act
+        result = persisted_user.__eq__(other)
+
+        # Assert
+        assert result is NotImplemented
+
+    def test___hash___when_persisted_then_returns_hash_of_id(self, persisted_user: User) -> None:
+        # Arrange
+
+        # Act
+        result = persisted_user.__hash__()
+
+        # Assert
+        assert result == hash(1)
+
+    def test___hash___when_draft_then_raises_draft_entity_is_not_hashable_error(
+        self, draft_user: User
+    ) -> None:
+        # Arrange
+
+        # Act / Assert
         with pytest.raises(DraftEntityIsNotHashableError):
-            hash(entity)
+            _ = draft_user.__hash__()
+
+    def test___str___when_called_then_returns_class_and_id_string(
+        self, persisted_user: User
+    ) -> None:
+        # Arrange
+
+        # Act
+        result = persisted_user.__str__()
+
+        # Assert
+        assert result == "User(id=1)"
+
+    def test___repr___when_called_then_returns_same_as_str(self, persisted_user: User) -> None:
+        # Arrange
+
+        # Act
+        result = persisted_user.__repr__()
+
+        # Assert
+        assert result == str(persisted_user)

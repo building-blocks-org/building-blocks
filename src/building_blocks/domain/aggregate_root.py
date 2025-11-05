@@ -1,10 +1,4 @@
-"""Module providing the base classes for Aggregate Roots.
-
-AggregateRoot  base class and related components for Domain-Driven Design.
-Inspired by Vaughn Vernon's "Implementing Domain-Driven Design".
-This module provides the foundational classes for creating aggregate roots,
-managing their versions, and handling domain events in a DDD context.
-"""
+"""Module providing the base classes for Aggregate Roots."""
 
 from __future__ import annotations
 
@@ -12,6 +6,7 @@ from abc import ABC
 from typing import Generic, Hashable, TypeVar
 
 from building_blocks.domain.entity import Entity
+from building_blocks.domain.errors.entity_id_none_error import EntityIdNoneError
 from building_blocks.domain.messages.event import Event
 from building_blocks.domain.value_object import ValueObject
 
@@ -82,6 +77,8 @@ class AggregateRoot(Entity[TId], Generic[TId], ABC):
                      If not provided, defaults to AggregateVersion(0).
         """
         super().__init__(aggregate_id)
+        if not aggregate_id:
+            raise EntityIdNoneError(self.__class__.__name__)
         self._version = version or AggregateVersion(0)
         self._uncommitted_events: list[Event] = []
 

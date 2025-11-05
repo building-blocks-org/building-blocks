@@ -1,12 +1,15 @@
 """Module defining the Command base class for domain commands."""
 
 from datetime import datetime
+from typing import TypeVar
 from uuid import UUID
 
 from building_blocks.domain.messages.message import Message
 
+CommandRawType = TypeVar("CommandRawType", covariant=True)
 
-class Command(Message):
+
+class Command(Message[CommandRawType]):
     """Base class for all domain commands.
 
     Commands represent an intent to do something in the domain.

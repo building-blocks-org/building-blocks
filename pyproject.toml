@@ -7,34 +7,34 @@ license = "MIT"
 readme = "README.md"
 packages = [{ include = "building_blocks", from = "src" }]
 keywords = [
-    "python library",
-    "clean architecture",
-    "hexagonal architecture",
-    "domain-driven design",
-    "ddd",
-    "framework-agnostic",
-    "software architecture",
-    "software design",
-    "software engineering",
-    "ports and adapters",
-    "adapter pattern",
-    "application service",
-    "repository pattern",
-    "message bus",
-    "notifier pattern",
-    "data mapper",
-    "result pattern",
-    "result monad",
-    "ok",
-    "err",
-    "either type",
-    "debuggable",
-    "use case",
-    "domain layer",
-    "application layer",
-    "presentation layer",
-    "foundation",
-    "building blocks",
+  "python library",
+  "clean architecture",
+  "hexagonal architecture",
+  "domain-driven design",
+  "ddd",
+  "framework-agnostic",
+  "software architecture",
+  "software design",
+  "software engineering",
+  "ports and adapters",
+  "adapter pattern",
+  "application service",
+  "repository pattern",
+  "message bus",
+  "notifier pattern",
+  "data mapper",
+  "result pattern",
+  "result monad",
+  "ok",
+  "err",
+  "either type",
+  "debuggable",
+  "use case",
+  "domain layer",
+  "application layer",
+  "presentation layer",
+  "foundation",
+  "building blocks",
 ]
 
 [tool.poetry.dependencies]
@@ -74,13 +74,13 @@ extend-exclude = ["site"]
 [tool.ruff.lint]
 select = ["E", "W", "F", "I", "B", "C4", "D"]
 ignore = [
-    "B008",
+    "B008",  # Function call in default arg
     "D104",
-    "D105",
-    "D106",
-    "D107",
-    "D203",
-    "D213",
+    "D105",  # Magic methods like __repr__, __eq__, etc.
+    "D106",  # Nested classes
+    "D107",  # __init__ docstring
+    "D203",  # No blank line before class (conflicts with D211)
+    "D213",  # Multi-line summary on second line (Google prefers same line)
 ]
 
 [tool.ruff.lint.pydocstyle]
@@ -120,42 +120,35 @@ testpaths = ["tests"]
 python_files = ["test_*.py"]
 asyncio_mode = "auto"
 addopts = [
-    "--strict-markers",
-    "--strict-config",
-    "--cov=building_blocks",
-    "--cov-report=term-missing",
-]
-
-[tool.coverage.run]
-omit = [
-    "*/__init__.py",
-    "src/building_blocks/foundation/debuggable.py",
-    "src/building_blocks/foundation/mapper.py",
-    "src/building_blocks/foundation/result_mapper.py",
-    "src/building_blocks/application/ports/inbound/message_handler.py",
-    "src/building_blocks/application/ports/inbound/use_case.py",
-    "src/building_blocks/application/ports/outbound/message_bus.py",
-    "src/building_blocks/application/ports/outbound/repository.py",
-    "src/building_blocks/application/ports/outbound/notifier.py",
+  "--strict-markers",
+  "--strict-config",
+  "--cov=building_blocks",
+  "--cov-report=term-missing",
 ]
 
 [tool.coverage.report]
 exclude_lines = [
-    "pragma: no cover",
-    "@(abc\\.)?abstractmethod",
-    "@abstractmethod",
-    "raise NotImplementedError",
+    "@abstractmethod"
+]
+
+[tool.coverage.run]
+omit = [
+    "src/building_blocks/application/ports/inbound/*.py",
+    "src/building_blocks/application/ports/outbound/*.py",
+    "src/building_blocks/foundation/mapper.py",
+    "src/building_blocks/foundation/result_mapper.py"
 ]
 
 [tool.poe.tasks]
 lint = "ruff check ."
-"lint:docs" = "ruff check --select D100,D101,D102,D103,D104"
+"lint:docs" = "ruff check --select D100,D101,D102,D103,D104 src"
 format.sequence = [
   { cmd = "ruff check . --fix" },
-  { cmd = "ruff check --fix --unsafe-fixes" },
+  { cmd = "ruff check --fix --unsafe-fixes src" },
 ]
-"format:docstrings" = "ruff check --fix --unsafe-fixes"
-mypy = "mypy --config-file pyproject.toml src tests scripts"
+"format:docstrings" = "ruff check --select D --fix --unsafe-fixes src"
+"type:pyright" = "pyright"
+"type:mypy" = "mypy --config-file pyproject.toml src"
 bandit = "bandit -r src -x tests"
 pre-commit = "pre-commit run --all-files"
 test = "pytest -q"

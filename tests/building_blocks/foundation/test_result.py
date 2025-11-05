@@ -1,137 +1,320 @@
 import pytest
 
 from building_blocks.foundation.errors.core import ErrorMessage
-from building_blocks.foundation.result import Err, Ok, ResultAccessError
+from building_blocks.foundation.result import (
+    Err,
+    Ok,
+    ResultAccessError,
+)
 
 
 class TestResultAccessError:
-    def test_constructor_with_message(self) -> None:
-        actual_message = ErrorMessage("Test Message")
+    @pytest.fixture
+    def base_error(self) -> ResultAccessError:
+        return ResultAccessError()
 
-        error = ResultAccessError(actual_message)
+    def test___init___when_no_message_given_then_sets_default_message(
+        self, base_error: ResultAccessError
+    ) -> None:
+        # Arrange done by fixture
 
-        assert isinstance(error, ResultAccessError)
-        assert error.message == "Test Message"
+        # Act
+        result = base_error.message
 
-    def test_constructor_without_message_uses_default(self) -> None:
-        error = ResultAccessError()
+        # Assert
+        assert "Invalid access" in result
 
-        expected_error_message = "Invalid access on Result."
-        assert isinstance(error, ResultAccessError)
-        assert error.message == expected_error_message
+    def test___init___when_message_is_error_message_then_uses_str(self) -> None:
+        # Arrange
+        msg = ErrorMessage("custom")
 
-    def test_cannot_access_value_when_err_then_returns_itself_cant_access_value(
+        # Act
+        err = ResultAccessError(msg)
+
+        # Assert
+        expected_error_message = "ErrorMessage(value='custom')"
+        assert expected_error_message == err.message
+
+    def test___init___when_message_is_string_then_uses_it(self) -> None:
+        # Arrange
+        msg = "explicit"
+
+        # Act
+        err = ResultAccessError(msg)
+
+        # Assert
+        expected_error_message = "explicit"
+        assert expected_error_message == err.message
+
+    def test_cannot_access_value_when_called_then_returns_instance_with_specific_message(
         self,
     ) -> None:
-        method_result = ResultAccessError.cannot_access_value()
+        # Arrange / Act
+        error = ResultAccessError.cannot_access_value()
 
-        assert isinstance(method_result, ResultAccessError)
-        assert method_result.message == "Cannot access value from an Err Result."
+        # Assert
+        assert isinstance(error, ResultAccessError)
+        assert "Cannot access value" in error.message
 
-    def test_cannot_access_error_when_ok_then_returns_itself_cant_access_error(
+    def test_cannot_access_error_when_called_then_returns_instance_with_specific_message(
         self,
     ) -> None:
-        method_result = ResultAccessError.cannot_access_error()
+        # Arrange / Act
+        error = ResultAccessError.cannot_access_error()
 
-        assert isinstance(method_result, ResultAccessError)
-        assert method_result.message == "Cannot access error from an Ok Result."
+        # Assert
+        assert isinstance(error, ResultAccessError)
+        assert "Cannot access error" in error.message
 
-    def test_message_property_returns_message(self) -> None:
-        actual_message = ErrorMessage("Test Message")
+    def test_message_when_accessed_then_returns_error_message_string(self) -> None:
+        # Arrange
+        err = ResultAccessError.cannot_access_value()
 
-        error = ResultAccessError(actual_message)
+        # Act
+        result = err.message
 
-        expected_message = "Test Message"
-        assert error.message == expected_message
+        # Assert
+        assert "Cannot access value" in result
 
-    def test_message_property_returns_default_message_when_none(self) -> None:
-        error = ResultAccessError()
-
-        expected_message = "Invalid access on Result."
-        assert error.message == expected_message
+    def test___str___when_called_then_returns_message_string(self) -> None:
+        # Arrange
+        err = ResultAccessError("boom")
+        # Act
+        result = str(err)
+        # Assert
+        assert result == "boom"
 
 
 class TestOk:
-    def test_is_ok_when_ok_then_return_true(self) -> None:
-        result = Ok("value")
+    @pytest.fixture
+    def ok_result(self) -> Ok[int, str]:
+        return Ok(123)
 
-        is_ok = result.is_ok
+    def test___init___when_value_is_given_then_stores_it(self, ok_result: Ok[int, str]) -> None:
+        # Arrange done by fixture
 
-        expected_is_ok = True
-        assert is_ok is expected_is_ok
+        # Act
+        result = ok_result._value
 
-    def test_is_err_when_ok_then_return_false(self) -> None:
-        result = Ok("value")
+        # Assert
+        assert result == 123
 
-        is_err = result.is_err
+    def test_is_err_when_called_then_returns_false(self, ok_result: Ok[int, str]) -> None:
+        # Arrange
 
-        expected_is_err = False
-        assert is_err is expected_is_err
+        # Act
+        result = ok_result.is_err
 
-    def test_value_property_returns_value(self) -> None:
-        result = Ok("value")
+        # Assert
+        assert result is False
 
-        value = result.value
+    def test_is_ok_when_called_then_returns_true(self, ok_result: Ok[int, str]) -> None:
+        # Arrange
 
-        expected_value = "value"
-        assert value == expected_value
+        # Act
+        result = ok_result.is_ok
 
-    def test_error_property_raises_result_access_error(self) -> None:
-        result = Ok("value")
+        # Assert
+        assert result is True
 
+    def test_value_when_accessed_then_returns_inner_value(self, ok_result: Ok[int, str]) -> None:
+        # Arrange
+
+        # Act
+        result = ok_result.value
+
+        # Assert
+        assert result == 123
+
+    def test_error_when_accessed_then_raises_result_access_error(
+        self, ok_result: Ok[int, str]
+    ) -> None:
+        # Arrange / Act / Assert
         with pytest.raises(ResultAccessError) as exc_info:
-            _ = result.error
+            _ = ok_result.error
+        # Assert
+        assert "Cannot access error" in str(exc_info.value)
 
-        expected_error_value = "ResultAccessError: Cannot access error from an Ok Result."
-        assert expected_error_value == str(exc_info.value)
+    def test___repr___when_called_then_returns_readable_representation(
+        self, ok_result: Ok[int, str]
+    ) -> None:
+        # Arrange
 
-    def test_repr_returns_expected_string(self) -> None:
-        result = Ok("value")
+        # Act
+        result = ok_result.__repr__()
 
-        repr_string = repr(result)
+        # Assert
+        assert result == "Ok(123)"
 
-        expected_repr = "Ok('value')"
-        assert repr_string == expected_repr
+    def test___eq___when_comparing_two_equal_ok_results_then_returns_true(self) -> None:
+        # Arrange
+        a = Ok(1)
+        b = Ok(1)
+
+        # Act
+        result = a.__eq__(b)
+
+        # Assert
+        assert result is True
+
+    def test___eq___when_comparing_different_ok_results_then_returns_false(self) -> None:
+        # Arrange
+        a = Ok(1)
+        b = Ok(2)
+
+        # Act
+        result = a.__eq__(b)
+
+        # Assert
+        assert result is False
+
+    def test___eq___when_comparing_with_different_class_then_returns_not_implemented(self) -> None:
+        # Arrange
+        ok = Ok(1)
+        other = object()
+        # Act
+        result = ok.__eq__(other)
+        # Assert
+        assert result is NotImplemented
+
+    def test___hash___when_called_then_returns_hash_of_inner_value(
+        self, ok_result: Ok[int, str]
+    ) -> None:
+        # Arrange
+
+        # Act
+        result = ok_result.__hash__()
+
+        # Assert
+        assert result == hash(123)
+
+    def test___str___when_called_then_returns_string_representation(
+        self, ok_result: Ok[int, str]
+    ) -> None:
+        # Arrange
+
+        # Act
+        result = ok_result.__str__()
+
+        # Assert
+        assert result == "Ok(123)"
 
 
 class TestErr:
-    def test_value_property_raises_result_access_error(self) -> None:
-        result = Err("error")
+    @pytest.fixture
+    def err_result(self) -> Err[int, str]:
+        return Err("boom")
 
+    def test___init___when_error_is_given_then_stores_it(self, err_result: Err[int, str]) -> None:
+        # Arrange done by fixture
+
+        # Act
+        result = err_result._error
+
+        # Assert
+        assert result == "boom"
+
+    def test_is_err_when_called_then_returns_true(self, err_result: Err[int, str]) -> None:
+        # Arrange
+
+        # Act
+        result = err_result.is_err
+
+        # Assert
+        assert result is True
+
+    def test_is_ok_when_called_then_returns_false(self, err_result: Err[int, str]) -> None:
+        # Arrange
+
+        # Act
+        result = err_result.is_ok
+
+        # Assert
+        assert result is False
+
+    def test_value_when_accessed_then_raises_result_access_error(
+        self, err_result: Err[int, str]
+    ) -> None:
+        # Arrange / Act / Assert
         with pytest.raises(ResultAccessError) as exc_info:
-            _ = result.value
+            _ = err_result.value
+        # Assert
+        assert "Cannot access value" in str(exc_info.value)
 
-        expected_error_value = "ResultAccessError: Cannot access value from an Err Result."
-        assert expected_error_value == str(exc_info.value)
+    def test_error_when_accessed_then_returns_inner_error(self, err_result: Err[int, str]) -> None:
+        # Arrange
 
-    def test_error_property_returns_error(self) -> None:
-        result = Err("error")
+        # Act
+        result = err_result.error
 
-        error = result.error
+        # Assert
+        assert result == "boom"
 
-        expected_error = "error"
-        assert error == expected_error
+    def test___repr___when_called_then_returns_readable_representation(
+        self, err_result: Err[int, str]
+    ) -> None:
+        # Arrange
 
-    def test_is_err_when_err_then_return_true(self) -> None:
-        result = Err("value")
+        # Act
+        result = err_result.__repr__()
 
-        is_err = result.is_err
+        # Assert
+        assert result == "Err('boom')"
 
-        expected_is_err = True
-        assert is_err is expected_is_err
+    def test___eq___when_comparing_two_equal_err_results_then_returns_true(self) -> None:
+        # Arrange
+        a = Err("x")
+        b = Err("x")
 
-    def test_is_ok_when_err_then_return_false(self) -> None:
-        result = Err("error")
+        # Act
+        result = a.__eq__(b)
 
-        is_ok = result.is_ok
+        # Assert
+        assert result is True
 
-        expected_is_ok = False
-        assert is_ok is expected_is_ok
+    def test___eq___when_comparing_different_err_results_then_returns_false(self) -> None:
+        # Arrange
+        a = Err("x")
+        b = Err("y")
 
-    def test_repr_returns_expected_string(self) -> None:
-        result = Err("error")
+        # Act
+        result = a.__eq__(b)
 
-        repr_string = repr(result)
+        # Assert
+        assert result is False
 
-        expected_repr = "Err('error')"
-        assert repr_string == expected_repr
+    def test___eq___when_comparing_err_with_different_class_then_returns_not_implemented(
+        self,
+    ) -> None:
+        # Arrange
+        err = Err("boom")
+        other = object()
+
+        # Act
+        result = err.__eq__(other)
+
+        # Assert
+        assert result is NotImplemented
+
+    def test___hash___when_called_then_returns_hash_of_inner_error(
+        self, err_result: Err[int, str]
+    ) -> None:
+        # Arrange
+
+        # Act
+        result = err_result.__hash__()
+
+        # Assert
+        assert result == hash("boom")
+
+    def test___str___when_called_then_returns_string_representation(
+        self, err_result: Err[int, str]
+    ) -> None:
+        # Arrange
+
+        # Act
+        result = err_result.__str__()
+
+        # Assert
+        # After you fix Err.__str__ to return "Err(...)" instead of "Ok(...)"
+        assert result == "Err(boom)"

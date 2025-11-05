@@ -8,7 +8,11 @@ from building_blocks.application.ports.outbound.message_bus import MessageBus
 from building_blocks.domain.messages.command import Command
 
 
-class FakeCommand(Command):
+class FakeCommand(Command[str]):
+    @property
+    def value(self) -> str:
+        return "foo"
+
     def _payload(self) -> dict[str, Any]:
         return {"foo": "foo"}
 

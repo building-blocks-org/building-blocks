@@ -9,6 +9,10 @@ from building_blocks.domain.messages.event import Event
 
 class FakeEvent(Event):
     @property
+    def value(self) -> str:
+        return "baz"
+
+    @property
     def _payload(self) -> dict[str, str]:
         return {"foo": "bar"}
 

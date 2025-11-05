@@ -10,6 +10,10 @@ from building_blocks.domain.messages.query import Query
 
 class FakeQuery(Query):
     @property
+    def value(self) -> str:
+        return "baz"
+
+    @property
     def _payload(self) -> dict[str, Any]:
         return {"foo": "bar"}
 

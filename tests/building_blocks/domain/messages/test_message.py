@@ -12,7 +12,7 @@ import pytest
 from building_blocks.domain.messages.message import Message, MessageMetadata
 
 
-class FakeMessage(Message):
+class FakeMessage(Message[str]):
     """A fake message for testing the abstract Message class."""
 
     def __init__(self, data: str, metadata: MessageMetadata | None = None):
@@ -20,7 +20,7 @@ class FakeMessage(Message):
         self._data = data
 
     @property
-    def data(self) -> str:
+    def value(self) -> str:
         return self._data
 
     @property

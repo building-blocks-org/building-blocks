@@ -13,11 +13,11 @@ from building_blocks.domain.messages.command import Command
 from building_blocks.domain.messages.message import Message, MessageMetadata
 
 
-class PayloadNotImplementedCommand(Command):
+class PayloadAndValueNotImplCommand(Command):
     pass
 
 
-class FakeUserCommand(Command):
+class FakeUserCommand(Command[dict[str, Any]]):
     def __init__(
         self,
         customer_id: str,
@@ -35,6 +35,10 @@ class FakeUserCommand(Command):
     @property
     def amount(self) -> float:
         return self._amount
+
+    @property
+    def value(self) -> dict[str, Any]:
+        return self._payload
 
     @property
     def _payload(self) -> dict[str, Any]:
@@ -104,4 +108,4 @@ class TestCommand:
 
     def test_constructuor_when_payload_not_implemented_then_raises_type_error(self):
         with pytest.raises(TypeError):
-            PayloadNotImplementedCommand()  # type: ignore
+            PayloadAndValueNotImplCommand()  # type: ignore

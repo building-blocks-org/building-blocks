@@ -31,7 +31,6 @@ Example:
                 return Result.err(error)
 """
 
-# pragma: no cover
 from typing import Generic, Protocol, TypeVar
 
 from building_blocks.foundation.mapper import Mapper

@@ -36,6 +36,10 @@ class FakeEvent(Event):
         return self._total
 
     @property
+    def value(self) -> dict[str, Any]:
+        return self._payload
+
+    @property
     def _payload(self) -> dict[str, Any]:
         return {
             "order_id": self._order_id,

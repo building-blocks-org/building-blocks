@@ -21,7 +21,6 @@ class Error(Exception):
     def __init__(self, message: ErrorMessage, metadata: ErrorMetadata | None = None) -> None:
         self._message = message
         self._metadata = metadata or ErrorMetadata(context={})
-        super().__init__(message.value)
 
     def __repr__(self) -> str:
         """Return a concise string representation of the error."""
@@ -69,6 +68,10 @@ class Error(Exception):
         return self.__class__.__name__
 
 
+class NoneNotAllowedError(Error):
+    """Error indicating that a None value was provided where it is not allowed."""
+
+
 class FieldErrors:
     """Base class for errors associated with a specific field."""
 
@@ -89,6 +92,14 @@ class FieldErrors:
         """Return a human-readable string representation of the field errors."""
         error_messages = "\n".join(f" - {str(error)}" for error in self._errors)
         return f"{self._get_title_prefix()} for field '{self._field.value}':\n" f"{error_messages}"
+
+    def __iter__(self) -> Iterator[Error]:
+        """Iterate over the errors associated with the field."""
+        return iter(self._errors)
+
+    def __len__(self) -> int:
+        """Return the number of errors associated with the field."""
+        return len(self._errors)
 
     @property
     def field(self) -> FieldReference:
@@ -111,14 +122,6 @@ class FieldErrors:
             + "  ]\n"
             ")"
         )
-
-    def __iter__(self) -> Iterator[Error]:
-        """Iterate over the errors associated with the field."""
-        return iter(self._errors)
-
-    def __len__(self) -> int:
-        """Return the number of errors associated with the field."""
-        return len(self._errors)
 
     def _get_title_prefix(self) -> str:
         """Get the title prefix for this field error type."""

@@ -8,7 +8,7 @@ from __future__ import annotations
 
 from abc import ABC, abstractmethod
 from datetime import datetime, timezone
-from typing import Any
+from typing import Any, TypeVar
 from uuid import UUID, uuid4
 
 from building_blocks.domain.value_object import ValueObject
@@ -17,6 +17,9 @@ from building_blocks.domain.value_object import ValueObject
 def now() -> datetime:
     """Get the current UTC datetime."""
     return datetime.now(timezone.utc)
+
+
+MessageRawType = TypeVar("MessageRawType", covariant=True)
 
 
 class MessageMetadata(ValueObject[dict[str, Any]]):
@@ -145,7 +148,7 @@ class MessageMetadata(ValueObject[dict[str, Any]]):
         return (self._message_id, self._created_at)
 
 
-class Message(ABC):
+class Message(ValueObject[MessageRawType], ABC):
     """Base class for all domain messages.
 
     Messages are immutable value objects that represent intent or facts in the domain.

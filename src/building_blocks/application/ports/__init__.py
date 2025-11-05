@@ -1,4 +1,7 @@
-"""Application layer ports package."""
+"""Application layer ports package.
+
+Contains inbound and outbound port definitions.
+"""
 
 from building_blocks.application.ports.inbound.message_handler import (
     CommandHandler,

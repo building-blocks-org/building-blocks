@@ -1,13 +1,15 @@
-"""Domain Event base class implementation."""
+"""Module defining the base Event class for domain events."""
 
 from abc import abstractmethod
 from datetime import datetime
-from typing import Any
+from typing import Any, TypeVar
 
 from building_blocks.domain.messages.message import Message
 
+EventRawType = TypeVar("EventRawType", covariant=True)
 
-class Event(Message):
+
+class Event(Message[EventRawType]):
     """Base class for all domain events.
 
     Domain events represent something significant that happened in the domain.

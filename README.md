@@ -34,7 +34,16 @@ This toolkit offers minimal, explicit abstractions for:
 - Safe result types for explicit success/failure
 - Event buses, Repositories, and Mappers
 
-It’s fully **framework-agnostic** — integrate it with FastAPI, Django, or CLI tools.
+---
+
+## Features
+
+- 🎯 **Framework Agnostic**: Works with any Python web framework or application type
+- 🏛️ **Clean Architecture**: Implements hexagonal architecture patterns
+- 🧩 **Domain-Driven Design**: Building blocks for DDD
+- 🔒 **Type Safe**: Full type annotations with mypy support
+- 🧪 **Well Tested**: Comprehensive test coverage
+- ⚡ **Modern Python**: Built for Python 3.9+ with modern syntax
 
 ---
 
