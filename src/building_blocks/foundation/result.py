@@ -14,36 +14,30 @@ ErrorType = TypeVar("ErrorType", covariant=True)
 class ResultAccessError(Error):
     """Exception raised when trying to access value or err from an inappropriate Result variant."""
 
-    def __init__(self, message: ErrorMessage | str | None = None) -> None:
-        """Initialize ResultAccessError with a message."""
-        if isinstance(message, ErrorMessage):
-            msg_str = str(message)
-        elif isinstance(message, str):
-            msg_str = message
-        else:
-            msg_str = "Invalid access on Result."
-
-        self._error_message: str = msg_str
-        super().__init__(ErrorMessage(msg_str))
+    def __init__(self, message: ErrorMessage | None = None) -> None:
+        if message is None:
+            message = ErrorMessage("Invalid access on Result type.")
+        self._error_message = message
+        super().__init__(message)
 
     @classmethod
     def cannot_access_value(cls) -> ResultAccessError:
         """Create an error for accessing value from an Err Result."""
-        return cls("Cannot access value from an Err Result.")
+        return cls(ErrorMessage("Cannot access value from an Err Result."))
 
     @classmethod
     def cannot_access_error(cls) -> ResultAccessError:
         """Create an error for accessing error from an Ok Result."""
-        return cls("Cannot access error from an rr Result.")
+        return cls(ErrorMessage("Cannot access error from an Ok Result."))
 
-    @property  # ✅ force override to string
-    def message(self) -> str:
+    @property
+    def message(self) -> ErrorMessage:
         """Return the stored message as a string."""
         return self._error_message
 
     def __str__(self) -> str:
         """Readable string representation."""
-        return self._error_message
+        return self._error_message.value
 
 
 class Result(Protocol, Generic[ResultType, ErrorType]):
@@ -60,12 +54,12 @@ class Result(Protocol, Generic[ResultType, ErrorType]):
         ...
 
     @property
-    def value(self) -> ResultType:
+    def value(self) -> ResultType | None:
         """Method to return the actual value."""
         ...
 
     @property
-    def error(self) -> ErrorType:
+    def error(self) -> ErrorType | None:
         """Method to return the actual error."""
         ...
 
@@ -73,7 +67,7 @@ class Result(Protocol, Generic[ResultType, ErrorType]):
 class Ok(Result[ResultType, ErrorType], Generic[ResultType, ErrorType]):
     """Represents a successful result."""
 
-    def __init__(self, value) -> None:
+    def __init__(self, value: ResultType) -> None:
         self._value = value
 
     @property
@@ -102,9 +96,7 @@ class Ok(Result[ResultType, ErrorType], Generic[ResultType, ErrorType]):
 
     def __eq__(self, other: object) -> bool:
         """Check equality with another Ok result."""
-        if not isinstance(other, Ok):
-            return NotImplemented
-        return self._value == other._value
+        return isinstance(other, Ok) and self._value == other._value
 
     def __hash__(self) -> int:
         """Return the hash of the Ok result."""
@@ -118,7 +110,7 @@ class Ok(Result[ResultType, ErrorType], Generic[ResultType, ErrorType]):
 class Err(Result[ResultType, ErrorType], Generic[ResultType, ErrorType]):
     """Represents an error result."""
 
-    def __init__(self, error) -> None:
+    def __init__(self, error: ErrorType) -> None:
         self._error = error
 
     @property
@@ -147,9 +139,7 @@ class Err(Result[ResultType, ErrorType], Generic[ResultType, ErrorType]):
 
     def __eq__(self, other: object) -> bool:
         """Check equality with another Ok result."""
-        if not isinstance(other, Err):
-            return NotImplemented
-        return self._error == other._error
+        return isinstance(other, Err) and self._error == other._error
 
     def __hash__(self) -> int:
         """Return the hash of the Ok result."""

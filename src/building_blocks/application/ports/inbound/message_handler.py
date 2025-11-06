@@ -13,7 +13,7 @@ MessageHandlerResultType = TypeVar("MessageHandlerResultType", covariant=True)
 QueryResultType = TypeVar("QueryResultType", covariant=True)
 
 
-class MessageHandler(InboundPort[MessageType, MessageHandlerResultType], Protocol):  # type: ignore[misc]
+class MessageHandler(InboundPort[MessageType, MessageHandlerResultType], Protocol):
     """Inbound port for handling messages asynchronously.
 
     This interface defines the contract for handling messages in a CQRS

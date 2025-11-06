@@ -174,13 +174,13 @@ class Message(ValueObject[MessageRawType], ABC):
         effective_type = self.__class__.__name__
         self._metadata = metadata or MessageMetadata(message_type=effective_type)
 
-    def __eq__(self, other):
+    def __eq__(self, other: Any) -> bool:
         """Check equality based on _equality_components."""
         if not isinstance(other, Message):
-            return NotImplemented
+            return False
         return self._equality_components() == other._equality_components()
 
-    def __hash__(self):
+    def __hash__(self) -> int:
         return hash(self._equality_components())
 
     @property

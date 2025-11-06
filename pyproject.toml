@@ -149,7 +149,9 @@ omit = [
     "src/building_blocks/application/ports/inbound/*.py",
     "src/building_blocks/application/ports/outbound/*.py",
     "src/building_blocks/foundation/mapper.py",
-    "src/building_blocks/foundation/result_mapper.py"
+    "src/building_blocks/foundation/result_mapper.py",
+    "src/building_blocks/foundation/ports.py",
+    "src/building_blocks/foundation/debuggable.py"
 ]
 
 [tool.black]
@@ -166,7 +168,7 @@ format.sequence = [
 "format:docstrings" = "ruff check --select D --fix --unsafe-fixes src"
 "type:pyright" = "pyright"
 "type:mypy" = "mypy --config-file pyproject.toml src"
-"type:mypy:all" = "mypy --config-file pyproject.toml src tests"
+"type:mypy:all" = "mypy --config-file pyproject.toml src"
 bandit = "bandit -r src -x tests"
 pre-commit = "pre-commit run --all-files"
 test = "pytest -q"

@@ -22,7 +22,7 @@ class TestResultAccessError:
         result = base_error.message
 
         # Assert
-        assert "Invalid access" in result
+        assert "Invalid access" in result.value
 
     def test___init___when_message_is_error_message_then_uses_str(self) -> None:
         # Arrange
@@ -32,18 +32,7 @@ class TestResultAccessError:
         err = ResultAccessError(msg)
 
         # Assert
-        expected_error_message = "ErrorMessage(value='custom')"
-        assert expected_error_message == err.message
-
-    def test___init___when_message_is_string_then_uses_it(self) -> None:
-        # Arrange
-        msg = "explicit"
-
-        # Act
-        err = ResultAccessError(msg)
-
-        # Assert
-        expected_error_message = "explicit"
+        expected_error_message = ErrorMessage("custom")
         assert expected_error_message == err.message
 
     def test_cannot_access_value_when_called_then_returns_instance_with_specific_message(
@@ -54,7 +43,7 @@ class TestResultAccessError:
 
         # Assert
         assert isinstance(error, ResultAccessError)
-        assert "Cannot access value" in error.message
+        assert "Cannot access value" in error._error_message.value
 
     def test_cannot_access_error_when_called_then_returns_instance_with_specific_message(
         self,
@@ -64,9 +53,9 @@ class TestResultAccessError:
 
         # Assert
         assert isinstance(error, ResultAccessError)
-        assert "Cannot access error" in error.message
+        assert "Cannot access error" in error.message.value
 
-    def test_message_when_accessed_then_returns_error_message_string(self) -> None:
+    def test_message_when_accessed_then_returns_error_message(self) -> None:
         # Arrange
         err = ResultAccessError.cannot_access_value()
 
@@ -74,11 +63,11 @@ class TestResultAccessError:
         result = err.message
 
         # Assert
-        assert "Cannot access value" in result
+        assert "Cannot access value" in result.value
 
-    def test___str___when_called_then_returns_message_string(self) -> None:
+    def test___str___when_called_then_returns_message(self) -> None:
         # Arrange
-        err = ResultAccessError("boom")
+        err = ResultAccessError(ErrorMessage("boom"))
         # Act
         result = str(err)
         # Assert
@@ -179,7 +168,7 @@ class TestOk:
         # Act
         result = ok.__eq__(other)
         # Assert
-        assert result is NotImplemented
+        assert result is False
 
     def test___hash___when_called_then_returns_hash_of_inner_value(
         self, ok_result: Ok[int, str]
@@ -291,7 +280,7 @@ class TestErr:
         # Assert
         assert result is False
 
-    def test___eq___when_comparing_err_with_different_class_then_returns_not_implemented(
+    def test___eq___when_comparing_err_with_different_class_then_returns_false(
         self,
     ) -> None:
         # Arrange
@@ -302,7 +291,7 @@ class TestErr:
         result = err.__eq__(other)
 
         # Assert
-        assert result is NotImplemented
+        assert result is False
 
     def test___hash___when_called_then_returns_hash_of_inner_error(
         self, err_result: Err[int, str]
