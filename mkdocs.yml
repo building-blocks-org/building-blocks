@@ -1,4 +1,4 @@
-site_name: Building Blocks 🧩
+site_name: BuildingBlocks
 site_description: A composable architecture toolkit for clean, testable, and maintainable Python applications.
 site_author: Glauber Brennon
 repo_url: https://github.com/building-blocks-org/building-blocks
@@ -12,8 +12,8 @@ theme:
     - scheme: slate
       primary: custom
       accent: amber
-  logo: assets/logo.png        # your main logo
-  favicon: assets/favicon.ico  # your transparent cube favicon
+  logo: assets/logo.png
+  favicon: assets/favicon.ico
 
   features:
     - navigation.tabs
@@ -59,6 +59,10 @@ plugins:
             separate_signature: true
             show_if_no_docstring: false
             filters: ["!^_"]
+            extra:
+              show_docstring: true   # ✅ properly nested under 'extra'
+              show_root_heading: true
+              show_root_full_path: false
   - git-revision-date-localized:
       fallback_to_build_date: true
       enable_creation_date: true

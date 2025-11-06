@@ -1,8 +1,14 @@
-# Foundation sub package
+# 🧱 Foundation Module
 
-::: building_blocks.foundation
+This section covers the **BuildingBlocks foundation package**, including error handling, results, and base abstractions.
+
+---
+
+::: building_blocks.foundation.errors.base
     options:
-      show_root_toc_entry: false
-      heading_level: 2
-      show_root_heading: true
       show_source: true
+      show_root_heading: true
+      show_root_full_path: false
+      show_docstring: true
+      show_if_no_docstring: true
+      heading_level: 2

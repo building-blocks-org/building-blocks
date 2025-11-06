@@ -1,10 +1,12 @@
 [tool.poetry]
 name = "building-blocks"
-version = "0.1.0"
+version = "0.3.0"
 description = "Composable toolkit for clean, testable, and maintainable Python applications"
-authors = ["Glauber Brennon <glauberbrennon@gmail.com>"]
+authors = ["BuildingBlocks Org <buildingblocksorganization91@gmail.com>"]
 license = "MIT"
 readme = "README.md"
+repository = "https://github.com/building-blocks-org/building-blocks"
+homepage = "https://building-blocks-org.github.io/building-blocks/"
 packages = [{ include = "building_blocks", from = "src" }]
 keywords = [
   "python library",
@@ -177,6 +179,7 @@ test = "pytest -q"
 "test:pipeline" = "pytest --cov=src --cov-report=xml --cov-fail-under=80"
 "mkdocs:serve" = "mkdocs serve"
 "mkdocs:build" = "mkdocs build"
+"mkdocs:clean" = "mkdocs build --clean"
 "mkdocs:deploy" = "mkdocs gh-deploy --clean"
 "docs:check" = [
   { cmd = "ruff check --select D" },
