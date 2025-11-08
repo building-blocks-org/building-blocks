@@ -70,9 +70,6 @@ mkdocs-terminal = "^4.7.0"
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
-# ---------------------------------------------------------------------------
-# Ruff Configuration
-# ---------------------------------------------------------------------------
 [tool.ruff]
 target-version = "py312"
 line-length = 100
@@ -84,7 +81,6 @@ extend-exclude = ["site"]
 select = ["E", "W", "F", "I", "B", "C4", "D"]
 ignore = [
     "B008",
-    "D104",
     "D105",
     "D106",
     "D107",
