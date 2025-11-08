@@ -1,26 +1,45 @@
 # Reference 📖
 
-The **Reference** section describes each package in **BuildingBlocks** — what it contains, what it depends on, and how it fits into the larger architecture.
+> **Audience:** Contributors and maintainers of **BuildingBlocks** who
+> want to understand its internal design, structure, and abstractions.
 
----
+The **Reference** section documents the internal components of
+**BuildingBlocks** --- what each package contains, how they depend on
+one another, and how they fit into the overall architecture.
+
+It is primarily useful for developers extending or improving the toolkit
+itself.
+
+------------------------------------------------------------------------
 
 ## 🧩 Package Overview
 
-| Package | Description |
-|--------|--------------|
-| **Foundation** | Core abstractions (`Result`, `Port`, `Mapper`) shared by all layers |
-| **Domain** | Domain layer. Contains business rules and ubiquitous language |
-| **Application** | Application layer. Contains ports(inbound or outbound) and services that implement the application logic. |
-| **Infrastructure** | Infrastructure layer. Adapters for external systems |
-| **Presentation** | Presentation layer. Entry points (API, CLI, event consumers) |
+  -----------------------------------------------------------------------
+  Package                       Description
+  ----------------------------- -----------------------------------------
+  **Foundation**                Core abstractions (`Result`, `Port`,
+                                `Mapper`) shared across all layers
 
----
+  **Domain**                    Encapsulates business rules and the
+                                ubiquitous language
+
+  **Application**               Defines use cases and application logic
+                                through inbound and outbound ports
+
+  **Infrastructure**            Implements adapters for external systems
+                                (e.g., databases, events, APIs)
+
+  **Presentation**              Provides entry points (HTTP API, CLI, or
+                                message consumers)
+  -----------------------------------------------------------------------
+
+------------------------------------------------------------------------
 
 ## 📚 Contents
 
-- [Foundation](foundation.md)
-- [Domain](domain.md)
-- [Application](application.md)
-- [Infrastructure](infrastructure.md)
-- [Presentation](presentation.md)
-- [Example Tests](example_tests.md)
+-   [Foundation](foundation.md)
+-   [Domain](domain.md)
+-   [Application](application.md)
+-   [Infrastructure](infrastructure.md)
+-   [Presentation](presentation.md)
+-   [Example Tests](example_tests.md)

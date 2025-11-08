@@ -1,22 +1,27 @@
 # Example Tests 🧩
 
-Practical examples of how to test each layer using **BuildingBlocks**.
+> **For developers using BuildingBlocks** --- this guide teaches how to
+> design and test applications that use BuildingBlocks abstractions.\
+> It focuses on *how to test your own code* built with BuildingBlocks,
+> not on how the toolkit itself is tested.
 
----
+Practical examples showing how to test each layer using
+**BuildingBlocks**.
 
-## 🧱 Domain Example — Entity Behavior
+------------------------------------------------------------------------
 
-```python
+## 🧱 Domain Example --- Entity Behavior
+
+``` python
 from __future__ import annotations
-
 from building_blocks.domain import Entity
 
 class User(Entity):
-    id: str
+    id: int
     name: str
 
     @classmethod
-    def register(cls, id: str, name: str) -> User:
+    def register(cls, id: int, name: str) -> User:
         return cls(id=id, name=name)
 
 def test_user_identity_equality() -> None:
@@ -25,16 +30,14 @@ def test_user_identity_equality() -> None:
     assert user_a == user_b
 ```
 
----
+------------------------------------------------------------------------
 
-## ⚙️ Application Example — Use Case
+## ⚙️ Application Example --- Use Case
 
-```python
+``` python
 from dataclasses import dataclass
-
 from building_blocks.application import UseCase
-from building_blocks.foundation import Error
-from building_blocks.foundation import Ok, Err, Result
+from building_blocks.foundation import Error, Ok, Err, Result
 
 @dataclass(frozen=True)
 class DivideNumbersRequest:
@@ -48,50 +51,89 @@ class DivideNumbersResponse:
 class DivideNumbersError(Error):
     reason: str
 
-class DivideNumbersResult = Result[DivideNumbersResponse, DivideNumbersError]
+DivideNumbersResult = Result[DivideNumbersResponse, DivideNumbersError]
 
-class DivideNumbersUseCase(UseCase[DivideNumbersRequest DivideNumbersResult]):
+class DivideNumbersUseCase(UseCase[DivideNumbersRequest, DivideNumbersResult]):
     def execute(self, request: DivideNumbersRequest) -> DivideNumbersResult:
-        a, b = data
-        if b == 0:
-            return Err("division by zero")
-        return Ok(a // b)
-
-class DivideNumbersService(DivideNumbersUseCase):
-    def execute(self, request: DivideNumbersRequest) -> DivideNumbersResult:
-        a, b = data
+        a, b = request.dividend, request.divisor
         if b == 0:
             return Err(DivideNumbersError("division by zero"))
         return Ok(DivideNumbersResponse(a // b))
 
 def test_divide_numbers_use_case_success() -> None:
-    use_case = DivideNumbers()
-    result = use_case.execute((10, 2))
+    use_case = DivideNumbersUseCase()
+    result = use_case.execute(DivideNumbersRequest(10, 2))
     assert result.is_ok()
-    assert result.value.quotient == 5
+    assert result.unwrap().quotient == 5
 ```
 
----
+------------------------------------------------------------------------
 
-## 🧩 Infrastructure Example — Repository Adapter
+## 🧩 Infrastructure Example --- Repository Adapter
 
-```python
+``` python
+from dataclasses import dataclass
+from typing import Protocol
+from uuid import UUID, uuid4
+
 from building_blocks.application import Repository
 from building_blocks.domain import Entity
 
-class User(Entity):
-    id: int
-    name: str
+class User(Entity[UUID]):
+    def __init__(self, id: UUID, name: str) -> None:
+        super().__init__(id or uuid4())
+        self._name = name
 
-class InMemoryUserRepository(Repository[User]):
-    def __init__(self) -> None:
-        self._data: dict[int, User] = {}
+    @property
+    def name(self) -> str:
+        return self._name
 
-    def add(self, user: User) -> None:
+    @classmethod
+    def register(cls, name: str) -> User:
+        return cls(id=uuid4(), name=name)
+
+class UserRepository(Repository[User, UUID], Protocol):
+    async def delete_by_id(self, user_id: UUID) -> None:
+        ...
+
+    async def get_by_id(self, user_id: UUID) -> User | None:
+        ...
+
+    async def list_all(self) -> list[User]:
+        ...
+
+    async def save(self, user: User) -> None:
+        ...
+
+class InMemoryUserRepository(UserRepository):
+    def __init__(self, data: dict[UUID, User]) -> None:
+        self._data = data
+
+    async def delete_by_id(self, user_id: int) -> None:
+        self._data.pop(user_id, None)
+
+    async def get_by_id(self, user_id: int) -> User | None:
+        return self._data.get(user_id)
+
+    async def list_all(self) -> list[User]:
+        return list(self._data.values())
+
+    async def save(self, user: User) -> None:
         self._data[user.id] = user
 
-    def get(self, user_id: int) -> User | None:
-        return self._data.get(user_id)
+
+@dataclass(frozen=True)
+class RegisterUserRequest:
+
+class RegisterUserUseCase(UseCase[]):
+    def __init__(self, user_repository: UserRepository) -> None:
+        self._user_repository = user_repository
+
+    async def execute(self, name: str) -> User:
+        user = User.register(name)
+        await self._user_repository.save(user)
+        return user
+
 
 def test_in_memory_user_repository() -> None:
     repo = InMemoryUserRepository()
@@ -100,14 +142,17 @@ def test_in_memory_user_repository() -> None:
     assert repo.get(1) == user
 ```
 
----
+------------------------------------------------------------------------
 
 ## ✅ Summary
 
 Each layer can be tested independently:
 
-- Domain: pure business logic
-- Application: behavior via ports
-- Infrastructure: technical correctness
+  Layer                Focus
+  -------------------- -------------------------------------------
+  **Domain**           Pure business logic and invariants
+  **Application**      Use cases and orchestration through ports
+  **Infrastructure**   Adapters and persistence details
 
-Testing with BuildingBlocks reinforces **clean boundaries** and **explicit contracts**.
+Testing with **BuildingBlocks** enforces clean boundaries and explicit
+contracts between layers.

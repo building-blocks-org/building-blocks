@@ -1,50 +1,59 @@
-# Testing Strategy 🧪
+# Testing 🧪
 
-Testing in **BuildingBlocks** focuses on **behavior, not framework integration**.
+> For a hands-on look at real test examples for each layer, see [Example
+> Tests](example_tests.md).
 
-Because each layer is decoupled, tests can target functionality at the right abstraction level.
+The **BuildingBlocks** toolkit encourages a testing strategy that
+mirrors its architecture.\
+Each layer --- from Foundation to Infrastructure --- can be tested
+independently using predictable patterns and explicit contracts.
 
----
+------------------------------------------------------------------------
 
-## 🧩 Layer Testing Strategy
+## 🧱 Domain Layer
 
-| Layer | What to Test | How |
-|--------|---------------|----|
-| **Foundation** | Result behavior, immutability helpers | Pure unit tests |
-| **Domain** | Entities, ValueObjects, DomainEvents | Unit tests (no mocks) |
-| **Application** | UseCases, Ports, and orchestration | Unit + Integration (mock outbound ports) |
-| **Infrastructure** | Adapters, repositories, event buses | Integration or end-to-end tests |
-| **Presentation** | API endpoints, CLI, UI behavior | End-to-end or functional tests |
+-   Test **pure business logic** with no external dependencies.
+-   Use **value objects**, **entities**, and **aggregates** in
+    isolation.
+-   Validate **invariants**, **rules**, and **domain events**.
 
----
+> Domain tests should not depend on frameworks or infrastructure.
 
-## 🧱 Example Structure
+------------------------------------------------------------------------
 
-```
-tests/
-├── foundation/
-├── domain/
-├── application/
-├── infrastructure/
-└── presentation/
-```
+## ⚙️ Application Layer
 
----
+-   Test **use cases** through their **inbound ports** (interfaces).
+-   Mock outbound dependencies such as repositories or event buses.
+-   Validate that each use case produces the expected **Result** type
+    (Ok/Err).
 
-## 🧠 Principles
+> Application tests focus on orchestration --- not persistence.
 
-1. **Test Behavior, Not Implementation.**
-   Validate *what* the code does, not *how* it does it.
+------------------------------------------------------------------------
 
-2. **Use Ports as Mocks.**
-   Mock or fake outbound ports when testing use cases.
+## 🧩 Infrastructure Layer
 
-3. **Domain Is Sacred.**
-   Domain tests should require **no mocking** — they must be pure and deterministic.
+-   Test **adapters** (repositories, event publishers, message buses).
+-   Use **in-memory** or **temporary database** fixtures when
+    appropriate.
+-   Verify correctness of integration with external systems.
 
----
+> Keep infrastructure tests focused on technical boundaries.
 
-## ✅ Summary
+------------------------------------------------------------------------
 
-BuildingBlocks makes testing natural by enforcing clear architectural boundaries.
-Each test suite can evolve independently, mirroring your layered structure.
+## 🧠 General Guidelines
+
+-   Follow the **AAA pattern** (Arrange → Act → Assert).
+-   Use **pytest** fixtures for clean, reusable setup.
+-   Prefer **behavioral** assertions (what the code does) over
+    structural ones (how it does it).
+-   Each test name should clearly express intent using:\
+    `test_<method>_WHEN_<scenario>_THEN_<expected_result>`
+
+------------------------------------------------------------------------
+
+Testing in **BuildingBlocks** is about clarity and intent --- ensuring
+that each layer is verified independently, without leaking concerns
+across architectural boundaries.

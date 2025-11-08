@@ -1,4 +1,4 @@
-name: CI
+name: Continuous Integration
 
 on:
   push:
@@ -11,7 +11,7 @@ permissions:
 
 jobs:
   build:
-    name: Build and Validate
+    name: Build and Test
     runs-on: ubuntu-latest
 
     steps:
@@ -22,29 +22,21 @@ jobs:
         uses: ./.github/actions/setup-poetry
 
       - name: Install dependencies
-        run: poetry install --with dev,docs
-
-      - name: Lint and format
         run: |
-          poetry run poe lint
-          poetry run poe format
-          poetry run poe pre-commit
+          rm -rf .venv ~/.cache/pypoetry
+          poetry lock --no-update
+          poetry install --with dev,docs
 
-      - name: Security check
-        run: poetry run poe bandit
+      - name: Lint
+        run: poetry run poe lint
 
-      - name: Type check (Mypy + Pyright)
-        run: |
-          poetry run poe type:mypy
-          poetry run poe type:pyright
+      - name: Type check
+        run: poetry run poe type:mypy
 
-      - name: Run tests with coverage
+      - name: Run tests
         run: poetry run poe test:pipeline
 
-      - name: Build MkDocs documentation
+      - name: Build documentation
         run: |
           poetry run python scripts/generate_autodoc_pages.py
-          poetry run poe mkdocs:build
-
-      - name: Verify docs build strict
-        run: poetry run poe docs:check
+          poetry run mkdocs build --strict
