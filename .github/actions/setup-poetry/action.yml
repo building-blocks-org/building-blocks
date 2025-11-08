@@ -1,30 +1,34 @@
+name: Continuous Integration
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+permissions:
+  contents: read
+
 jobs:
   build:
+    name: Build and Test
     runs-on: ubuntu-latest
+
     steps:
-      - name: ⬇️ Checkout Repository
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: 🐍 Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.12' # Use your required Python version
+      - name: Set up Poetry
+        uses: ./.github/actions/setup-poetry
 
-      - name: 📦 Install Poetry via pip
-        run: |
-          pip install poetry
+      - name: Install dependencies
+        run: poetry install --with dev
 
-      - name: ➕ Add Poetry bin to PATH
-        run: |
-          # Use 'python -m site --user-base' to find the user's base directory,
-          # which contains the 'bin' folder where the 'poetry' executable lives.
-          echo "$(python -m site --user-base)/bin" >> $GITHUB_PATH
+      - name: Lint and format check
+        run: poetry run poe lint
 
-      - name: ⚙️ Run Custom Setup-Poetry Action (Optional)
-        run: ./.github/actions/setup-poetry
+      - name: Type check
+        run: poetry run poe type:mypy
 
-      - name: 🌐 Install dependencies
-        run: poetry install --no-interaction --no-root
-
-      - name: ▶️ Run tests
-        run: poetry run pytest
+      - name: Run tests
+        run: poetry run poe test:pipeline
