@@ -9,7 +9,7 @@ theme:
   name: material
   palette:
     scheme: slate
-    primary: orange  # Gruvbox-inspired orange
+    primary: orange
     accent: amber
   features:
     - navigation.tabs
