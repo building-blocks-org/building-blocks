@@ -5,6 +5,9 @@ inputs:
   python-version:
     description: Python version to use
     default: "3.12"
+  poetry-version:
+    description: Poetry version to install
+    default: "1.8.3"
 
 runs:
   using: composite
@@ -16,10 +19,18 @@ runs:
         cache: "poetry"
 
     - name: Install Poetry
+      shell: bash
       run: |
         pip install --upgrade pip
-        pip install poetry
+        pip install poetry==${{ inputs.poetry-version }}
+        echo "$HOME/.local/bin" >> $GITHUB_PATH
+
+    - name: Verify Poetry installation
       shell: bash
+      run: |
+        echo "Poetry version check:"
+        which poetry || echo "❌ Poetry not found in PATH!"
+        poetry --version || echo "⚠️ Poetry installation failed!"
 
     - name: Cache virtual environments
       uses: actions/cache@v4
@@ -27,6 +38,6 @@ runs:
         path: |
           ~/.cache/pypoetry
           .venv
-        key: ${{ runner.os }}-poetry-${{ hashFiles('**/poetry.lock') }}
+        key: ${{ runner.os }}-poetry-${{ inputs.poetry-version }}-${{ hashFiles('**/poetry.lock') }}
         restore-keys: |
           ${{ runner.os }}-poetry-
