@@ -16,14 +16,16 @@ runs:
       uses: actions/setup-python@v5
       with:
         python-version: ${{ inputs.python-version }}
-        cache: "poetry"
 
     - name: Install Poetry
       shell: bash
       run: |
         pip install --upgrade pip
         pip install poetry==${{ inputs.poetry-version }}
-        echo "$HOME/.local/bin" >> $GITHUB_PATH
+
+    - name: Add Poetry to PATH
+      shell: bash
+      run: echo "$HOME/.local/bin" >> $GITHUB_PATH
 
     - name: Verify Python and Poetry
       shell: bash
@@ -31,15 +33,15 @@ runs:
         echo "Python version:"
         python --version
         echo "Poetry version:"
-        which poetry || echo "Poetry not found"
-        poetry --version || echo "Poetry command failed"
+        poetry --version
 
-    - name: Cache virtual environments
+    - name: Cache Poetry dependencies
       uses: actions/cache@v4
       with:
         path: |
           ~/.cache/pypoetry
           .venv
-        key: ${{ runner.os }}-poetry-${{ inputs.poetry-version }}-${{ hashFiles('**/poetry.lock') }}
+        key: ${{ runner.os }}-poetry-${{ inputs.poetry-version }}-py${{ inputs.python-version }}-${{ hashFiles('**/poetry.lock') }}
         restore-keys: |
+          ${{ runner.os }}-poetry-${{ inputs.poetry-version }}-py${{ inputs.python-version }}-
           ${{ runner.os }}-poetry-
