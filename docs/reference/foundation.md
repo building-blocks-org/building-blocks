@@ -1,6 +1,7 @@
 # Foundation Package 🧩
 
 The **foundation** package defines the core abstractions that the rest of the toolkit depends on.
+
 It provides *reusable contracts* — small, composable building blocks that enforce clarity and explicit boundaries.
 
 ---
@@ -8,6 +9,7 @@ It provides *reusable contracts* — small, composable building blocks that enfo
 ## 🧠 Purpose
 
 The foundation layer defines **layer-agnostic** interfaces and helpers that can be reused anywhere.
+
 It contains no business logic or framework dependencies.
 
 ---

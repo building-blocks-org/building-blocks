@@ -6,7 +6,8 @@
 Welcome to the **BuildingBlocks Guide**.
 
 This section introduces the core ideas, architectural principles, and
-conventions used throughout the toolkit.\
+conventions used throughout the toolkit.
+
 It explains how to **apply BuildingBlocks in your own projects**,
 covering concepts like layering, ports and adapters, result handling,
 and testing practices.
