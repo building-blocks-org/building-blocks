@@ -1,34 +1,45 @@
-name: Continuous Integration
+name: Setup Poetry Environment
+description: Install Python and Poetry with caching for reproducible builds
 
-on:
-  push:
-    branches: ["main"]
-  pull_request:
-    branches: ["main"]
+inputs:
+  python-version:
+    description: Python version to use
+    default: "3.12"
+  poetry-version:
+    description: Poetry version to install
+    default: "1.8.3"
 
-permissions:
-  contents: read
+runs:
+  using: composite
+  steps:
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: ${{ inputs.python-version }}
+        cache: "poetry"
 
-jobs:
-  build:
-    name: Build and Test
-    runs-on: ubuntu-latest
+    - name: Install Poetry
+      shell: bash
+      run: |
+        pip install --upgrade pip
+        pip install poetry==${{ inputs.poetry-version }}
+        echo "$HOME/.local/bin" >> $GITHUB_PATH
 
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+    - name: Verify Python and Poetry
+      shell: bash
+      run: |
+        echo "Python version:"
+        python --version
+        echo "Poetry version:"
+        which poetry || echo "Poetry not found"
+        poetry --version || echo "Poetry command failed"
 
-      - name: Set up Poetry
-        uses: ./.github/actions/setup-poetry
-
-      - name: Install dependencies
-        run: poetry install --with dev
-
-      - name: Lint and format check
-        run: poetry run poe lint
-
-      - name: Type check
-        run: poetry run poe type:mypy
-
-      - name: Run tests
-        run: poetry run poe test:pipeline
+    - name: Cache virtual environments
+      uses: actions/cache@v4
+      with:
+        path: |
+          ~/.cache/pypoetry
+          .venv
+        key: ${{ runner.os }}-poetry-${{ inputs.poetry-version }}-${{ hashFiles('**/poetry.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-poetry-
