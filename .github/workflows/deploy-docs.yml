@@ -1,0 +1,43 @@
+name: Deploy Documentation
+
+on:
+  push:
+    branches: ["main"]
+    tags:
+      - "v*.*.*"  # optional: rebuild docs when tagging new releases
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  deploy-docs:
+    name: Build and Deploy MkDocs Site
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Poetry
+        uses: ./.github/actions/setup-poetry
+
+      - name: Install dependencies
+        run: poetry install --with docs
+
+      - name: Generate autodoc pages
+        run: poetry run python scripts/generate_autodoc_pages.py
+
+      - name: Build documentation
+        run: poetry run mkdocs build --strict
+
+      - name: Upload built documentation as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: built-site
+          path: site/
+          retention-days: 7
+
+      - name: Deploy to GitHub Pages
+        run: poetry run mkdocs gh-deploy --force

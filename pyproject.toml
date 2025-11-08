@@ -56,7 +56,6 @@ poethepoet = "^0.37.0"
 
 [tool.poetry.group.docs.dependencies]
 mkdocs = "^1.6.1"
-mkdocs-material = "^9.6.23"
 mkdocstrings = { extras = ["python"], version = "^0.30.1" }
 mkdocs-gen-files = "^0.5.0"
 mkdocs-literate-nav = "^0.6.2"
@@ -71,6 +70,9 @@ mkdocs-terminal = "^4.7.0"
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
+# ---------------------------------------------------------------------------
+# Ruff Configuration
+# ---------------------------------------------------------------------------
 [tool.ruff]
 target-version = "py312"
 line-length = 100
@@ -81,13 +83,13 @@ extend-exclude = ["site"]
 [tool.ruff.lint]
 select = ["E", "W", "F", "I", "B", "C4", "D"]
 ignore = [
-    "B008",  # Function call in default arg
+    "B008",
     "D104",
-    "D105",  # Magic methods like __repr__, __eq__, etc.
-    "D106",  # Nested classes
-    "D107",  # __init__ docstring
-    "D203",  # No blank line before class (conflicts with D211)
-    "D213",  # Multi-line summary on second line (Google prefers same line)
+    "D105",
+    "D106",
+    "D107",
+    "D203",
+    "D213",
 ]
 
 [tool.ruff.lint.pydocstyle]
@@ -98,12 +100,16 @@ known-first-party = ["building_blocks"]
 
 [tool.ruff.lint.per-file-ignores]
 "tests/**/*" = ["D"]
+"scripts/*.py" = ["D100", "D101", "D102", "D103", "D104", "D105", "D106", "D107"]
 
 [tool.ruff.format]
 quote-style = "double"
 indent-style = "space"
 docstring-code-format = true
 
+# ---------------------------------------------------------------------------
+# Mypy Configuration
+# ---------------------------------------------------------------------------
 [tool.mypy]
 python_version = "3.12"
 warn_return_any = true
@@ -132,6 +138,9 @@ disallow_incomplete_defs = false
 check_untyped_defs = false
 allow_untyped_globals = true
 
+# ---------------------------------------------------------------------------
+# Pytest Configuration
+# ---------------------------------------------------------------------------
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 python_files = ["test_*.py"]
@@ -143,6 +152,9 @@ addopts = [
   "--cov-report=term-missing",
 ]
 
+# ---------------------------------------------------------------------------
+# Coverage Configuration
+# ---------------------------------------------------------------------------
 [tool.coverage.report]
 exclude_lines = [
     "@abstractmethod"
@@ -158,32 +170,66 @@ omit = [
     "src/building_blocks/foundation/debuggable.py"
 ]
 
+# ---------------------------------------------------------------------------
+# Black Configuration
+# ---------------------------------------------------------------------------
 [tool.black]
 line-length = 100
 target-version = ["py312"]
 
+# ---------------------------------------------------------------------------
+# Poe the Poet Tasks
+# ---------------------------------------------------------------------------
 [tool.poe.tasks]
-lint = "ruff check ."
-"lint:docs" = "ruff check --select D100,D101,D102,D103,D104 src"
-format.sequence = [
-  { cmd = "ruff check . --fix" },
-  { cmd = "ruff check --fix --unsafe-fixes src" },
-]
-"format:docstrings" = "ruff check --select D --fix --unsafe-fixes src"
-"type:pyright" = "pyright"
-"type:mypy" = "mypy --config-file pyproject.toml src"
+# ---------------------------------------------------------------------------
+# 🧹 Code Quality
+# ---------------------------------------------------------------------------
 bandit = "bandit -r src -x tests"
-pre-commit = "pre-commit run --all-files"
-test = "pytest -q"
-"test:quick" = "pytest -x -q"
-"test:strict" = "pytest -x --strict-markers"
+
+# ---------------------------------------------------------------------------
+# 🧪 Testing
+# ---------------------------------------------------------------------------
+"test" = "pytest -q"
 "test:nocov" = "pytest -q --no-cov"
 "test:pipeline" = "pytest --cov=src --cov-report=xml --cov-fail-under=80"
-"mkdocs:serve" = "mkdocs serve"
-"mkdocs:build" = "mkdocs build"
-"mkdocs:clean" = "mkdocs build --clean"
-"mkdocs:deploy" = "mkdocs gh-deploy --clean"
+"test:quick" = "pytest -x -q"
+"test:strict" = "pytest -x --strict-markers"
+
+# ---------------------------------------------------------------------------
+# 🧠 Typing and Static Analysis
+# ---------------------------------------------------------------------------
+"type:mypy" = "mypy --config-file pyproject.toml src"
+"type:pyright" = "pyright"
+
+# ---------------------------------------------------------------------------
+# 🧱 Linting and Formatting
+# ---------------------------------------------------------------------------
+"lint" = "ruff check ."
+"lint:docs" = "ruff check --select D100,D101,D102,D103,D104 src"
+"lint:fix" = "ruff check . --fix"
+"format" = [
+  "ruff check . --fix --unsafe-fixes",
+  "black ."
+]
+"format:docs" = "ruff check --select D --fix --unsafe-fixes src"
+
+# ---------------------------------------------------------------------------
+# 📦 Pre-commit Automation
+# ---------------------------------------------------------------------------
+"pre-commit" = "pre-commit run --all-files"
+
+# ---------------------------------------------------------------------------
+# 📚 Documentation and MkDocs
+# ---------------------------------------------------------------------------
 "docs:check" = [
   { cmd = "ruff check --select D" },
   { cmd = "mkdocs build --strict" },
 ]
+"docs:regen" = [
+  { cmd = "python scripts/generate_autodoc_pages.py" },
+  { cmd = "mkdocs serve" },
+]
+"mkdocs:build" = "mkdocs build"
+"mkdocs:clean" = "mkdocs build --clean"
+"mkdocs:deploy" = "mkdocs gh-deploy --clean"
+"mkdocs:serve" = "mkdocs serve"
