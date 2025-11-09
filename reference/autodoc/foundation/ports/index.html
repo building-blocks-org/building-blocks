@@ -1,0 +1,2762 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="A composable architecture toolkit for clean, testable, and maintainable Python applications." name="description"/>
+<meta content="Glauber Brennon" name="author"/>
+<link href="https://building-blocks-org.github.io/building-blocks/reference/autodoc/foundation/ports/" rel="canonical"/>
+<link href="../mapper/" rel="prev"/>
+<link href="../result/" rel="next"/>
+<link href="../../../../assets/favicon.ico" rel="icon"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.6.23" name="generator"/>
+<title>Ports - BuildingBlocks 🧩</title>
+<link href="../../../../assets/stylesheets/main.84d31ad4.min.css" rel="stylesheet"/>
+<link href="../../../../assets/stylesheets/palette.06af60db.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<link href="../../../../assets/_mkdocstrings.css" rel="stylesheet"/>
+<link href="../../../../assets/css/theme.css" rel="stylesheet"/>
+<link href="../../../../assets/css/mermaid-theme.css" rel="stylesheet"/>
+<script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+</head>
+<body data-md-color-accent="amber" data-md-color-primary="orange" data-md-color-scheme="slate" dir="ltr">
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#ports">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="BuildingBlocks 🧩" class="md-header__button md-logo" data-md-component="logo" href="../../../.." title="BuildingBlocks 🧩">
+<img alt="logo" src="../../../../assets/logo.png"/>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            BuildingBlocks 🧩
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              Ports
+            
+          </span>
+</div>
+</div>
+</div>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="" tabindex="0">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md-header__source">
+<a class="md-source" data-md-component="source" href="https://github.com/building-blocks-org/building-blocks" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+</div>
+<div class="md-source__repository">
+    building-blocks-org/building-blocks
+  </div>
+</a>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<nav aria-label="Tabs" class="md-tabs" data-md-component="tabs">
+<div class="md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../..">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../../guide/">
+          
+  
+  
+  Guide
+
+        </a>
+</li>
+<li class="md-tabs__item md-tabs__item--active">
+<a class="md-tabs__link" href="../../../">
+          
+  
+  
+  Reference
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../../LICENSE/">
+        
+  
+  
+    
+  
+  License
+
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../../CONTRIBUTING/">
+        
+  
+  
+    
+  
+  Contributing
+
+      </a>
+</li>
+</ul>
+</div>
+</nav>
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="BuildingBlocks 🧩" class="md-nav__button md-logo" data-md-component="logo" href="../../../.." title="BuildingBlocks 🧩">
+<img alt="logo" src="../../../../assets/logo.png"/>
+</a>
+    BuildingBlocks 🧩
+  </label>
+<div class="md-nav__source">
+<a class="md-source" data-md-component="source" href="https://github.com/building-blocks-org/building-blocks" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+</div>
+<div class="md-source__repository">
+    building-blocks-org/building-blocks
+  </div>
+</a>
+</div>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../..">
+<span class="md-ellipsis">
+    Home
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+<span class="md-ellipsis">
+    Guide
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+            Guide
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../guide/">
+<span class="md-ellipsis">
+    Overview
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../guide/getting-started/">
+<span class="md-ellipsis">
+    Getting Started
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../guide/architecture/">
+<span class="md-ellipsis">
+    Architecture
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../guide/packages_and_layers/">
+<span class="md-ellipsis">
+    Packages &amp; Layers
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../guide/principles/">
+<span class="md-ellipsis">
+    Principles
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../guide/testing/">
+<span class="md-ellipsis">
+    Testing Strategy
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../guide/example_tests/">
+<span class="md-ellipsis">
+    Example Tests
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+<span class="md-ellipsis">
+    Reference
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="true" aria-labelledby="__nav_3_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+            Reference
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../">
+<span class="md-ellipsis">
+    Overview
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../foundation/">
+<span class="md-ellipsis">
+    Foundation
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../domain/">
+<span class="md-ellipsis">
+    Domain
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../application/">
+<span class="md-ellipsis">
+    Application
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../infrastructure/">
+<span class="md-ellipsis">
+    Infrastructure
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../presentation/">
+<span class="md-ellipsis">
+    Presentation
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_3_7" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_7" id="__nav_3_7_label" tabindex="">
+<span class="md-ellipsis">
+    API Reference
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="true" aria-labelledby="__nav_3_7_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_7">
+<span class="md-nav__icon md-icon"></span>
+            API Reference
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_7_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_7_1" id="__nav_3_7_1_label" tabindex="0">
+<span class="md-ellipsis">
+    Application
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_7_1_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_3_7_1">
+<span class="md-nav__icon md-icon"></span>
+            Application
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_7_1_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_7_1_1" id="__nav_3_7_1_1_label" tabindex="0">
+<span class="md-ellipsis">
+    Ports / Inbound
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_7_1_1_label" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_3_7_1_1">
+<span class="md-nav__icon md-icon"></span>
+            Ports / Inbound
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../application/ports/inbound/message_handler/">
+<span class="md-ellipsis">
+    Message Handler
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../application/ports/inbound/use_case/">
+<span class="md-ellipsis">
+    Use Case
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_7_1_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_7_1_2" id="__nav_3_7_1_2_label" tabindex="0">
+<span class="md-ellipsis">
+    Ports / Outbound
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_7_1_2_label" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_3_7_1_2">
+<span class="md-nav__icon md-icon"></span>
+            Ports / Outbound
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../application/ports/outbound/command_sender/">
+<span class="md-ellipsis">
+    Command Sender
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../application/ports/outbound/event_publisher/">
+<span class="md-ellipsis">
+    Event Publisher
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../application/ports/outbound/message_bus/">
+<span class="md-ellipsis">
+    Message Bus
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../application/ports/outbound/notifier/">
+<span class="md-ellipsis">
+    Notifier
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../application/ports/outbound/query_fetcher/">
+<span class="md-ellipsis">
+    Query Fetcher
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../application/ports/outbound/repository/">
+<span class="md-ellipsis">
+    Repository
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../application/ports/outbound/unit_of_work/">
+<span class="md-ellipsis">
+    Unit Of Work
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_7_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_7_2" id="__nav_3_7_2_label" tabindex="0">
+<span class="md-ellipsis">
+    Domain
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_7_2_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_3_7_2">
+<span class="md-nav__icon md-icon"></span>
+            Domain
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../domain/aggregate_root/">
+<span class="md-ellipsis">
+    Aggregate Root
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../domain/entity/">
+<span class="md-ellipsis">
+    Entity
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../domain/value_object/">
+<span class="md-ellipsis">
+    Value Object
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_7_2_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_7_2_4" id="__nav_3_7_2_4_label" tabindex="0">
+<span class="md-ellipsis">
+    Errors
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_7_2_4_label" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_3_7_2_4">
+<span class="md-nav__icon md-icon"></span>
+            Errors
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../domain/errors/draft_entity_is_not_hashable_error/">
+<span class="md-ellipsis">
+    Draft Entity Is Not Hashable Error
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../domain/errors/entity_id_none_error/">
+<span class="md-ellipsis">
+    Entity Id None Error
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_7_2_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_7_2_5" id="__nav_3_7_2_5_label" tabindex="0">
+<span class="md-ellipsis">
+    Messages
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_7_2_5_label" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_3_7_2_5">
+<span class="md-nav__icon md-icon"></span>
+            Messages
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../domain/messages/command/">
+<span class="md-ellipsis">
+    Command
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../domain/messages/event/">
+<span class="md-ellipsis">
+    Event
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../domain/messages/message/">
+<span class="md-ellipsis">
+    Message
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../domain/messages/query/">
+<span class="md-ellipsis">
+    Query
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_3_7_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_7_3" id="__nav_3_7_3_label" tabindex="0">
+<span class="md-ellipsis">
+    Foundation
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="true" aria-labelledby="__nav_3_7_3_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_3_7_3">
+<span class="md-nav__icon md-icon"></span>
+            Foundation
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../debuggable/">
+<span class="md-ellipsis">
+    Debuggable
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../mapper/">
+<span class="md-ellipsis">
+    Mapper
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-ellipsis">
+    Ports
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+<span class="md-ellipsis">
+    Ports
+    
+  </span>
+</a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#what-are-these-protocols">
+<span class="md-ellipsis">
+      WHAT ARE THESE PROTOCOLS?
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#quick-start-the-three-step-pattern">
+<span class="md-ellipsis">
+      QUICK START: THE THREE-STEP PATTERN
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#type-parameters-explained">
+<span class="md-ellipsis">
+      TYPE PARAMETERS EXPLAINED
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#structural-typing-pep-544">
+<span class="md-ellipsis">
+      STRUCTURAL TYPING (PEP 544)
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#common-usage-patterns">
+<span class="md-ellipsis">
+      COMMON USAGE PATTERNS
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#protocol-definitions">
+<span class="md-ellipsis">
+      PROTOCOL DEFINITIONS
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#building_blocks.foundation.ports">
+<span class="md-ellipsis">
+      ports
+    </span>
+</a>
+<nav aria-label="ports" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#building_blocks.foundation.ports--what-are-these-protocols">
+<span class="md-ellipsis">
+      WHAT ARE THESE PROTOCOLS?
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#building_blocks.foundation.ports--quick-start-the-three-step-pattern">
+<span class="md-ellipsis">
+      QUICK START: THE THREE-STEP PATTERN
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#building_blocks.foundation.ports--type-parameters-explained">
+<span class="md-ellipsis">
+      TYPE PARAMETERS EXPLAINED
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#building_blocks.foundation.ports--structural-typing-pep-544">
+<span class="md-ellipsis">
+      STRUCTURAL TYPING (PEP 544)
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#building_blocks.foundation.ports--common-usage-patterns">
+<span class="md-ellipsis">
+      COMMON USAGE PATTERNS
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#building_blocks.foundation.ports--protocol-definitions">
+<span class="md-ellipsis">
+      PROTOCOL DEFINITIONS
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#building_blocks.foundation.ports.Port">
+<span class="md-ellipsis">
+      Port
+    </span>
+</a>
+<nav aria-label="Port" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#building_blocks.foundation.ports.Port--when-to-use">
+<span class="md-ellipsis">
+      WHEN TO USE
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#building_blocks.foundation.ports.Port--type-parameters">
+<span class="md-ellipsis">
+      TYPE PARAMETERS
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#building_blocks.foundation.ports.Port--design-notes">
+<span class="md-ellipsis">
+      DESIGN NOTES
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#building_blocks.foundation.ports.Port--example-data-transformer">
+<span class="md-ellipsis">
+      EXAMPLE: DATA TRANSFORMER
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#building_blocks.foundation.ports.Port.__port_variance__">
+<span class="md-ellipsis">
+      __port_variance__
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#building_blocks.foundation.ports.InboundPort">
+<span class="md-ellipsis">
+      InboundPort
+    </span>
+</a>
+<nav aria-label="InboundPort" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#building_blocks.foundation.ports.InboundPort--common-use-cases">
+<span class="md-ellipsis">
+      COMMON USE CASES
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#building_blocks.foundation.ports.InboundPort--usage-pattern">
+<span class="md-ellipsis">
+      USAGE PATTERN
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#building_blocks.foundation.ports.InboundPort--example-command-handler">
+<span class="md-ellipsis">
+      EXAMPLE: COMMAND HANDLER
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#building_blocks.foundation.ports.OutboundPort">
+<span class="md-ellipsis">
+      OutboundPort
+    </span>
+</a>
+<nav aria-label="OutboundPort" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#building_blocks.foundation.ports.OutboundPort--common-use-cases">
+<span class="md-ellipsis">
+      COMMON USE CASES
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#building_blocks.foundation.ports.OutboundPort--usage-pattern">
+<span class="md-ellipsis">
+      USAGE PATTERN
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#building_blocks.foundation.ports.OutboundPort--example-repository-pattern">
+<span class="md-ellipsis">
+      EXAMPLE: REPOSITORY PATTERN
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../result/">
+<span class="md-ellipsis">
+    Result
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../result_mapper/">
+<span class="md-ellipsis">
+    Result Mapper
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_7_3_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_7_3_6" id="__nav_3_7_3_6_label" tabindex="0">
+<span class="md-ellipsis">
+    Errors
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_7_3_6_label" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_3_7_3_6">
+<span class="md-nav__icon md-icon"></span>
+            Errors
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../errors/base/">
+<span class="md-ellipsis">
+    Base
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../errors/cant_modify_immutable_attribute_error/">
+<span class="md-ellipsis">
+    Cant Modify Immutable Attribute Error
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../errors/core/">
+<span class="md-ellipsis">
+    Core
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../errors/rule_violation_error/">
+<span class="md-ellipsis">
+    Rule Violation Error
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../errors/validation_error/">
+<span class="md-ellipsis">
+    Validation Error
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3_7_3_7" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_7_3_7" id="__nav_3_7_3_7_label" tabindex="0">
+<span class="md-ellipsis">
+    Meta
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_7_3_7_label" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_3_7_3_7">
+<span class="md-nav__icon md-icon"></span>
+            Meta
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../meta/final_meta/">
+<span class="md-ellipsis">
+    Final Meta
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../LICENSE/">
+<span class="md-ellipsis">
+    License
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../CONTRIBUTING/">
+<span class="md-ellipsis">
+    Contributing
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#what-are-these-protocols">
+<span class="md-ellipsis">
+      WHAT ARE THESE PROTOCOLS?
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#quick-start-the-three-step-pattern">
+<span class="md-ellipsis">
+      QUICK START: THE THREE-STEP PATTERN
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#type-parameters-explained">
+<span class="md-ellipsis">
+      TYPE PARAMETERS EXPLAINED
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#structural-typing-pep-544">
+<span class="md-ellipsis">
+      STRUCTURAL TYPING (PEP 544)
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#common-usage-patterns">
+<span class="md-ellipsis">
+      COMMON USAGE PATTERNS
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#protocol-definitions">
+<span class="md-ellipsis">
+      PROTOCOL DEFINITIONS
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#building_blocks.foundation.ports">
+<span class="md-ellipsis">
+      ports
+    </span>
+</a>
+<nav aria-label="ports" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#building_blocks.foundation.ports--what-are-these-protocols">
+<span class="md-ellipsis">
+      WHAT ARE THESE PROTOCOLS?
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#building_blocks.foundation.ports--quick-start-the-three-step-pattern">
+<span class="md-ellipsis">
+      QUICK START: THE THREE-STEP PATTERN
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#building_blocks.foundation.ports--type-parameters-explained">
+<span class="md-ellipsis">
+      TYPE PARAMETERS EXPLAINED
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#building_blocks.foundation.ports--structural-typing-pep-544">
+<span class="md-ellipsis">
+      STRUCTURAL TYPING (PEP 544)
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#building_blocks.foundation.ports--common-usage-patterns">
+<span class="md-ellipsis">
+      COMMON USAGE PATTERNS
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#building_blocks.foundation.ports--protocol-definitions">
+<span class="md-ellipsis">
+      PROTOCOL DEFINITIONS
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#building_blocks.foundation.ports.Port">
+<span class="md-ellipsis">
+      Port
+    </span>
+</a>
+<nav aria-label="Port" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#building_blocks.foundation.ports.Port--when-to-use">
+<span class="md-ellipsis">
+      WHEN TO USE
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#building_blocks.foundation.ports.Port--type-parameters">
+<span class="md-ellipsis">
+      TYPE PARAMETERS
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#building_blocks.foundation.ports.Port--design-notes">
+<span class="md-ellipsis">
+      DESIGN NOTES
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#building_blocks.foundation.ports.Port--example-data-transformer">
+<span class="md-ellipsis">
+      EXAMPLE: DATA TRANSFORMER
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#building_blocks.foundation.ports.Port.__port_variance__">
+<span class="md-ellipsis">
+      __port_variance__
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#building_blocks.foundation.ports.InboundPort">
+<span class="md-ellipsis">
+      InboundPort
+    </span>
+</a>
+<nav aria-label="InboundPort" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#building_blocks.foundation.ports.InboundPort--common-use-cases">
+<span class="md-ellipsis">
+      COMMON USE CASES
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#building_blocks.foundation.ports.InboundPort--usage-pattern">
+<span class="md-ellipsis">
+      USAGE PATTERN
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#building_blocks.foundation.ports.InboundPort--example-command-handler">
+<span class="md-ellipsis">
+      EXAMPLE: COMMAND HANDLER
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#building_blocks.foundation.ports.OutboundPort">
+<span class="md-ellipsis">
+      OutboundPort
+    </span>
+</a>
+<nav aria-label="OutboundPort" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#building_blocks.foundation.ports.OutboundPort--common-use-cases">
+<span class="md-ellipsis">
+      COMMON USE CASES
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#building_blocks.foundation.ports.OutboundPort--usage-pattern">
+<span class="md-ellipsis">
+      USAGE PATTERN
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#building_blocks.foundation.ports.OutboundPort--example-repository-pattern">
+<span class="md-ellipsis">
+      EXAMPLE: REPOSITORY PATTERN
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<a class="md-content__button md-icon" href="https://github.com/building-blocks-org/building-blocks/edit/master/docs/reference/autodoc/foundation/ports.md" rel="edit" title="Edit this page">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"></path></svg>
+</a>
+<h1 id="ports">Ports<a class="headerlink" href="#ports" title="Permanent link">¶</a></h1>
+<p>Foundational Protocol Interfaces.</p>
+<p>Defines general-purpose protocol interfaces for <strong>type-annotated contracts</strong>.
+These are "super interfaces" (marker protocols) that you extend to create
+your own interface definitions with excellent IDE support and architectural
+flexibility. They impose no framework or layout requirements.</p>
+<h2 id="what-are-these-protocols">WHAT ARE THESE PROTOCOLS?<a class="headerlink" href="#what-are-these-protocols" title="Permanent link">¶</a></h2>
+<p>.. code-block:: text</p>
+<pre><code>┌─────────────────────────────────────────────────────────────────────────────┐
+│  WHAT ARE THESE PROTOCOLS?                                                  │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│  Port, InboundPort, and OutboundPort are generic Protocol classes that      │
+│  serve as foundations for your own interface definitions.                   │
+│                                                                             │
+│  ✓ They Provide:                                                            │
+│    • Generic type parameters (InputType, OutputType)                        │
+│    • Structural typing support (PEP 544)                                    │
+│    • Consistent naming conventions                                          │
+│    • IDE autocomplete and static analysis                                   │
+│    • Zero dependencies or framework requirements                            │
+│                                                                             │
+│  ✗ They DON'T Provide:                                                      │
+│    • Any predefined methods                                                 │
+│    • Architectural constraints or patterns                                  │
+│    • Implementation requirements                                            │
+│    • Framework or library dependencies                                      │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+</code></pre>
+<h2 id="quick-start-the-three-step-pattern">QUICK START: THE THREE-STEP PATTERN<a class="headerlink" href="#quick-start-the-three-step-pattern" title="Permanent link">¶</a></h2>
+<p>Step 1: Define Your Protocol (extend + add methods)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</p>
+<p>.. code-block:: python</p>
+<pre><code>from building_blocks.foundation.ports import OutboundPort
+
+class UserRepository(OutboundPort[UserID, User]):
+    # Repository interface for user persistence.
+
+    def find_by_id(self, id: UserID) -&gt; User | None:
+        # Retrieve a user by their unique ID.
+        ...
+
+    def find_by_email(self, email: str) -&gt; User | None:
+        # Retrieve a user by their email address.
+        ...
+
+    def save(self, user: User) -&gt; None:
+        # Persist a user (insert or update).
+        ...
+
+    def delete(self, id: UserID) -&gt; bool:
+        # Remove a user. Returns True if user existed.
+        ...
+</code></pre>
+<p>Step 2: Implement It (as many times as needed)</p>
+<pre><code>
+.. code-block:: python
+
+    # Production: PostgreSQL implementation
+    class PostgresUserRepository:
+        def __init__(self, connection_pool):
+            self.db = connection_pool
+
+        def find_by_id(self, id: UserID) -&gt; User | None:
+            row = self.db.query_one("SELECT * FROM users WHERE id = $1", id)
+            return User.from_row(row) if row else None
+
+        def find_by_email(self, email: str) -&gt; User | None:
+            row = self.db.query_one("SELECT * FROM users WHERE email = $1", email)
+            return User.from_row(row) if row else None
+
+        def save(self, user: User) -&gt; None:
+            self.db.execute(
+                (
+                    "INSERT INTO users (id, email, name) "
+                    "VALUES ($1, $2, $3) "
+                    "ON CONFLICT (id) DO UPDATE SET email=$2, name=$3"
+                ),
+                user.id, user.email, user.name
+            )
+
+        def delete(self, id: UserID) -&gt; bool:
+            result = self.db.execute("DELETE FROM users WHERE id = $1", id)
+            return result.rowcount &gt; 0
+
+    # Testing: In-memory fake implementation
+    class InMemoryUserRepository:
+        def __init__(self):
+            self._users: dict[UserID, User] = {}
+            self._by_email: dict[str, UserID] = {}
+
+        def find_by_id(self, id: UserID) -&gt; User | None:
+            return self._users.get(id)
+
+        def find_by_email(self, email: str) -&gt; User | None:
+            user_id = self._by_email.get(email)
+            return self._users.get(user_id) if user_id else None
+
+        def save(self, user: User) -&gt; None:
+            self._users[user.id] = user
+            self._by_email[user.email] = user.id
+
+        def delete(self, id: UserID) -&gt; bool:
+            if id in self._users:
+                user = self._users.pop(id)
+                self._by_email.pop(user.email, None)
+                return True
+            return False
+
+Step 3: Use Type Hints (swap implementations freely)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: python
+
+    def register_new_user(
+        repository: UserRepository,  # ← The protocol, not the implementation
+        email: str,
+        name: str
+    ) -&gt; User:
+        # Register a new user account.
+        existing = repository.find_by_email(email)
+        if existing:
+            raise ValueError(f"Email {email} is already registered")
+
+        user = User(id=generate_id(), email=email, name=name)
+        repository.save(user)
+        return user
+
+    # Production: use real database
+    db_repo = PostgresUserRepository(db_pool)
+    user = register_new_user(db_repo, "alice@example.com", "Alice")
+
+    # Testing: use in-memory fake (fast, no database needed!)
+    test_repo = InMemoryUserRepository()
+    user = register_new_user(test_repo, "bob@example.com", "Bob")
+
+PROTOCOL HIERARCHY
+------------------
+
+.. code-block:: text
+
+    Port[InputType, OutputType]
+     │
+     ├── InboundPort[InputType, OutputType]  (alias: InputPort)
+     │    └─→ For operations that receive and process input
+     │        Examples: handlers, processors, validators, executors
+     │
+     └── OutboundPort[InputType, OutputType] (alias: OutputPort)
+          └─→ For operations that interact with external systems
+              Examples: repositories, caches, APIs, message brokers
+
+    All three are marker protocols — they define no methods.
+    You extend them and add your own method signatures.
+
+WHY USE THESE PROTOCOLS?
+------------------------
+
+Type Annotations (static analysis at dev time)
+</code></pre>
+<p>.. code-block:: python</p>
+<pre><code>def process(repo: UserRepository, id: UserID):
+    user = repo.find_by_id(id)    # static analyzers infer the return type
+    # user.invalid_method()       # analyzers flag this as an error
+</code></pre>
+<p>IDE Support</p>
+<pre><code>
+Modern IDEs provide autocomplete, jump-to-definition, and inline documentation
+for protocol-based interfaces.
+
+.. code-block:: python
+
+    repo.find_  # ← IDE shows: find_by_id(), find_by_email()
+
+Testability
+</code></pre>
+<p>Swap real implementations with test doubles (fakes, mocks, stubs) without
+changing your business logic.</p>
+<p>.. code-block:: python</p>
+<pre><code># Production
+service = UserService(PostgresUserRepository(db))
+
+# Testing
+service = UserService(InMemoryUserRepository())
+</code></pre>
+<p>Flexibility
+~~~~~~~~~~~</p>
+<p>Multiple implementations of the same interface; change implementations without
+modifying callers.</p>
+<p>Documentation
+~~~~~~~~~~~~~</p>
+<p>Protocols make contracts explicit and self-documenting through type hints.
+The interface defines what's expected, not how it's implemented.</p>
+<p>Independence
+~~~~~~~~~~~~</p>
+<p>No framework dependencies. No architectural constraints. Works in any Python
+application structure.</p>
+<h2 id="type-parameters-explained">TYPE PARAMETERS EXPLAINED<a class="headerlink" href="#type-parameters-explained" title="Permanent link">¶</a></h2>
+<p>InputType: The data type your operations work with
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</p>
+<p>Often represents:</p>
+<ul>
+<li>IDs for lookup operations (UserID, ProductID, OrderID)</li>
+<li>Query objects for search operations (SearchQuery, Filter)</li>
+<li>Data to be processed or validated (FormData, Document)</li>
+<li>Keys for cache operations (CacheKey, str)</li>
+<li>Commands or requests (CreateUserCommand, PaymentRequest)</li>
+</ul>
+<p>Examples:
+- Repository[UserID, User]           # Input: ID
+- Cache[str, bytes]                  # Input: cache key
+- Processor[RawData, ProcessedData]  # Input: data to process</p>
+<p>OutputType: The data type your operations return
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</p>
+<p>Often represents:</p>
+<ul>
+<li>Entities or aggregates (User, Product, Order)</li>
+<li>Result objects (SearchResult, ValidationResult, PaymentResult)</li>
+<li>Optional data (User | None)</li>
+<li>Collections (list[Product], dict[str, Any])</li>
+<li>Status or confirmation (bool, None)</li>
+</ul>
+<p>Examples:
+- Repository[UserID, User]           # Output: User entity
+- Cache[str, bytes]                  # Output: cached bytes
+- Validator[Data, list[Error]]       # Output: list of errors</p>
+<h2 id="structural-typing-pep-544">STRUCTURAL TYPING (PEP 544)<a class="headerlink" href="#structural-typing-pep-544" title="Permanent link">¶</a></h2>
+<p>Implementations don't need to explicitly inherit from your protocols. They only
+need to implement the required methods (structural subtyping).</p>
+<p>.. code-block:: python</p>
+<pre><code>class MyRepository:  # No inheritance needed
+    def find_by_id(self, id: UserID) -&gt; User | None:
+        return self._users.get(id)
+
+    def save(self, user: User) -&gt; None:
+        self._users[user.id] = user
+
+repo: UserRepository = MyRepository()  # static analyzers accept this
+</code></pre>
+<p>You can also inherit explicitly (optional):</p>
+<p>.. code-block:: python</p>
+<pre><code>class MyRepository(UserRepository):  # Explicit inheritance
+    def find_by_id(self, id: UserID) -&gt; User | None:
+        return self._users.get(id)
+
+    def save(self, user: User) -&gt; None:
+        self._users[user.id] = user
+</code></pre>
+<h2 id="common-usage-patterns">COMMON USAGE PATTERNS<a class="headerlink" href="#common-usage-patterns" title="Permanent link">¶</a></h2>
+<p>Pattern 1: Repository (Data Persistence)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</p>
+<p>.. code-block:: python</p>
+<pre><code>class ProductRepository(OutboundPort[ProductID, Product]):
+    def find_by_id(self, id: ProductID) -&gt; Product | None: ...
+    def find_by_category(self, category: str) -&gt; list[Product]: ...
+    def save(self, product: Product) -&gt; None: ...
+    def delete(self, id: ProductID) -&gt; bool: ...
+</code></pre>
+<p>Pattern 2: Cache (Fast Data Access)</p>
+<pre><code>
+.. code-block:: python
+
+    class SessionCache(OutboundPort[SessionID, SessionData]):
+        async def get(self, id: SessionID) -&gt; SessionData | None: ...
+        async def set(self, id: SessionID, data: SessionData, ttl: int) -&gt; None: ...
+        async def delete(self, id: SessionID) -&gt; bool: ...
+
+Pattern 3: Use Case / Command Handler (Business Logic)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: python
+
+    class CreateOrderUseCase(InboundPort[OrderData, Order]):
+        def execute(self, data: OrderData) -&gt; Order: ...
+        def validate(self, data: OrderData) -&gt; list[ValidationError]: ...
+
+Pattern 4: Query Handler (Data Retrieval)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: python
+
+    class SearchProducts(InboundPort[SearchQuery, SearchResult]):
+        async def search(self, query: SearchQuery) -&gt; SearchResult: ...
+        async def suggest(self, partial: str) -&gt; list[str]: ...
+
+Pattern 5: External API Client (Third-Party Integration)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: python
+
+    class PaymentGateway(OutboundPort[PaymentRequest, PaymentResult]):
+        async def charge(self, request: PaymentRequest) -&gt; PaymentResult: ...
+        async def refund(self, transaction_id: str) -&gt; PaymentResult: ...
+
+Pattern 6: Message Broker (Async Communication)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: python
+
+    class EventPublisher(OutboundPort[DomainEvent, None]):
+        async def publish(self, event: DomainEvent) -&gt; None: ...
+        async def publish_batch(self, events: list[DomainEvent]) -&gt; None: ...
+
+Pattern 7: Notification Gateway (Multi-Channel Messaging)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: python
+
+    class NotificationSender(OutboundPort[Notification, bool]):
+        async def send_email(self, notification: Notification) -&gt; bool: ...
+        async def send_sms(self, notification: Notification) -&gt; bool: ...
+        async def send_push(self, notification: Notification) -&gt; bool: ...
+
+USAGE IN DIFFERENT ARCHITECTURES
+--------------------------------
+
+These protocols are architecture-agnostic and work in any structure:
+
+- Layered Architecture — use ports to define boundaries between layers
+- MVC Applications — define contracts between models, views, controllers
+- Microservices — define ports for service-to-service communication
+- Single-File Scripts — use ports even in simple scripts for testability
+- Domain-Driven Design — repositories and domain services as ports
+- Hexagonal / Ports-and-Adapters — a natural fit
+- Clean Architecture — ports define boundaries and dependencies
+- Your Custom Structure — no assumptions
+
+TESTING STRATEGIES
+------------------
+
+Strategy 1: In-Memory Fakes (Fast Unit Tests)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: python
+
+    # Production
+    repo = PostgresUserRepository(db_pool)
+
+    # Testing (no database, instant)
+    repo = InMemoryUserRepository()
+
+    # Test runs in microseconds
+    user = User(id="123", email="test@example.com")
+    repo.save(user)
+    assert repo.find_by_id("123") == user
+
+Strategy 2: Mock Objects (Verify Interactions)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: python
+
+    from unittest.mock import Mock
+
+    mock_repo = Mock(spec=UserRepository)
+    mock_repo.find_by_id.return_value = User(...)
+
+    service = UserService(mock_repo)
+    service.get_user("123")
+
+    mock_repo.find_by_id.assert_called_once_with("123")
+
+Strategy 3: Test Doubles with State
+</code></pre>
+<p>.. code-block:: python</p>
+<pre><code>class SpyRepository:
+    def __init__(self):
+        self.saved_users = []
+        self.deleted_ids = []
+
+    def save(self, user: User) -&gt; None:
+        self.saved_users.append(user)
+
+    def delete(self, id: UserID) -&gt; bool:
+        self.deleted_ids.append(id)
+        return True
+
+# Verify behavior
+spy = SpyRepository()
+service.register_user(spy, "alice@example.com", "Alice")
+assert len(spy.saved_users) == 1
+assert spy.saved_users[0].email == "alice@example.com"
+</code></pre>
+<h2 id="protocol-definitions">PROTOCOL DEFINITIONS<a class="headerlink" href="#protocol-definitions" title="Permanent link">¶</a></h2>
+<p>See Also:
+- PEP 544 — Protocols: Structural subtyping (static duck typing)
+- typing.Protocol — Python's Protocol implementation</p>
+<div class="doc doc-object doc-module">
+<h2 class="doc doc-heading" id="building_blocks.foundation.ports">
+<code>ports</code>
+<a class="headerlink" href="#building_blocks.foundation.ports" title="Permanent link">¶</a></h2>
+<div class="doc doc-contents first">
+<p>Foundational Protocol Interfaces.</p>
+<p>Defines general-purpose protocol interfaces for <strong>type-annotated contracts</strong>.
+These are "super interfaces" (marker protocols) that you extend to create
+your own interface definitions with excellent IDE support and architectural
+flexibility. They impose no framework or layout requirements.</p>
+<h4 id="building_blocks.foundation.ports--what-are-these-protocols">WHAT ARE THESE PROTOCOLS?<a class="headerlink" href="#building_blocks.foundation.ports--what-are-these-protocols" title="Permanent link">¶</a></h4>
+<p>.. code-block:: text</p>
+<pre><code>┌─────────────────────────────────────────────────────────────────────────────┐
+│  WHAT ARE THESE PROTOCOLS?                                                  │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│  Port, InboundPort, and OutboundPort are generic Protocol classes that      │
+│  serve as foundations for your own interface definitions.                   │
+│                                                                             │
+│  ✓ They Provide:                                                            │
+│    • Generic type parameters (InputType, OutputType)                        │
+│    • Structural typing support (PEP 544)                                    │
+│    • Consistent naming conventions                                          │
+│    • IDE autocomplete and static analysis                                   │
+│    • Zero dependencies or framework requirements                            │
+│                                                                             │
+│  ✗ They DON'T Provide:                                                      │
+│    • Any predefined methods                                                 │
+│    • Architectural constraints or patterns                                  │
+│    • Implementation requirements                                            │
+│    • Framework or library dependencies                                      │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+</code></pre>
+<h4 id="building_blocks.foundation.ports--quick-start-the-three-step-pattern">QUICK START: THE THREE-STEP PATTERN<a class="headerlink" href="#building_blocks.foundation.ports--quick-start-the-three-step-pattern" title="Permanent link">¶</a></h4>
+<p>Step 1: Define Your Protocol (extend + add methods)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</p>
+<p>.. code-block:: python</p>
+<pre><code>from building_blocks.foundation.ports import OutboundPort
+
+class UserRepository(OutboundPort[UserID, User]):
+    # Repository interface for user persistence.
+
+    def find_by_id(self, id: UserID) -&gt; User | None:
+        # Retrieve a user by their unique ID.
+        ...
+
+    def find_by_email(self, email: str) -&gt; User | None:
+        # Retrieve a user by their email address.
+        ...
+
+    def save(self, user: User) -&gt; None:
+        # Persist a user (insert or update).
+        ...
+
+    def delete(self, id: UserID) -&gt; bool:
+        # Remove a user. Returns True if user existed.
+        ...
+</code></pre>
+<p>Step 2: Implement It (as many times as needed)</p>
+<pre><code>
+.. code-block:: python
+
+    # Production: PostgreSQL implementation
+    class PostgresUserRepository:
+        def __init__(self, connection_pool):
+            self.db = connection_pool
+
+        def find_by_id(self, id: UserID) -&gt; User | None:
+            row = self.db.query_one("SELECT * FROM users WHERE id = $1", id)
+            return User.from_row(row) if row else None
+
+        def find_by_email(self, email: str) -&gt; User | None:
+            row = self.db.query_one("SELECT * FROM users WHERE email = $1", email)
+            return User.from_row(row) if row else None
+
+        def save(self, user: User) -&gt; None:
+            self.db.execute(
+                (
+                    "INSERT INTO users (id, email, name) "
+                    "VALUES ($1, $2, $3) "
+                    "ON CONFLICT (id) DO UPDATE SET email=$2, name=$3"
+                ),
+                user.id, user.email, user.name
+            )
+
+        def delete(self, id: UserID) -&gt; bool:
+            result = self.db.execute("DELETE FROM users WHERE id = $1", id)
+            return result.rowcount &gt; 0
+
+    # Testing: In-memory fake implementation
+    class InMemoryUserRepository:
+        def __init__(self):
+            self._users: dict[UserID, User] = {}
+            self._by_email: dict[str, UserID] = {}
+
+        def find_by_id(self, id: UserID) -&gt; User | None:
+            return self._users.get(id)
+
+        def find_by_email(self, email: str) -&gt; User | None:
+            user_id = self._by_email.get(email)
+            return self._users.get(user_id) if user_id else None
+
+        def save(self, user: User) -&gt; None:
+            self._users[user.id] = user
+            self._by_email[user.email] = user.id
+
+        def delete(self, id: UserID) -&gt; bool:
+            if id in self._users:
+                user = self._users.pop(id)
+                self._by_email.pop(user.email, None)
+                return True
+            return False
+
+Step 3: Use Type Hints (swap implementations freely)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: python
+
+    def register_new_user(
+        repository: UserRepository,  # ← The protocol, not the implementation
+        email: str,
+        name: str
+    ) -&gt; User:
+        # Register a new user account.
+        existing = repository.find_by_email(email)
+        if existing:
+            raise ValueError(f"Email {email} is already registered")
+
+        user = User(id=generate_id(), email=email, name=name)
+        repository.save(user)
+        return user
+
+    # Production: use real database
+    db_repo = PostgresUserRepository(db_pool)
+    user = register_new_user(db_repo, "alice@example.com", "Alice")
+
+    # Testing: use in-memory fake (fast, no database needed!)
+    test_repo = InMemoryUserRepository()
+    user = register_new_user(test_repo, "bob@example.com", "Bob")
+
+PROTOCOL HIERARCHY
+------------------
+
+.. code-block:: text
+
+    Port[InputType, OutputType]
+     │
+     ├── InboundPort[InputType, OutputType]  (alias: InputPort)
+     │    └─→ For operations that receive and process input
+     │        Examples: handlers, processors, validators, executors
+     │
+     └── OutboundPort[InputType, OutputType] (alias: OutputPort)
+          └─→ For operations that interact with external systems
+              Examples: repositories, caches, APIs, message brokers
+
+    All three are marker protocols — they define no methods.
+    You extend them and add your own method signatures.
+
+WHY USE THESE PROTOCOLS?
+------------------------
+
+Type Annotations (static analysis at dev time)
+</code></pre>
+<p>.. code-block:: python</p>
+<pre><code>def process(repo: UserRepository, id: UserID):
+    user = repo.find_by_id(id)    # static analyzers infer the return type
+    # user.invalid_method()       # analyzers flag this as an error
+</code></pre>
+<p>IDE Support</p>
+<pre><code>
+Modern IDEs provide autocomplete, jump-to-definition, and inline documentation
+for protocol-based interfaces.
+
+.. code-block:: python
+
+    repo.find_  # ← IDE shows: find_by_id(), find_by_email()
+
+Testability
+</code></pre>
+<p>Swap real implementations with test doubles (fakes, mocks, stubs) without
+changing your business logic.</p>
+<p>.. code-block:: python</p>
+<pre><code># Production
+service = UserService(PostgresUserRepository(db))
+
+# Testing
+service = UserService(InMemoryUserRepository())
+</code></pre>
+<p>Flexibility
+~~~~~~~~~~~</p>
+<p>Multiple implementations of the same interface; change implementations without
+modifying callers.</p>
+<p>Documentation
+~~~~~~~~~~~~~</p>
+<p>Protocols make contracts explicit and self-documenting through type hints.
+The interface defines what's expected, not how it's implemented.</p>
+<p>Independence
+~~~~~~~~~~~~</p>
+<p>No framework dependencies. No architectural constraints. Works in any Python
+application structure.</p>
+<h4 id="building_blocks.foundation.ports--type-parameters-explained">TYPE PARAMETERS EXPLAINED<a class="headerlink" href="#building_blocks.foundation.ports--type-parameters-explained" title="Permanent link">¶</a></h4>
+<p>InputType: The data type your operations work with
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</p>
+<p>Often represents:</p>
+<ul>
+<li>IDs for lookup operations (UserID, ProductID, OrderID)</li>
+<li>Query objects for search operations (SearchQuery, Filter)</li>
+<li>Data to be processed or validated (FormData, Document)</li>
+<li>Keys for cache operations (CacheKey, str)</li>
+<li>Commands or requests (CreateUserCommand, PaymentRequest)</li>
+</ul>
+<p>Examples:
+- Repository[UserID, User]           # Input: ID
+- Cache[str, bytes]                  # Input: cache key
+- Processor[RawData, ProcessedData]  # Input: data to process</p>
+<p>OutputType: The data type your operations return
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</p>
+<p>Often represents:</p>
+<ul>
+<li>Entities or aggregates (User, Product, Order)</li>
+<li>Result objects (SearchResult, ValidationResult, PaymentResult)</li>
+<li>Optional data (User | None)</li>
+<li>Collections (list[Product], dict[str, Any])</li>
+<li>Status or confirmation (bool, None)</li>
+</ul>
+<p>Examples:
+- Repository[UserID, User]           # Output: User entity
+- Cache[str, bytes]                  # Output: cached bytes
+- Validator[Data, list[Error]]       # Output: list of errors</p>
+<h4 id="building_blocks.foundation.ports--structural-typing-pep-544">STRUCTURAL TYPING (PEP 544)<a class="headerlink" href="#building_blocks.foundation.ports--structural-typing-pep-544" title="Permanent link">¶</a></h4>
+<p>Implementations don't need to explicitly inherit from your protocols. They only
+need to implement the required methods (structural subtyping).</p>
+<p>.. code-block:: python</p>
+<pre><code>class MyRepository:  # No inheritance needed
+    def find_by_id(self, id: UserID) -&gt; User | None:
+        return self._users.get(id)
+
+    def save(self, user: User) -&gt; None:
+        self._users[user.id] = user
+
+repo: UserRepository = MyRepository()  # static analyzers accept this
+</code></pre>
+<p>You can also inherit explicitly (optional):</p>
+<p>.. code-block:: python</p>
+<pre><code>class MyRepository(UserRepository):  # Explicit inheritance
+    def find_by_id(self, id: UserID) -&gt; User | None:
+        return self._users.get(id)
+
+    def save(self, user: User) -&gt; None:
+        self._users[user.id] = user
+</code></pre>
+<h4 id="building_blocks.foundation.ports--common-usage-patterns">COMMON USAGE PATTERNS<a class="headerlink" href="#building_blocks.foundation.ports--common-usage-patterns" title="Permanent link">¶</a></h4>
+<p>Pattern 1: Repository (Data Persistence)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</p>
+<p>.. code-block:: python</p>
+<pre><code>class ProductRepository(OutboundPort[ProductID, Product]):
+    def find_by_id(self, id: ProductID) -&gt; Product | None: ...
+    def find_by_category(self, category: str) -&gt; list[Product]: ...
+    def save(self, product: Product) -&gt; None: ...
+    def delete(self, id: ProductID) -&gt; bool: ...
+</code></pre>
+<p>Pattern 2: Cache (Fast Data Access)</p>
+<pre><code>
+.. code-block:: python
+
+    class SessionCache(OutboundPort[SessionID, SessionData]):
+        async def get(self, id: SessionID) -&gt; SessionData | None: ...
+        async def set(self, id: SessionID, data: SessionData, ttl: int) -&gt; None: ...
+        async def delete(self, id: SessionID) -&gt; bool: ...
+
+Pattern 3: Use Case / Command Handler (Business Logic)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: python
+
+    class CreateOrderUseCase(InboundPort[OrderData, Order]):
+        def execute(self, data: OrderData) -&gt; Order: ...
+        def validate(self, data: OrderData) -&gt; list[ValidationError]: ...
+
+Pattern 4: Query Handler (Data Retrieval)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: python
+
+    class SearchProducts(InboundPort[SearchQuery, SearchResult]):
+        async def search(self, query: SearchQuery) -&gt; SearchResult: ...
+        async def suggest(self, partial: str) -&gt; list[str]: ...
+
+Pattern 5: External API Client (Third-Party Integration)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: python
+
+    class PaymentGateway(OutboundPort[PaymentRequest, PaymentResult]):
+        async def charge(self, request: PaymentRequest) -&gt; PaymentResult: ...
+        async def refund(self, transaction_id: str) -&gt; PaymentResult: ...
+
+Pattern 6: Message Broker (Async Communication)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: python
+
+    class EventPublisher(OutboundPort[DomainEvent, None]):
+        async def publish(self, event: DomainEvent) -&gt; None: ...
+        async def publish_batch(self, events: list[DomainEvent]) -&gt; None: ...
+
+Pattern 7: Notification Gateway (Multi-Channel Messaging)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: python
+
+    class NotificationSender(OutboundPort[Notification, bool]):
+        async def send_email(self, notification: Notification) -&gt; bool: ...
+        async def send_sms(self, notification: Notification) -&gt; bool: ...
+        async def send_push(self, notification: Notification) -&gt; bool: ...
+
+USAGE IN DIFFERENT ARCHITECTURES
+--------------------------------
+
+These protocols are architecture-agnostic and work in any structure:
+
+- Layered Architecture — use ports to define boundaries between layers
+- MVC Applications — define contracts between models, views, controllers
+- Microservices — define ports for service-to-service communication
+- Single-File Scripts — use ports even in simple scripts for testability
+- Domain-Driven Design — repositories and domain services as ports
+- Hexagonal / Ports-and-Adapters — a natural fit
+- Clean Architecture — ports define boundaries and dependencies
+- Your Custom Structure — no assumptions
+
+TESTING STRATEGIES
+------------------
+
+Strategy 1: In-Memory Fakes (Fast Unit Tests)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: python
+
+    # Production
+    repo = PostgresUserRepository(db_pool)
+
+    # Testing (no database, instant)
+    repo = InMemoryUserRepository()
+
+    # Test runs in microseconds
+    user = User(id="123", email="test@example.com")
+    repo.save(user)
+    assert repo.find_by_id("123") == user
+
+Strategy 2: Mock Objects (Verify Interactions)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: python
+
+    from unittest.mock import Mock
+
+    mock_repo = Mock(spec=UserRepository)
+    mock_repo.find_by_id.return_value = User(...)
+
+    service = UserService(mock_repo)
+    service.get_user("123")
+
+    mock_repo.find_by_id.assert_called_once_with("123")
+
+Strategy 3: Test Doubles with State
+</code></pre>
+<p>.. code-block:: python</p>
+<pre><code>class SpyRepository:
+    def __init__(self):
+        self.saved_users = []
+        self.deleted_ids = []
+
+    def save(self, user: User) -&gt; None:
+        self.saved_users.append(user)
+
+    def delete(self, id: UserID) -&gt; bool:
+        self.deleted_ids.append(id)
+        return True
+
+# Verify behavior
+spy = SpyRepository()
+service.register_user(spy, "alice@example.com", "Alice")
+assert len(spy.saved_users) == 1
+assert spy.saved_users[0].email == "alice@example.com"
+</code></pre>
+<h4 id="building_blocks.foundation.ports--protocol-definitions">PROTOCOL DEFINITIONS<a class="headerlink" href="#building_blocks.foundation.ports--protocol-definitions" title="Permanent link">¶</a></h4>
+<p>See Also:
+- PEP 544 — Protocols: Structural subtyping (static duck typing)
+- typing.Protocol — Python's Protocol implementation</p>
+<div class="doc doc-children">
+<div class="doc doc-object doc-class">
+<h3 class="doc doc-heading" id="building_blocks.foundation.ports.Port">
+<code>Port</code>
+<a class="headerlink" href="#building_blocks.foundation.ports.Port" title="Permanent link">¶</a></h3>
+<div class="doc doc-contents">
+<p class="doc doc-class-bases">
+              Bases: <code><span title="typing.Protocol">Protocol</span></code>, <code><span title="typing.Generic">Generic</span>[<span title="building_blocks.foundation.ports.InputType">InputType</span>, <span title="building_blocks.foundation.ports.OutputType">OutputType</span>]</code></p>
+<p>Base protocol for defining interface contracts.</p>
+<p>Port is a generic Protocol that serves as the foundation for interface
+declarations. It provides type parameters (InputType, OutputType) and
+defines no methods — it's a marker protocol that you extend to create your
+own specific interfaces.</p>
+<h5 id="building_blocks.foundation.ports.Port--when-to-use">WHEN TO USE<a class="headerlink" href="#building_blocks.foundation.ports.Port--when-to-use" title="Permanent link">¶</a></h5>
+<ul>
+<li>Use <code>Port</code> directly when the Inbound/Outbound naming does not fit.</li>
+<li>Use <code>InboundPort</code> for operations that receive/process input.</li>
+<li>Use <code>OutboundPort</code> for interfaces to external systems.</li>
+</ul>
+<h5 id="building_blocks.foundation.ports.Port--type-parameters">TYPE PARAMETERS<a class="headerlink" href="#building_blocks.foundation.ports.Port--type-parameters" title="Permanent link">¶</a></h5>
+<ul>
+<li><code>InputType</code>:  the type of data accepted by operations on this interface</li>
+<li><code>OutputType</code>: the type of data returned by operations on this interface</li>
+</ul>
+<h5 id="building_blocks.foundation.ports.Port--design-notes">DESIGN NOTES<a class="headerlink" href="#building_blocks.foundation.ports.Port--design-notes" title="Permanent link">¶</a></h5>
+<ul>
+<li>Marker protocol: derived protocols add whatever methods make sense.</li>
+<li>Structural typing (PEP 544): implementations need not inherit explicitly.</li>
+<li>Common ancestor for the port hierarchy.</li>
+</ul>
+<h5 id="building_blocks.foundation.ports.Port--example-data-transformer">EXAMPLE: DATA TRANSFORMER<a class="headerlink" href="#building_blocks.foundation.ports.Port--example-data-transformer" title="Permanent link">¶</a></h5>
+<p>.. code-block:: python</p>
+<pre><code>from building_blocks.foundation import Port
+
+class DataTransformer(Port[SourceFormat, TargetFormat]):
+    # Transform data from one format to another.
+    def transform(self, source: SourceFormat) -&gt; TargetFormat: ...
+    def can_transform(self, source: SourceFormat) -&gt; bool: ...
+    def get_errors(self, source: SourceFormat) -&gt; list[str]: ...
+
+class JSONToXMLTransformer:
+    def transform(self, source: dict) -&gt; str:
+        import xml.etree.ElementTree as ET
+        root = ET.Element("root")
+        for key, value in source.items():
+            child = ET.SubElement(root, key)
+            child.text = str(value)
+        return ET.tostring(root, encoding="unicode")
+
+    def can_transform(self, source: dict) -&gt; bool:
+        return isinstance(source, dict)
+
+    def get_errors(self, source: dict) -&gt; list[str]:
+        if not isinstance(source, dict):
+            return ["Source must be a dictionary"]
+        return []
+
+def convert_data(transformer: DataTransformer[dict, str], data: dict) -&gt; str:
+    if not transformer.can_transform(data):
+        errors = transformer.get_errors(data)
+        raise ValueError(f"Cannot transform: {errors}")
+    return transformer.transform(data)
+</code></pre>
+<details class="quote">
+<summary>Source code in <code>src/building_blocks/foundation/ports.py</code></summary>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">438</span>
+<span class="normal">439</span>
+<span class="normal">440</span>
+<span class="normal">441</span>
+<span class="normal">442</span>
+<span class="normal">443</span>
+<span class="normal">444</span>
+<span class="normal">445</span>
+<span class="normal">446</span>
+<span class="normal">447</span>
+<span class="normal">448</span>
+<span class="normal">449</span>
+<span class="normal">450</span>
+<span class="normal">451</span>
+<span class="normal">452</span>
+<span class="normal">453</span>
+<span class="normal">454</span>
+<span class="normal">455</span>
+<span class="normal">456</span>
+<span class="normal">457</span>
+<span class="normal">458</span>
+<span class="normal">459</span>
+<span class="normal">460</span>
+<span class="normal">461</span>
+<span class="normal">462</span>
+<span class="normal">463</span>
+<span class="normal">464</span>
+<span class="normal">465</span>
+<span class="normal">466</span>
+<span class="normal">467</span>
+<span class="normal">468</span>
+<span class="normal">469</span>
+<span class="normal">470</span>
+<span class="normal">471</span>
+<span class="normal">472</span>
+<span class="normal">473</span>
+<span class="normal">474</span>
+<span class="normal">475</span>
+<span class="normal">476</span>
+<span class="normal">477</span>
+<span class="normal">478</span>
+<span class="normal">479</span>
+<span class="normal">480</span>
+<span class="normal">481</span>
+<span class="normal">482</span>
+<span class="normal">483</span>
+<span class="normal">484</span>
+<span class="normal">485</span>
+<span class="normal">486</span>
+<span class="normal">487</span>
+<span class="normal">488</span>
+<span class="normal">489</span>
+<span class="normal">490</span>
+<span class="normal">491</span>
+<span class="normal">492</span>
+<span class="normal">493</span>
+<span class="normal">494</span>
+<span class="normal">495</span>
+<span class="normal">496</span>
+<span class="normal">497</span>
+<span class="normal">498</span>
+<span class="normal">499</span>
+<span class="normal">500</span>
+<span class="normal">501</span>
+<span class="normal">502</span>
+<span class="normal">503</span>
+<span class="normal">504</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Port</span><span class="p">(</span><span class="n">Protocol</span><span class="p">,</span> <span class="n">Generic</span><span class="p">[</span><span class="n">InputType</span><span class="p">,</span> <span class="n">OutputType</span><span class="p">]):</span>
+<span class="w">    </span><span class="sd">"""Base protocol for defining interface contracts.</span>
+
+<span class="sd">    Port is a generic Protocol that serves as the foundation for interface</span>
+<span class="sd">    declarations. It provides type parameters (InputType, OutputType) and</span>
+<span class="sd">    defines no methods — it's a marker protocol that you extend to create your</span>
+<span class="sd">    own specific interfaces.</span>
+
+<span class="sd">    WHEN TO USE</span>
+<span class="sd">    -----------</span>
+<span class="sd">    - Use ``Port`` directly when the Inbound/Outbound naming does not fit.</span>
+<span class="sd">    - Use ``InboundPort`` for operations that receive/process input.</span>
+<span class="sd">    - Use ``OutboundPort`` for interfaces to external systems.</span>
+
+<span class="sd">    TYPE PARAMETERS</span>
+<span class="sd">    ---------------</span>
+<span class="sd">    - ``InputType``:  the type of data accepted by operations on this interface</span>
+<span class="sd">    - ``OutputType``: the type of data returned by operations on this interface</span>
+
+<span class="sd">    DESIGN NOTES</span>
+<span class="sd">    ------------</span>
+<span class="sd">    - Marker protocol: derived protocols add whatever methods make sense.</span>
+<span class="sd">    - Structural typing (PEP 544): implementations need not inherit explicitly.</span>
+<span class="sd">    - Common ancestor for the port hierarchy.</span>
+
+<span class="sd">    EXAMPLE: DATA TRANSFORMER</span>
+<span class="sd">    -------------------------</span>
+
+<span class="sd">    .. code-block:: python</span>
+
+<span class="sd">        from building_blocks.foundation import Port</span>
+
+<span class="sd">        class DataTransformer(Port[SourceFormat, TargetFormat]):</span>
+<span class="sd">            # Transform data from one format to another.</span>
+<span class="sd">            def transform(self, source: SourceFormat) -&gt; TargetFormat: ...</span>
+<span class="sd">            def can_transform(self, source: SourceFormat) -&gt; bool: ...</span>
+<span class="sd">            def get_errors(self, source: SourceFormat) -&gt; list[str]: ...</span>
+
+<span class="sd">        class JSONToXMLTransformer:</span>
+<span class="sd">            def transform(self, source: dict) -&gt; str:</span>
+<span class="sd">                import xml.etree.ElementTree as ET</span>
+<span class="sd">                root = ET.Element("root")</span>
+<span class="sd">                for key, value in source.items():</span>
+<span class="sd">                    child = ET.SubElement(root, key)</span>
+<span class="sd">                    child.text = str(value)</span>
+<span class="sd">                return ET.tostring(root, encoding="unicode")</span>
+
+<span class="sd">            def can_transform(self, source: dict) -&gt; bool:</span>
+<span class="sd">                return isinstance(source, dict)</span>
+
+<span class="sd">            def get_errors(self, source: dict) -&gt; list[str]:</span>
+<span class="sd">                if not isinstance(source, dict):</span>
+<span class="sd">                    return ["Source must be a dictionary"]</span>
+<span class="sd">                return []</span>
+
+<span class="sd">        def convert_data(transformer: DataTransformer[dict, str], data: dict) -&gt; str:</span>
+<span class="sd">            if not transformer.can_transform(data):</span>
+<span class="sd">                errors = transformer.get_errors(data)</span>
+<span class="sd">                raise ValueError(f"Cannot transform: {errors}")</span>
+<span class="sd">            return transformer.transform(data)</span>
+<span class="sd">    """</span>
+
+    <span class="o">...</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">__port_variance__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">__x</span><span class="p">:</span> <span class="n">InputType</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">OutputType</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Private helper to make type variance explicit (for static checkers)."""</span>
+        <span class="o">...</span>
+</code></pre></div></td></tr></table></div>
+</details>
+<div class="doc doc-children">
+<div class="doc doc-object doc-function">
+<h4 class="doc doc-heading" id="building_blocks.foundation.ports.Port.__port_variance__">
+<code class="highlight language-python"><span class="n">__port_variance__</span><span class="p">(</span><span class="n">__x</span><span class="p">)</span></code>
+<a class="headerlink" href="#building_blocks.foundation.ports.Port.__port_variance__" title="Permanent link">¶</a></h4>
+<div class="doc doc-contents">
+<p>Private helper to make type variance explicit (for static checkers).</p>
+<details class="quote">
+<summary>Source code in <code>src/building_blocks/foundation/ports.py</code></summary>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">502</span>
+<span class="normal">503</span>
+<span class="normal">504</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">__port_variance__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">__x</span><span class="p">:</span> <span class="n">InputType</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">OutputType</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Private helper to make type variance explicit (for static checkers)."""</span>
+    <span class="o">...</span>
+</code></pre></div></td></tr></table></div>
+</details>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="doc doc-object doc-class">
+<h3 class="doc doc-heading" id="building_blocks.foundation.ports.InboundPort">
+<code>InboundPort</code>
+<a class="headerlink" href="#building_blocks.foundation.ports.InboundPort" title="Permanent link">¶</a></h3>
+<div class="doc doc-contents">
+<p class="doc doc-class-bases">
+              Bases: <code><a class="autorefs autorefs-internal" href="#building_blocks.foundation.ports.Port" title="Port (building_blocks.foundation.ports.Port)">Port</a>[<span title="building_blocks.foundation.ports.InputType">InputType</span>, <span title="building_blocks.foundation.ports.OutputType">OutputType</span>]</code>, <code><span title="typing.Protocol">Protocol</span></code></p>
+<p>Protocol foundation for defining inbound operation interfaces.</p>
+<p><code>InboundPort</code> is intended for operations that receive input and produce
+output (e.g., handlers, processors, validators, use cases).</p>
+<h5 id="building_blocks.foundation.ports.InboundPort--common-use-cases">COMMON USE CASES<a class="headerlink" href="#building_blocks.foundation.ports.InboundPort--common-use-cases" title="Permanent link">¶</a></h5>
+<ul>
+<li>Request handlers (HTTP, GraphQL, gRPC)</li>
+<li>Command executors (CQRS commands)</li>
+<li>Query processors (CQRS queries)</li>
+<li>Data validators and processors</li>
+<li>Use cases / application services</li>
+<li>Event handlers and workflow executors</li>
+</ul>
+<h5 id="building_blocks.foundation.ports.InboundPort--usage-pattern">USAGE PATTERN<a class="headerlink" href="#building_blocks.foundation.ports.InboundPort--usage-pattern" title="Permanent link">¶</a></h5>
+<ol>
+<li>Extend <code>InboundPort</code> and define your methods.</li>
+<li>Implement with one or more concrete classes.</li>
+<li>Use as type hints in your functions.</li>
+<li>Swap implementations as needed (production, testing, etc.).</li>
+</ol>
+<h5 id="building_blocks.foundation.ports.InboundPort--example-command-handler">EXAMPLE: COMMAND HANDLER<a class="headerlink" href="#building_blocks.foundation.ports.InboundPort--example-command-handler" title="Permanent link">¶</a></h5>
+<p>.. code-block:: python</p>
+<pre><code>class CreateUserCommand(InboundPort[UserRegistrationData, User]):
+    def execute(self, data: UserRegistrationData) -&gt; User: ...
+    def validate(self, data: UserRegistrationData) -&gt; list[ValidationError]: ...
+
+class CreateUserCommandHandler:
+    def __init__(self, user_repo: UserRepository, email_service: EmailService):
+        self.user_repo = user_repo
+        self.email_service = email_service
+
+    def execute(self, data: UserRegistrationData) -&gt; User:
+        errors = self.validate(data)
+        if errors:
+            raise ValidationError(errors)
+
+        if self.user_repo.find_by_email(data.email):
+            raise ValueError("Email already registered")
+
+        user = User(
+            id=generate_id(),
+            email=data.email,
+            name=data.name,
+            created_at=datetime.now(),
+        )
+
+        self.user_repo.save(user)
+        self.email_service.send_welcome(user.email, user.name)
+        return user
+
+    def validate(self, data: UserRegistrationData) -&gt; list[ValidationError]:
+        errors: list[ValidationError] = []
+        if not data.email or "@" not in data.email:
+            errors.append(ValidationError("Invalid email"))
+        if not data.name or len(data.name) &lt; 2:
+            errors.append(ValidationError("Name too short"))
+        if len(data.password) &lt; 8:
+            errors.append(ValidationError("Password too weak"))
+        return errors
+</code></pre>
+<details class="quote">
+<summary>Source code in <code>src/building_blocks/foundation/ports.py</code></summary>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">507</span>
+<span class="normal">508</span>
+<span class="normal">509</span>
+<span class="normal">510</span>
+<span class="normal">511</span>
+<span class="normal">512</span>
+<span class="normal">513</span>
+<span class="normal">514</span>
+<span class="normal">515</span>
+<span class="normal">516</span>
+<span class="normal">517</span>
+<span class="normal">518</span>
+<span class="normal">519</span>
+<span class="normal">520</span>
+<span class="normal">521</span>
+<span class="normal">522</span>
+<span class="normal">523</span>
+<span class="normal">524</span>
+<span class="normal">525</span>
+<span class="normal">526</span>
+<span class="normal">527</span>
+<span class="normal">528</span>
+<span class="normal">529</span>
+<span class="normal">530</span>
+<span class="normal">531</span>
+<span class="normal">532</span>
+<span class="normal">533</span>
+<span class="normal">534</span>
+<span class="normal">535</span>
+<span class="normal">536</span>
+<span class="normal">537</span>
+<span class="normal">538</span>
+<span class="normal">539</span>
+<span class="normal">540</span>
+<span class="normal">541</span>
+<span class="normal">542</span>
+<span class="normal">543</span>
+<span class="normal">544</span>
+<span class="normal">545</span>
+<span class="normal">546</span>
+<span class="normal">547</span>
+<span class="normal">548</span>
+<span class="normal">549</span>
+<span class="normal">550</span>
+<span class="normal">551</span>
+<span class="normal">552</span>
+<span class="normal">553</span>
+<span class="normal">554</span>
+<span class="normal">555</span>
+<span class="normal">556</span>
+<span class="normal">557</span>
+<span class="normal">558</span>
+<span class="normal">559</span>
+<span class="normal">560</span>
+<span class="normal">561</span>
+<span class="normal">562</span>
+<span class="normal">563</span>
+<span class="normal">564</span>
+<span class="normal">565</span>
+<span class="normal">566</span>
+<span class="normal">567</span>
+<span class="normal">568</span>
+<span class="normal">569</span>
+<span class="normal">570</span>
+<span class="normal">571</span>
+<span class="normal">572</span>
+<span class="normal">573</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">InboundPort</span><span class="p">(</span><span class="n">Port</span><span class="p">[</span><span class="n">InputType</span><span class="p">,</span> <span class="n">OutputType</span><span class="p">],</span> <span class="n">Protocol</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Protocol foundation for defining inbound operation interfaces.</span>
+
+<span class="sd">    ``InboundPort`` is intended for operations that receive input and produce</span>
+<span class="sd">    output (e.g., handlers, processors, validators, use cases).</span>
+
+<span class="sd">    COMMON USE CASES</span>
+<span class="sd">    ----------------</span>
+<span class="sd">    - Request handlers (HTTP, GraphQL, gRPC)</span>
+<span class="sd">    - Command executors (CQRS commands)</span>
+<span class="sd">    - Query processors (CQRS queries)</span>
+<span class="sd">    - Data validators and processors</span>
+<span class="sd">    - Use cases / application services</span>
+<span class="sd">    - Event handlers and workflow executors</span>
+
+<span class="sd">    USAGE PATTERN</span>
+<span class="sd">    -------------</span>
+<span class="sd">    1. Extend ``InboundPort`` and define your methods.</span>
+<span class="sd">    2. Implement with one or more concrete classes.</span>
+<span class="sd">    3. Use as type hints in your functions.</span>
+<span class="sd">    4. Swap implementations as needed (production, testing, etc.).</span>
+
+<span class="sd">    EXAMPLE: COMMAND HANDLER</span>
+<span class="sd">    ------------------------</span>
+
+<span class="sd">    .. code-block:: python</span>
+
+<span class="sd">        class CreateUserCommand(InboundPort[UserRegistrationData, User]):</span>
+<span class="sd">            def execute(self, data: UserRegistrationData) -&gt; User: ...</span>
+<span class="sd">            def validate(self, data: UserRegistrationData) -&gt; list[ValidationError]: ...</span>
+
+<span class="sd">        class CreateUserCommandHandler:</span>
+<span class="sd">            def __init__(self, user_repo: UserRepository, email_service: EmailService):</span>
+<span class="sd">                self.user_repo = user_repo</span>
+<span class="sd">                self.email_service = email_service</span>
+
+<span class="sd">            def execute(self, data: UserRegistrationData) -&gt; User:</span>
+<span class="sd">                errors = self.validate(data)</span>
+<span class="sd">                if errors:</span>
+<span class="sd">                    raise ValidationError(errors)</span>
+
+<span class="sd">                if self.user_repo.find_by_email(data.email):</span>
+<span class="sd">                    raise ValueError("Email already registered")</span>
+
+<span class="sd">                user = User(</span>
+<span class="sd">                    id=generate_id(),</span>
+<span class="sd">                    email=data.email,</span>
+<span class="sd">                    name=data.name,</span>
+<span class="sd">                    created_at=datetime.now(),</span>
+<span class="sd">                )</span>
+
+<span class="sd">                self.user_repo.save(user)</span>
+<span class="sd">                self.email_service.send_welcome(user.email, user.name)</span>
+<span class="sd">                return user</span>
+
+<span class="sd">            def validate(self, data: UserRegistrationData) -&gt; list[ValidationError]:</span>
+<span class="sd">                errors: list[ValidationError] = []</span>
+<span class="sd">                if not data.email or "@" not in data.email:</span>
+<span class="sd">                    errors.append(ValidationError("Invalid email"))</span>
+<span class="sd">                if not data.name or len(data.name) &lt; 2:</span>
+<span class="sd">                    errors.append(ValidationError("Name too short"))</span>
+<span class="sd">                if len(data.password) &lt; 8:</span>
+<span class="sd">                    errors.append(ValidationError("Password too weak"))</span>
+<span class="sd">                return errors</span>
+<span class="sd">    """</span>
+
+    <span class="o">...</span>
+</code></pre></div></td></tr></table></div>
+</details>
+<div class="doc doc-children">
+</div>
+</div>
+</div>
+<div class="doc doc-object doc-class">
+<h3 class="doc doc-heading" id="building_blocks.foundation.ports.OutboundPort">
+<code>OutboundPort</code>
+<a class="headerlink" href="#building_blocks.foundation.ports.OutboundPort" title="Permanent link">¶</a></h3>
+<div class="doc doc-contents">
+<p class="doc doc-class-bases">
+              Bases: <code><a class="autorefs autorefs-internal" href="#building_blocks.foundation.ports.Port" title="Port (building_blocks.foundation.ports.Port)">Port</a>[<span title="building_blocks.foundation.ports.InputType">InputType</span>, <span title="building_blocks.foundation.ports.OutputType">OutputType</span>]</code>, <code><span title="typing.Protocol">Protocol</span></code></p>
+<p>Protocol foundation for defining outbound operation interfaces.</p>
+<p><code>OutboundPort</code> is intended for operations that interact with external
+systems, resources, or services (e.g., repositories, caches, APIs,
+message brokers, storage, search).</p>
+<h5 id="building_blocks.foundation.ports.OutboundPort--common-use-cases">COMMON USE CASES<a class="headerlink" href="#building_blocks.foundation.ports.OutboundPort--common-use-cases" title="Permanent link">¶</a></h5>
+<ul>
+<li>Repositories (data persistence)</li>
+<li>Cache systems (fast data access)</li>
+<li>Message brokers (async communication)</li>
+<li>External API clients (third-party services)</li>
+<li>Email/SMS gateways (notifications)</li>
+<li>Search engines (full-text search)</li>
+<li>File storage (object storage, S3)</li>
+<li>Event publishers (event-driven systems)</li>
+<li>Logging systems (centralized logging)</li>
+</ul>
+<h5 id="building_blocks.foundation.ports.OutboundPort--usage-pattern">USAGE PATTERN<a class="headerlink" href="#building_blocks.foundation.ports.OutboundPort--usage-pattern" title="Permanent link">¶</a></h5>
+<ol>
+<li>Extend <code>OutboundPort</code> and define your methods.</li>
+<li>Implement for different backends (SQL, NoSQL, in-memory, etc.).</li>
+<li>Use as type hints in your business logic.</li>
+<li>Swap implementations based on environment or requirements.</li>
+</ol>
+<h5 id="building_blocks.foundation.ports.OutboundPort--example-repository-pattern">EXAMPLE: REPOSITORY PATTERN<a class="headerlink" href="#building_blocks.foundation.ports.OutboundPort--example-repository-pattern" title="Permanent link">¶</a></h5>
+<p>.. code-block:: python</p>
+<pre><code>class OrderRepository(OutboundPort[OrderID, Order]):
+    def find_by_id(self, id: OrderID) -&gt; Order | None: ...
+    def find_by_customer(self, customer_id: CustomerID) -&gt; list[Order]: ...
+    def find_pending(self) -&gt; list[Order]: ...
+    def save(self, order: Order) -&gt; None: ...
+    def delete(self, id: OrderID) -&gt; bool: ...
+
+class PostgresOrderRepository:
+    def __init__(self, connection_pool):
+        self.db = connection_pool
+
+    def find_by_id(self, id: OrderID) -&gt; Order | None:
+        row = self.db.query_one(
+            "SELECT id, customer_id, total, status, created_at FROM orders WHERE id = $1",
+            id,
+        )
+        return Order.from_row(row) if row else None
+
+    def find_by_customer(self, customer_id: CustomerID) -&gt; list[Order]:
+        rows = self.db.query(
+            (
+                "SELECT id, customer_id, total, status, created_at "
+                "FROM orders WHERE customer_id = $1 "
+                "ORDER BY created_at DESC"
+            ),
+            customer_id,
+        )
+        return [Order.from_row(row) for row in rows]
+
+    def find_pending(self) -&gt; list[Order]:
+        rows = self.db.query(
+            (
+                "SELECT id, customer_id, total, status, created_at "
+                "FROM orders WHERE status = 'pending' "
+                "ORDER BY created_at ASC"
+            )
+        )
+        return [Order.from_row(row) for row in rows]
+
+    def save(self, order: Order) -&gt; None:
+        self.db.execute(
+            (
+                "INSERT INTO orders (id, customer_id, total, status, created_at) "
+                "VALUES ($1, $2, $3, $4, $5) "
+                "ON CONFLICT (id) DO UPDATE "
+                "SET customer_id=$2, total=$3, status=$4, created_at=$5"
+            ),
+            order.id,
+            order.customer_id,
+            order.total,
+            order.status,
+            order.created_at,
+        )
+
+    def delete(self, id: OrderID) -&gt; bool:
+        result = self.db.execute("DELETE FROM orders WHERE id = $1", id)
+        return result.rowcount &gt; 0
+
+def complete_order(repository: OrderRepository, order_id: OrderID) -&gt; Order:
+    # Mark an order as completed.
+    order = repository.find_by_id(order_id)
+    if not order:
+        raise OrderNotFound(f"Order {order_id} not found")
+    if order.status != "pending":
+        raise InvalidOperation("Only pending orders can be completed")
+
+    order.status = "completed"
+    order.completed_at = datetime.now()
+    repository.save(order)
+    return order
+</code></pre>
+<details class="quote">
+<summary>Source code in <code>src/building_blocks/foundation/ports.py</code></summary>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">576</span>
+<span class="normal">577</span>
+<span class="normal">578</span>
+<span class="normal">579</span>
+<span class="normal">580</span>
+<span class="normal">581</span>
+<span class="normal">582</span>
+<span class="normal">583</span>
+<span class="normal">584</span>
+<span class="normal">585</span>
+<span class="normal">586</span>
+<span class="normal">587</span>
+<span class="normal">588</span>
+<span class="normal">589</span>
+<span class="normal">590</span>
+<span class="normal">591</span>
+<span class="normal">592</span>
+<span class="normal">593</span>
+<span class="normal">594</span>
+<span class="normal">595</span>
+<span class="normal">596</span>
+<span class="normal">597</span>
+<span class="normal">598</span>
+<span class="normal">599</span>
+<span class="normal">600</span>
+<span class="normal">601</span>
+<span class="normal">602</span>
+<span class="normal">603</span>
+<span class="normal">604</span>
+<span class="normal">605</span>
+<span class="normal">606</span>
+<span class="normal">607</span>
+<span class="normal">608</span>
+<span class="normal">609</span>
+<span class="normal">610</span>
+<span class="normal">611</span>
+<span class="normal">612</span>
+<span class="normal">613</span>
+<span class="normal">614</span>
+<span class="normal">615</span>
+<span class="normal">616</span>
+<span class="normal">617</span>
+<span class="normal">618</span>
+<span class="normal">619</span>
+<span class="normal">620</span>
+<span class="normal">621</span>
+<span class="normal">622</span>
+<span class="normal">623</span>
+<span class="normal">624</span>
+<span class="normal">625</span>
+<span class="normal">626</span>
+<span class="normal">627</span>
+<span class="normal">628</span>
+<span class="normal">629</span>
+<span class="normal">630</span>
+<span class="normal">631</span>
+<span class="normal">632</span>
+<span class="normal">633</span>
+<span class="normal">634</span>
+<span class="normal">635</span>
+<span class="normal">636</span>
+<span class="normal">637</span>
+<span class="normal">638</span>
+<span class="normal">639</span>
+<span class="normal">640</span>
+<span class="normal">641</span>
+<span class="normal">642</span>
+<span class="normal">643</span>
+<span class="normal">644</span>
+<span class="normal">645</span>
+<span class="normal">646</span>
+<span class="normal">647</span>
+<span class="normal">648</span>
+<span class="normal">649</span>
+<span class="normal">650</span>
+<span class="normal">651</span>
+<span class="normal">652</span>
+<span class="normal">653</span>
+<span class="normal">654</span>
+<span class="normal">655</span>
+<span class="normal">656</span>
+<span class="normal">657</span>
+<span class="normal">658</span>
+<span class="normal">659</span>
+<span class="normal">660</span>
+<span class="normal">661</span>
+<span class="normal">662</span>
+<span class="normal">663</span>
+<span class="normal">664</span>
+<span class="normal">665</span>
+<span class="normal">666</span>
+<span class="normal">667</span>
+<span class="normal">668</span>
+<span class="normal">669</span>
+<span class="normal">670</span>
+<span class="normal">671</span>
+<span class="normal">672</span>
+<span class="normal">673</span>
+<span class="normal">674</span>
+<span class="normal">675</span>
+<span class="normal">676</span>
+<span class="normal">677</span>
+<span class="normal">678</span>
+<span class="normal">679</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">OutboundPort</span><span class="p">(</span><span class="n">Port</span><span class="p">[</span><span class="n">InputType</span><span class="p">,</span> <span class="n">OutputType</span><span class="p">],</span> <span class="n">Protocol</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Protocol foundation for defining outbound operation interfaces.</span>
+
+<span class="sd">    ``OutboundPort`` is intended for operations that interact with external</span>
+<span class="sd">    systems, resources, or services (e.g., repositories, caches, APIs,</span>
+<span class="sd">    message brokers, storage, search).</span>
+
+<span class="sd">    COMMON USE CASES</span>
+<span class="sd">    ----------------</span>
+<span class="sd">    - Repositories (data persistence)</span>
+<span class="sd">    - Cache systems (fast data access)</span>
+<span class="sd">    - Message brokers (async communication)</span>
+<span class="sd">    - External API clients (third-party services)</span>
+<span class="sd">    - Email/SMS gateways (notifications)</span>
+<span class="sd">    - Search engines (full-text search)</span>
+<span class="sd">    - File storage (object storage, S3)</span>
+<span class="sd">    - Event publishers (event-driven systems)</span>
+<span class="sd">    - Logging systems (centralized logging)</span>
+
+<span class="sd">    USAGE PATTERN</span>
+<span class="sd">    -------------</span>
+<span class="sd">    1. Extend ``OutboundPort`` and define your methods.</span>
+<span class="sd">    2. Implement for different backends (SQL, NoSQL, in-memory, etc.).</span>
+<span class="sd">    3. Use as type hints in your business logic.</span>
+<span class="sd">    4. Swap implementations based on environment or requirements.</span>
+
+<span class="sd">    EXAMPLE: REPOSITORY PATTERN</span>
+<span class="sd">    ---------------------------</span>
+
+<span class="sd">    .. code-block:: python</span>
+
+<span class="sd">        class OrderRepository(OutboundPort[OrderID, Order]):</span>
+<span class="sd">            def find_by_id(self, id: OrderID) -&gt; Order | None: ...</span>
+<span class="sd">            def find_by_customer(self, customer_id: CustomerID) -&gt; list[Order]: ...</span>
+<span class="sd">            def find_pending(self) -&gt; list[Order]: ...</span>
+<span class="sd">            def save(self, order: Order) -&gt; None: ...</span>
+<span class="sd">            def delete(self, id: OrderID) -&gt; bool: ...</span>
+
+<span class="sd">        class PostgresOrderRepository:</span>
+<span class="sd">            def __init__(self, connection_pool):</span>
+<span class="sd">                self.db = connection_pool</span>
+
+<span class="sd">            def find_by_id(self, id: OrderID) -&gt; Order | None:</span>
+<span class="sd">                row = self.db.query_one(</span>
+<span class="sd">                    "SELECT id, customer_id, total, status, created_at FROM orders WHERE id = $1",</span>
+<span class="sd">                    id,</span>
+<span class="sd">                )</span>
+<span class="sd">                return Order.from_row(row) if row else None</span>
+
+<span class="sd">            def find_by_customer(self, customer_id: CustomerID) -&gt; list[Order]:</span>
+<span class="sd">                rows = self.db.query(</span>
+<span class="sd">                    (</span>
+<span class="sd">                        "SELECT id, customer_id, total, status, created_at "</span>
+<span class="sd">                        "FROM orders WHERE customer_id = $1 "</span>
+<span class="sd">                        "ORDER BY created_at DESC"</span>
+<span class="sd">                    ),</span>
+<span class="sd">                    customer_id,</span>
+<span class="sd">                )</span>
+<span class="sd">                return [Order.from_row(row) for row in rows]</span>
+
+<span class="sd">            def find_pending(self) -&gt; list[Order]:</span>
+<span class="sd">                rows = self.db.query(</span>
+<span class="sd">                    (</span>
+<span class="sd">                        "SELECT id, customer_id, total, status, created_at "</span>
+<span class="sd">                        "FROM orders WHERE status = 'pending' "</span>
+<span class="sd">                        "ORDER BY created_at ASC"</span>
+<span class="sd">                    )</span>
+<span class="sd">                )</span>
+<span class="sd">                return [Order.from_row(row) for row in rows]</span>
+
+<span class="sd">            def save(self, order: Order) -&gt; None:</span>
+<span class="sd">                self.db.execute(</span>
+<span class="sd">                    (</span>
+<span class="sd">                        "INSERT INTO orders (id, customer_id, total, status, created_at) "</span>
+<span class="sd">                        "VALUES ($1, $2, $3, $4, $5) "</span>
+<span class="sd">                        "ON CONFLICT (id) DO UPDATE "</span>
+<span class="sd">                        "SET customer_id=$2, total=$3, status=$4, created_at=$5"</span>
+<span class="sd">                    ),</span>
+<span class="sd">                    order.id,</span>
+<span class="sd">                    order.customer_id,</span>
+<span class="sd">                    order.total,</span>
+<span class="sd">                    order.status,</span>
+<span class="sd">                    order.created_at,</span>
+<span class="sd">                )</span>
+
+<span class="sd">            def delete(self, id: OrderID) -&gt; bool:</span>
+<span class="sd">                result = self.db.execute("DELETE FROM orders WHERE id = $1", id)</span>
+<span class="sd">                return result.rowcount &gt; 0</span>
+
+<span class="sd">        def complete_order(repository: OrderRepository, order_id: OrderID) -&gt; Order:</span>
+<span class="sd">            # Mark an order as completed.</span>
+<span class="sd">            order = repository.find_by_id(order_id)</span>
+<span class="sd">            if not order:</span>
+<span class="sd">                raise OrderNotFound(f"Order {order_id} not found")</span>
+<span class="sd">            if order.status != "pending":</span>
+<span class="sd">                raise InvalidOperation("Only pending orders can be completed")</span>
+
+<span class="sd">            order.status = "completed"</span>
+<span class="sd">            order.completed_at = datetime.now()</span>
+<span class="sd">            repository.save(order)</span>
+<span class="sd">            return order</span>
+<span class="sd">    """</span>
+
+    <span class="o">...</span>
+</code></pre></div></td></tr></table></div>
+</details>
+<div class="doc doc-children">
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</article>
+</div>
+<script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+</div>
+</main>
+<footer class="md-footer">
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.tabs", "navigation.instant", "navigation.sections", "toc.follow", "content.code.copy", "content.action.edit", "content.tabs.link"], "search": "../../../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+<script src="../../../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+</body>
+</html>
