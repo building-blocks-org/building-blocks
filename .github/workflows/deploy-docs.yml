@@ -41,3 +41,11 @@ jobs:
 
       - name: Deploy to GitHub Pages
         run: poetry run mkdocs gh-deploy --force
+
+      - name: Configure Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Deploy to GitHub Pages
+        run: poetry run mkdocs gh-deploy --force
