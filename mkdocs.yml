@@ -21,7 +21,8 @@ theme:
     - content.tabs.link
 
 extra_css:
-  - assets/styles/custom-theme.css
+  - assets/styles/theme.css
+  - assets/styles/mermaid-theme.css
 
 markdown_extensions:
   - admonition
@@ -46,6 +47,7 @@ plugins:
             render_module_path: true
             show_root_heading: true
             show_source: true
+
 nav:
   - Home: index.md
 
