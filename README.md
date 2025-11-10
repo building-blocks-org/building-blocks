@@ -20,9 +20,12 @@ Composable **abstractions and interfaces** for writing clean, testable, and main
 - **Maintainable** — by isolating concerns and dependencies
 
 It doesn’t dictate your architecture.
-Instead, it provides **foundations and reusable** abstraction for **forging** your own **blocks**.
+Instead, it provides **foundations and reusable** abstractions for **forging** your own **blocks**.
 
-If you **forget** your own **block** you will achieve software with intent and clarity
+Isolate external concerns from your core logic you will achieve systems that are adaptable and resilient. 
+If you **forge** your own **block** you will achieve software with intent and clarity
+If you use **blocks** you will achieve consistency and reusability.
+**ForgingBlocks** helps you build systems that last.
 
 You can use it to:
 - Learn and apply **architecture and design principles**
@@ -49,9 +52,9 @@ This toolkit defines **layer-agnostic foundations** that compose into any design
 ## 🚀 Installation
 
 ```bash
-poetry add forging-blocks-toolkit
+poetry add forging-blocks
 # or
-pip install forging-blocks-toolkit
+pip install forging-blocks
 ```
 
 ---
@@ -115,4 +118,4 @@ MIT — see [LICENSE](LICENSE)
 
 ---
 
-_**ForgingBlocks Toolkit** — foundations for clean, testable, and maintainable Python architectures._
+_**ForgingBlocks** — foundations for clean, testable, and maintainable Python architectures._
