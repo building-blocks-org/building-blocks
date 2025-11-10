@@ -1,6 +1,6 @@
 # Architecture Guide 🧠
 
-The **BuildingBlocks** toolkit follows a composable architecture model based on clear **boundaries**, **contracts**, and **abstractions**.
+The **ForgingBlocks** toolkit follows a composable architecture model based on clear **boundaries**, **contracts**, and **abstractions**.
 
 It enables developers to design systems that are **testable**, **maintainable**, and **framework-agnostic**.
 
@@ -10,7 +10,7 @@ It enables developers to design systems that are **testable**, **maintainable**,
 
 > “Architecture is about intent — code is about implementation.”
 
-BuildingBlocks helps you express *intent* explicitly through **interfaces** (Ports) and **domain-driven abstractions** (Entities, Value Objects, Events).
+ForgingBlocks helps you express *intent* explicitly through **interfaces** (Ports) and **domain-driven abstractions** (Entities, Value Objects, Events).
 
 This approach supports **Clean Architecture**, **Hexagonal Architecture**, and **DDD**, without enforcing any strict style.
 
@@ -114,6 +114,6 @@ flowchart LR
 
 ## ✅ Summary
 
-BuildingBlocks is **not a framework** — it’s a **foundation**.
+ForgingBlocks is **not a framework** — it’s a **foundation**.
 
 It helps you express intent, isolate concerns, and design systems that evolve gracefully.

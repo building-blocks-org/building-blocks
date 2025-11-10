@@ -1,13 +1,13 @@
 [tool.poetry]
-name = "building-blocks-toolkit"
+name = "forging-blocks"
 version = "0.3.5"
 description = "Composable toolkit for clean, testable, and maintainable Python applications"
-authors = ["BuildingBlocks Org <buildingblocksorganization91@gmail.com>"]
+authors = ["ForgingBlocks Org <forgingblocksorganization91@gmail.com>"]
 license = "MIT"
 readme = "README.md"
-repository = "https://github.com/building-blocks-org/building-blocks"
-homepage = "https://building-blocks-org.github.io/building-blocks/"
-packages = [{ include = "building_blocks", from = "src" }]
+repository = "https://github.com/forging-blocks-org/forging-blocks"
+homepage = "https://forging-blocks-org.github.io/forging-blocks/"
+packages = [{ include = "forging_blocks", from = "src" }]
 keywords = [
   "python library",
   "clean architecture",
@@ -36,7 +36,7 @@ keywords = [
   "application layer",
   "presentation layer",
   "foundation",
-  "building blocks",
+  "forging blocks",
 ]
 
 [tool.poetry.dependencies]
@@ -91,7 +91,7 @@ ignore = [
 convention = "google"
 
 [tool.ruff.lint.isort]
-known-first-party = ["building_blocks"]
+known-first-party = ["forging_blocks"]
 
 [tool.ruff.lint.per-file-ignores]
 "tests/**/*" = ["D"]
@@ -143,7 +143,7 @@ asyncio_mode = "auto"
 addopts = [
   "--strict-markers",
   "--strict-config",
-  "--cov=building_blocks",
+  "--cov=forging_blocks",
   "--cov-report=term-missing",
 ]
 
@@ -157,12 +157,12 @@ exclude_lines = [
 
 [tool.coverage.run]
 omit = [
-    "src/building_blocks/application/ports/inbound/*.py",
-    "src/building_blocks/application/ports/outbound/*.py",
-    "src/building_blocks/foundation/mapper.py",
-    "src/building_blocks/foundation/result_mapper.py",
-    "src/building_blocks/foundation/ports.py",
-    "src/building_blocks/foundation/debuggable.py"
+    "src/forging_blocks/application/ports/inbound/*.py",
+    "src/forging_blocks/application/ports/outbound/*.py",
+    "src/forging_blocks/foundation/mapper.py",
+    "src/forging_blocks/foundation/result_mapper.py",
+    "src/forging_blocks/foundation/ports.py",
+    "src/forging_blocks/foundation/debuggable.py"
 ]
 
 [tool.black]

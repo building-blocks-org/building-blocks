@@ -1,4 +1,4 @@
-# 🧩 BuildingBlocks
+# ForgingBlocks
 
 Composable **abstractions and interfaces** for writing clean, testable, and maintainable Python code.
 
@@ -14,13 +14,18 @@ Composable **abstractions and interfaces** for writing clean, testable, and main
 
 > Not a framework — a **toolkit** of composable contracts and abstractions.
 
-**BuildingBlocks** helps you create codebases that are:
+**ForgingBlocks** helps you create codebases that are:
 - **Clean** — with clear boundaries and intent
 - **Testable** — by design, through explicit interfaces
 - **Maintainable** — by isolating concerns and dependencies
 
 It doesn’t dictate your architecture.
-Instead, it provides **foundations and reusable building blocks** for designing software with intent and clarity.
+Instead, it provides **foundations and reusable** abstractions for **forging** your own **blocks**.
+
+Isolate external concerns from your core logic you will achieve systems that are adaptable and resilient. 
+If you **forge** your own **block** you will achieve software with intent and clarity
+If you use **blocks** you will achieve consistency and reusability.
+**ForgingBlocks** helps you build systems that last.
 
 You can use it to:
 - Learn and apply **architecture and design principles**
@@ -32,7 +37,7 @@ You can use it to:
 
 ## 🧩 Core Concepts
 
-> Foundations, not frameworks — BuildingBlocks provides the *language* for clean architecture.
+> Foundations, not frameworks — ForgingBlocks provides the *language* for clean architecture.
 
 This toolkit defines **layer-agnostic foundations** that compose into any design:
 
@@ -47,9 +52,9 @@ This toolkit defines **layer-agnostic foundations** that compose into any design
 ## 🚀 Installation
 
 ```bash
-poetry add building-blocks-toolkit
+poetry add forging-blocks
 # or
-pip install building-blocks-toolkit
+pip install forging-blocks
 ```
 
 ---
@@ -57,7 +62,7 @@ pip install building-blocks-toolkit
 ## ⚡ Quick Example
 
 ```python
-from building_blocks.foundation import Result, Ok, Err
+from forging_blocks.foundation import Result, Ok, Err
 
 def divide(a: int, b: int) -> Result[int, str]:
     if b == 0:
@@ -73,7 +78,7 @@ if result.is_ok():
 
 ## 📚 Learn More
 
-- [📘 Documentation](https://building-blocks-org.github.io/building-blocks/)
+- [📘 Documentation](https://forging-blocks-org.github.io/forging-blocks/)
 - [🚀 Getting Started Guide](docs/guide/getting-started.md)
 - [🏗️ Architecture Overview](docs/guide/architecture.md)
 - [🧱 Packages & Layers](docs/guide/packages_and_layers.md)
@@ -86,7 +91,7 @@ if result.is_ok():
 Most systems fail not because of missing features,
 but because of **tight coupling**, **implicit dependencies**, and **unclear responsibilities**.
 
-**BuildingBlocks** helps you *design code intentionally* —
+**ForgingBlocks** helps you *design code intentionally* —
 so your system remains testable, extensible, and adaptable as it grows.
 
 ---
@@ -113,4 +118,4 @@ MIT — see [LICENSE](LICENSE)
 
 ---
 
-_**BuildingBlocks Toolkit** — foundations for clean, testable, and maintainable Python architectures._
+_**ForgingBlocks** — foundations for clean, testable, and maintainable Python architectures._

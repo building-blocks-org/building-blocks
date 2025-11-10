@@ -1,4 +1,4 @@
-# 🧩 BuildingBlocks
+# 🧩 ForgingBlocks
 
 Composable abstractions for clean, testable, and maintainable Python architectures.
 

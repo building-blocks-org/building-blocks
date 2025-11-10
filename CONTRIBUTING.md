@@ -1,4 +1,4 @@
-# Contributing to Building Blocks
+# Contributing to ForgingBlocks
 
 We welcome contributions from the community! Whether you're fixing a bug, adding a feature, or improving documentation, your help is appreciated.
 
@@ -9,8 +9,8 @@ To get started with development, follow these steps:
 1.  **Fork the repository** on GitHub.
 2.  **Clone your fork** to your local machine:
     ```bash
-    git clone https://github.com/YOUR-USERNAME/building-blocks.git
-    cd building-blocks
+    git clone https://github.com/YOUR-USERNAME/forging-blocks.git
+    cd forging-blocks
     ```
 3.  **Set up the development environment** using Poetry:
     ```bash
@@ -36,7 +36,7 @@ To get started with development, follow these steps:
     ```bash
     git push origin my-feature-branch
     ```
-5.  **Create a pull request** to the `main` branch of the `building-blocks-org/building-blocks` repository.
+5.  **Create a pull request** to the `main` branch of the `forging-blocks-org/forging-blocks` repository.
 
 ## Code Style & Quality
 
@@ -54,12 +54,12 @@ poetry run pre-commit run --all-files
 
 ## Reporting Bugs
 
-If you find a bug, please open an issue on our [GitHub issue tracker](https://github.com/gbrennon/building-blocks/issues). Include as much detail as possible, such as:
+If you find a bug, please open an issue on our [GitHub issue tracker](https://github.com/gbrennon/forging-blocks/issues). Include as much detail as possible, such as:
 
 -   A clear description of the bug.
 -   Steps to reproduce the bug.
 -   The expected behavior.
 -   The actual behavior.
--   Your Python version and the version of `building_blocks`.
+-   Your Python version and the version of `forging_blocks`.
 
 Thank you for contributing!

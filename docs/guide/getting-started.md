@@ -1,6 +1,6 @@
 # Getting Started 🚀
 
-Welcome to **BuildingBlocks** — a toolkit to help you write clean, testable, and maintainable Python code.
+Welcome to **ForgingBlocks** — a toolkit to help you write clean, testable, and maintainable Python code.
 
 ---
 
@@ -9,20 +9,20 @@ Welcome to **BuildingBlocks** — a toolkit to help you write clean, testable, a
 You can install it via Poetry
 
 ```bash
-poetry add building-blocks-toolkit
+poetry add forging-blocks
 ```
 
 Using pip
 
 ```bash
 
-pip install building-blocks-toolkit
+pip install forging-blocks
 ```
 
 Using UV
 
 ```bash
-uv install building-blocks-toolkit
+uv install forging-blocks
 ```
 
 or any tool that supports PyPI packages.
@@ -32,7 +32,7 @@ or any tool that supports PyPI packages.
 ## 🧩 Quick Example
 
 ```python
-from building_blocks.foundation import Result, Ok, Err
+from forging_blocks.foundation import Result, Ok, Err
 
 def divide(a: int, b: int) -> Result[int, str]:
     if b == 0:
@@ -46,11 +46,11 @@ if result.is_ok():
 
 ---
 
-## 🧠 Why Use BuildingBlocks?
+## 🧠 Why Use ForgingBlocks?
 
 Most Python codebases grow messy because boundaries are not explicit.
 
-**BuildingBlocks** provides abstractions that make intent and responsibility clear and help you to write decoupled applications.
+**ForgingBlocks** provides abstractions that make intent and responsibility clear and help you to write decoupled applications.
 
 You can use it to:
 

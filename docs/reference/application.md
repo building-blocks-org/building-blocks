@@ -41,8 +41,8 @@ Each `<action>_use_case.py` file defines a protocol for a specific action.
 ```python
 from dataclasses import dataclass
 from typing import Protocol
-from building_blocks.application import UseCase
-from building_blocks.foundation import Result
+from forging_blocks.application import UseCase
+from forging_blocks.foundation import Result
 
 @dataclass(frozen=True)
 class RegisterUserRequest:

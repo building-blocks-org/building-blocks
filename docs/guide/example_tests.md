@@ -1,6 +1,6 @@
 # Example Tests 🧩
 
-**For developers using BuildingBlocks** this guide shows *how* to write tests for each layer.
+**For developers using ForgingBlocks** this guide shows *how* to write tests for each layer.
 
 It complements the conceptual [Testing Strategy](testing.md) page.
 
@@ -17,7 +17,7 @@ from __future__ import annotations
 
 from uuid import UUID
 
-from building_blocks.domain import Entity
+from forging_blocks.domain import Entity
 
 class User(Entity[UUID]):
     id: UUID
@@ -50,8 +50,8 @@ class TestUser:
 ``` python
 from dataclasses import dataclass
 
-from building_blocks.application import UseCase
-from building_blocks.foundation import Error, Ok, Err, Result
+from forging_blocks.application import UseCase
+from forging_blocks.foundation import Error, Ok, Err, Result
 
 @dataclass(frozen=True)
 class DivideNumbersRequest:
@@ -106,8 +106,8 @@ class TestDivideNumbersUseCase:
 ## 🧩 Infrastructure Example --- Repository Adapter
 
 ``` python
-from building_blocks.application import Repository
-from building_blocks.domain import Entity
+from forging_blocks.application import Repository
+from forging_blocks.domain import Entity
 
 class User(Entity):
     id: int

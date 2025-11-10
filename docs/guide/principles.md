@@ -1,6 +1,6 @@
 # Architectural Principles 🧭
 
-**BuildingBlocks** is grounded in timeless software design principles that make systems robust, adaptable, and maintainable.
+**ForgingBlocks** is grounded in timeless software design principles that make systems robust, adaptable, and maintainable.
 
 ---
 
@@ -44,7 +44,7 @@ Entities and Value Objects are **immutable by default**, ensuring that business 
 
 ## ⚙️ 5. Composability
 
-Everything in BuildingBlocks can be combined like LEGO pieces:
+Everything in ForgingBlocks can be combined like LEGO pieces:
 
 each class, protocol, and helper is small, explicit, and self-contained.
 
@@ -60,7 +60,7 @@ Mocking or substituting ports becomes trivial.
 
 ## 🏗️ 7. Framework Independence
 
-BuildingBlocks does not force you into a specific runtime or web framework.
+ForgingBlocks does not force you into a specific runtime or web framework.
 
 You can use it with **FastAPI**, **Django**, **Flask**, **Click**, or even plain scripts — the design remains consistent.
 
@@ -68,7 +68,7 @@ You can use it with **FastAPI**, **Django**, **Flask**, **Click**, or even plain
 
 ## ✅ Summary
 
-BuildingBlocks promotes **intentional design**:
+ForgingBlocks promotes **intentional design**:
 
 - Each boundary is explicit.
 - Each dependency is visible.

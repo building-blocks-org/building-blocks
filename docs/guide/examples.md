@@ -1,6 +1,6 @@
 # Architecture Examples 🧩
 
-This section illustrates how to apply **BuildingBlocks** in different contexts and architectural styles.
+This section illustrates how to apply **ForgingBlocks** in different contexts and architectural styles.
 
 ---
 
@@ -80,4 +80,4 @@ class SqlUserRepository(UserRepository):
 
 ## ✅ Summary
 
-These examples show that **BuildingBlocks** does not dictate the architecture — it **enables composition** across many styles (Clean, Hexagonal, CQRS, SOA, etc.).
+These examples show that **ForgingBlocks** does not dictate the architecture — it **enables composition** across many styles (Clean, Hexagonal, CQRS, SOA, etc.).
