@@ -10,7 +10,7 @@ from building_blocks.foundation.ports import InboundPort
 
 MessageType = TypeVar("MessageType", contravariant=True, bound=Message)
 MessageHandlerResultType = TypeVar("MessageHandlerResultType", covariant=True)
-QueryResultType = TypeVar("QueryResultType", covariant=True)
+QueryResultType = TypeVar("QueryResultType", contravariant=True)
 
 
 class MessageHandler(InboundPort[MessageType, MessageHandlerResultType], Protocol):

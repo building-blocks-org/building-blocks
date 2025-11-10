@@ -8,7 +8,7 @@ The **application** package defines how the system behaves — it orchestrates d
 
 This layer expresses *what the system does* — coordinating the domain with the outside world through explicit boundaries.
 
-- **Inbound Ports** define *use cases* (entry points).  
+- **Inbound Ports** define *use cases* (entry points).
 - **Outbound Ports** define *dependencies* (repositories, message buses, etc.).
 
 ---

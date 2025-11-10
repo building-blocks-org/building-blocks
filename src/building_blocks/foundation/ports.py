@@ -429,6 +429,8 @@ See Also:
 """
 
 # pyright: reportInvalidTypeVarUse=false
+# mypy: disable-error-code=misc
+
 from typing import Generic, Protocol, TypeVar
 
 InputType = TypeVar("InputType", contravariant=True)
@@ -498,10 +500,6 @@ class Port(Protocol, Generic[InputType, OutputType]):
     """
 
     ...
-
-    def __port_variance__(self, __x: InputType) -> OutputType:
-        """Private helper to make type variance explicit (for static checkers)."""
-        ...
 
 
 class InboundPort(Port[InputType, OutputType], Protocol):
