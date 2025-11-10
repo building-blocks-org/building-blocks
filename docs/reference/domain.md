@@ -29,7 +29,7 @@ class Coordinate(ValueObject):
 An object with a unique identity that encapsulates behavior and state.
 
 ```python
-class User(Entity):
+class User(AggregateRoot[UUID]):
     id: UUID
     name: str
 ```
@@ -39,7 +39,7 @@ class User(Entity):
 A cluster of entities treated as a single unit of consistency.
 
 ```python
-class Order(AggregateRoot):
+class Order(Entity[UUID]):
     id: UUID
     items: list[OrderItem]
 

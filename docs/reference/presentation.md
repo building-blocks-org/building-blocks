@@ -1,6 +1,6 @@
 # Presentation Package 🧩
 
-The **presentation** package is the system’s *entry point*.  
+The **presentation** package is the system’s *entry point*.
 It handles user or system interactions and delegates execution to the **application layer**.
 
 ---
