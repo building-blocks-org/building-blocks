@@ -1,6 +1,6 @@
 # 🚀 Release Guide
 
-This document describes how to safely create and publish a new release of **BuildingBlocks** to **PyPI**.
+This document describes how to safely create and publish a new release of **ForgingBlocks** to **PyPI**.
 
 ---
 
@@ -77,4 +77,4 @@ git push origin vX.Y.Z
 ---
 
 ✅ Once complete, verify your package here:
-👉 [https://pypi.org/project/building-blocks-toolkit/](https://pypi.org/project/building-blocks-toolkit/)
+👉 [https://pypi.org/project/forging-blocks-toolkit/](https://pypi.org/project/forging-blocks-toolkit/)

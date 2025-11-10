@@ -1,6 +1,6 @@
-"""Autodoc generator for MkDocs — BuildingBlocks Edition.
+"""Autodoc generator for MkDocs — ForgingBlocks Edition.
 
-- Scans all Python modules under `src/building_blocks/`
+- Scans all Python modules under `src/forging_blocks/`
 - Extracts top-level docstrings
 - Generates .md files under `docs/reference/autodoc/`
 - Updates mkdocs.yml under "Auto-Generated API Docs" with proper hierarchical nesting
@@ -13,7 +13,7 @@ import re
 import sys
 from pathlib import Path
 
-SRC_DIR = Path("src/building_blocks")
+SRC_DIR = Path("src/forging_blocks")
 OUT_DIR = Path("docs/reference/autodoc")
 MKDOCS_YML = Path("mkdocs.yml")
 
@@ -37,7 +37,7 @@ def module_title(path: Path) -> str:
 def import_path(path: Path) -> str:
     """Convert a file path to a Python import path."""
     rel = path.relative_to(SRC_DIR)
-    return f"building_blocks.{'.'.join(rel.with_suffix('').parts)}"
+    return f"forging_blocks.{'.'.join(rel.with_suffix('').parts)}"
 
 
 def ensure_dir(path: Path) -> None:

@@ -21,7 +21,7 @@ It contains no business logic or framework dependencies.
 Represents success or failure explicitly without exceptions.
 
 ```python
-from building_blocks.foundation import Result, Ok, Err
+from forging_blocks.foundation import Result, Ok, Err
 
 def divide(a: int, b: int) -> Result[int, str]:
     if b == 0:

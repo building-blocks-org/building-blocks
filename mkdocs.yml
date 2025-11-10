@@ -1,9 +1,9 @@
-site_name: BuildingBlocks 🧩
+site_name: ForgingBlocks
 site_description: A composable architecture toolkit for clean, testable, and maintainable Python applications.
 site_author: Glauber Brennon
-site_url: https://building-blocks-org.github.io/building-blocks/
-repo_url: https://github.com/building-blocks-org/building-blocks
-repo_name: building-blocks-org/building-blocks
+site_url: https://forging-blocks-org.github.io/forging-blocks/
+repo_url: https://github.com/forging-blocks-org/forging-blocks
+repo_name: forging-blocks-org/forging-blocks
 edit_uri: edit/main/docs/
 
 theme:

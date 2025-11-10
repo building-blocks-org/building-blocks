@@ -1,0 +1,1 @@
+"""ForgingBlocks for domain errors."""

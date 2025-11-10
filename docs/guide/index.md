@@ -1,18 +1,18 @@
 # Guide 🧭
 
-> **Audience:** Application developers using **BuildingBlocks** to
+> **Audience:** Application developers using **ForgingBlocks** to
 > design clean, testable, and maintainable systems.
 
-Welcome to the **BuildingBlocks Guide**.
+Welcome to the **ForgingBlocks Guide**.
 
 This section introduces the core ideas, architectural principles, and
 conventions used throughout the toolkit.
 
-It explains how to **apply BuildingBlocks in your own projects**,
+It explains how to **apply ForgingBlocks in your own projects**,
 covering concepts like layering, ports and adapters, result handling,
 and testing practices.
 
-If you're learning how to *use* BuildingBlocks --- this is your starting
+If you're learning how to *use* ForgingBlocks --- this is your starting
 point.
 
 ------------------------------------------------------------------------

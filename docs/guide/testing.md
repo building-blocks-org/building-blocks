@@ -3,7 +3,7 @@
 > For a hands-on look at real test examples for each layer, see [Example
 > Tests](example_tests.md).
 
-The **BuildingBlocks** toolkit encourages a testing strategy that
+The **ForgingBlocks** toolkit encourages a testing strategy that
 mirrors its architecture.\
 Each layer --- from Foundation to Infrastructure --- can be tested
 independently using predictable patterns and explicit contracts.
@@ -54,6 +54,6 @@ independently using predictable patterns and explicit contracts.
 
 ------------------------------------------------------------------------
 
-Testing in **BuildingBlocks** is about clarity and intent --- ensuring
+Testing in **ForgingBlocks** is about clarity and intent --- ensuring
 that each layer is verified independently, without leaking concerns
 across architectural boundaries.

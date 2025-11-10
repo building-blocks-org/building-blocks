@@ -1,6 +1,6 @@
 # Packages and Layers 🧩
 
-**BuildingBlocks** organizes your code into *layered packages* that make large systems easier to reason about, test, and extend.
+**ForgingBlocks** organizes your code into *layered packages* that make large systems easier to reason about, test, and extend.
 
 Each package has a clear responsibility and communicates with others through **explicit boundaries (Ports)**.
 
@@ -10,7 +10,7 @@ Each package has a clear responsibility and communicates with others through **e
 
 > “Good architecture is about knowing where things belong.”
 
-**BuildingBlocks** follows a layered architecture model:
+**ForgingBlocks** follows a layered architecture model:
 
 - each package represents a *boundary of responsibility*.
 
