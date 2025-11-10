@@ -9,20 +9,20 @@ Welcome to **BuildingBlocks** — a toolkit to help you write clean, testable, a
 You can install it via Poetry
 
 ```bash
-poetry add building-blocks
+poetry add building-blocks-toolkit
 ```
 
 Using pip
 
 ```bash
 
-pip install building-blocks
+pip install building-blocks-toolkit
 ```
 
 Using UV
 
 ```bash
-uv install building-blocks
+uv install building-blocks-toolkit
 ```
 
 or any tool that supports PyPI packages.

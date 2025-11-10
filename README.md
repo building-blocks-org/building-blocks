@@ -48,9 +48,9 @@ This toolkit defines **layer-agnostic foundations** that compose into any design
 ## 🚀 Installation
 
 ```bash
-poetry add building-blocks
+poetry add building-blocks-toolkit
 # or
-pip install building-blocks
+pip install building-blocks-toolkit
 ```
 
 ---
