@@ -7,7 +7,7 @@ on:
 
 permissions:
   contents: write
-  id-token: write  # Required for OIDC authentication with PyPI
+  id-token: write
 
 jobs:
   publish:
@@ -22,23 +22,15 @@ jobs:
         uses: ./.github/actions/setup-poetry
 
       - name: Install dependencies
-        run: poetry install --with dev
+        run: poetry install --only main
 
       - name: Build package
         run: poetry build
 
       - name: Publish to PyPI via OIDC
+        env:
+          POETRY_PYPI_TOKEN_PYPI: ${{ secrets.PYPI_PUBLISH_TOKEN || '' }}
         run: |
           echo "Publishing to PyPI via OIDC..."
+          poetry config pypi-token.pypi ""
           poetry publish --build
-
-      - name: Create GitHub Release
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          TAG="${GITHUB_REF##*/}"
-          echo "Creating GitHub release for $TAG"
-          gh release create "$TAG" dist/* \
-            --repo "$GITHUB_REPOSITORY" \
-            --generate-notes \
-            --title "Release $TAG"
