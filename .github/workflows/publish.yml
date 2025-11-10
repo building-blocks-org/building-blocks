@@ -27,16 +27,34 @@ jobs:
       - name: Build package
         run: poetry build
 
-      - name: Publish to PyPI via OIDC
-        env:
-          POETRY_PYPI_TOKEN_PYPI: ${{ secrets.PYPI_API_TOKEN || '' }}
+      - name: Detect release target
+        id: detect
         run: |
-          echo "Publishing to PyPI via OIDC authentication..."
+          TAG="${GITHUB_REF##*/}"
+          echo "tag=$TAG" >> "$GITHUB_OUTPUT"
+          if [[ "$TAG" =~ [a-zA-Z] ]]; then
+            echo "target=test-pypi" >> "$GITHUB_OUTPUT"
+            echo "Detected prerelease tag ($TAG): will publish to TestPyPI"
+          else
+            echo "target=pypi" >> "$GITHUB_OUTPUT"
+            echo "Detected stable tag ($TAG): will publish to PyPI"
+          fi
+
+      - name: Publish to TestPyPI via OIDC
+        if: steps.detect.outputs.target == 'test-pypi'
+        run: |
+          echo "Publishing to TestPyPI..."
+          poetry publish --build --username __token__ --password ${{ PYPI_API_TOKEN || '' }} --repository testpypi
+
+      - name: Publish to PyPI via OIDC
+        if: steps.detect.outputs.target == 'pypi'
+        run: |
+          echo "Publishing to PyPI..."
           poetry publish --build --username __token__ --password ${{ PYPI_API_TOKEN || '' }}
 
       - name: Create GitHub Release
         env:
-          TAG: ${{ github.ref_name }}
+          TAG: ${{ steps.detect.outputs.tag }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           echo "Creating GitHub release for $TAG"
