@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from abc import ABC
 from collections.abc import Hashable
-from typing import Any, Generic, TypeVar
+from typing import Any, Generic, TypeVar, cast
 
 from building_blocks.domain.errors.draft_entity_is_not_hashable_error import (
     DraftEntityIsNotHashableError,
@@ -51,10 +51,13 @@ class Entity(Generic[TId], ABC):
         """Check equality based on type and identifier."""
         if type(self) is not type(other):
             return False
-        assert isinstance(other, Entity)
-        if self._id is None or other._id is None:
-            return self is other
-        return self._id == other._id
+
+        other_entty = cast(Entity[TId], other)
+
+        if self._id is None or other_entty._id is None:
+            return self is other_entty
+
+        return self._id == other_entty._id
 
     def __hash__(self) -> int:
         """Return the hash based on the entity's identifier.

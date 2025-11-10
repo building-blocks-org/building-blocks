@@ -429,6 +429,8 @@ See Also:
 """
 
 # pyright: reportInvalidTypeVarUse=false
+# mypy: disable-error-code=misc
+
 from typing import Generic, Protocol, TypeVar
 
 InputType = TypeVar("InputType", contravariant=True)

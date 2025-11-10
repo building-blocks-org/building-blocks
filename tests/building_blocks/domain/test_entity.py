@@ -118,7 +118,19 @@ class TestUser:
     def test___eq___WHEN_comparing_with_subclass_THEN_returns_false(self) -> None:
         user = User(1, "A")
         admin = Admin(1, "A")
+
         result = user.__eq__(admin)
+
+        assert result is False
+
+    def test_eq_using_equals_syntatic_sugar_when_comparing_with_subclass_then_returns_false(
+        self,
+    ) -> None:
+        user = User(1, "A")
+        admin = Admin(1, "A")
+
+        result = user == admin
+
         assert result is False
 
     def test___hash___WHEN_persisted_THEN_returns_hash_of_id(self, persisted_user: User) -> None:

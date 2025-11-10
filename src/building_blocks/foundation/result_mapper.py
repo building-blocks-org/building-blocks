@@ -36,19 +36,19 @@ from typing import Generic, Protocol, TypeVar
 from building_blocks.foundation.mapper import Mapper
 from building_blocks.foundation.result import Result
 
-SuccessInputType = TypeVar("SuccessInputType", contravariant=True)
-ErrorInputType = TypeVar("ErrorInputType", contravariant=True)
-SuccessOutputType = TypeVar("SuccessOutputType", covariant=True)
-ErrorOutputType = TypeVar("ErrorOutputType", covariant=True)
+SuccessIn = TypeVar("SuccessIn", contravariant=True)
+ErrorIn = TypeVar("ErrorIn", contravariant=True)
+SuccessOut = TypeVar("SuccessOut", covariant=True)
+ErrorOut = TypeVar("ErrorOut", covariant=True)
 
 
 class ResultMapper(
+    Generic[SuccessIn, ErrorIn, SuccessOut, ErrorOut],
     Mapper[
-        Result[SuccessInputType, ErrorInputType],
-        Result[SuccessOutputType, ErrorOutputType],
+        Result[SuccessIn, ErrorIn],
+        Result[SuccessOut, ErrorOut],
     ],
     Protocol,
-    Generic[SuccessInputType, ErrorInputType, SuccessOutputType, ErrorOutputType],
 ):
     """Specialized Mapper for transforming Result types across layers.
 
@@ -74,9 +74,12 @@ class ResultMapper(
         ...         return Result.err(ErrorResponse(result.unwrap_err()))
     """
 
-    def map(
-        self, result: Result[SuccessInputType, ErrorInputType]
-    ) -> Result[SuccessOutputType, ErrorOutputType]:
+    _success_in: SuccessIn | None = None
+    _error_in: ErrorIn | None = None
+    _success_out: SuccessOut | None = None
+    _error_out: ErrorOut | None = None
+
+    def map(self, result: Result[SuccessIn, ErrorIn]) -> Result[SuccessOut, ErrorOut]:
         """Map a Result from one type representation to another.
 
         Transforms both success and error types, typically when crossing

@@ -40,7 +40,7 @@ class ResultAccessError(Error):
         return cls(ErrorMessage("Cannot access error from an Ok Result."))
 
 
-class Result(Protocol, Generic[ResultType, ErrorType]):
+class Result(Generic[ResultType, ErrorType], Protocol):
     """A type that represents either a success (Ok) or an error (Err)."""
 
     @property
