@@ -103,9 +103,10 @@ class TestUser:
         self, draft_user: User
     ) -> None:
         other_draft = User(None, "Alice")
-        result_same = draft_user == draft_user
+        # Test that a draft entity equals itself via __eq__
+        assert (draft_user == draft_user) is True
+        # Test that different draft instances are not equal
         result_different = draft_user == other_draft
-        assert result_same is True
         assert result_different is False
 
     def test___eq___WHEN_comparing_with_different_class_THEN_returns_false(
