@@ -22,7 +22,7 @@ jobs:
         uses: ./.github/actions/setup-poetry
 
       - name: Install dependencies
-        run: poetry install --with dev
+        run: poetry install --only main
 
       - name: Build package
         run: poetry build
