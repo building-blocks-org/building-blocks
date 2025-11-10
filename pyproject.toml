@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "building-blocks"
+name = "building-blocks-toolkit"
 version = "0.3.2"
 description = "Composable toolkit for clean, testable, and maintainable Python applications"
 authors = ["BuildingBlocks Org <buildingblocksorganization91@gmail.com>"]
