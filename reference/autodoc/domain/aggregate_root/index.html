@@ -7,12 +7,12 @@
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <meta content="A composable architecture toolkit for clean, testable, and maintainable Python applications." name="description"/>
 <meta content="Glauber Brennon" name="author"/>
-<link href="https://building-blocks-org.github.io/building-blocks/reference/autodoc/domain/aggregate_root/" rel="canonical"/>
+<link href="https://forging-blocks-org.github.io/forging-blocks/reference/autodoc/domain/aggregate_root/" rel="canonical"/>
 <link href="../../application/ports/outbound/unit_of_work/" rel="prev"/>
 <link href="../entity/" rel="next"/>
 <link href="../../../../assets/favicon.ico" rel="icon"/>
 <meta content="mkdocs-1.6.1, mkdocs-material-9.6.23" name="generator"/>
-<title>Aggregate Root - BuildingBlocks 🧩</title>
+<title>Aggregate Root - ForgingBlocks</title>
 <link href="../../../../assets/stylesheets/main.84d31ad4.min.css" rel="stylesheet"/>
 <link href="../../../../assets/stylesheets/palette.06af60db.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -34,9 +34,11 @@
 </div>
 <div data-md-component="announce">
 </div>
+<div data-md-color-scheme="default" data-md-component="outdated" hidden="">
+</div>
 <header class="md-header" data-md-component="header">
 <nav aria-label="Header" class="md-header__inner md-grid">
-<a aria-label="BuildingBlocks 🧩" class="md-header__button md-logo" data-md-component="logo" href="../../../.." title="BuildingBlocks 🧩">
+<a aria-label="ForgingBlocks" class="md-header__button md-logo" data-md-component="logo" href="../../../.." title="ForgingBlocks">
 <img alt="logo" src="../../../../assets/logo.png"/>
 </a>
 <label class="md-header__button md-icon" for="__drawer">
@@ -46,7 +48,7 @@
 <div class="md-header__ellipsis">
 <div class="md-header__topic">
 <span class="md-ellipsis">
-            BuildingBlocks 🧩
+            ForgingBlocks
           </span>
 </div>
 <div class="md-header__topic" data-md-component="header-topic">
@@ -89,12 +91,12 @@
 </div>
 </div>
 <div class="md-header__source">
-<a class="md-source" data-md-component="source" href="https://github.com/building-blocks-org/building-blocks" title="Go to repository">
+<a class="md-source" data-md-component="source" href="https://github.com/forging-blocks-org/forging-blocks" title="Go to repository">
 <div class="md-source__icon md-icon">
 <svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
 </div>
 <div class="md-source__repository">
-    building-blocks-org/building-blocks
+    forging-blocks-org/forging-blocks
   </div>
 </a>
 </div>
@@ -165,18 +167,18 @@
 <div class="md-sidebar__inner">
 <nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
 <label class="md-nav__title" for="__drawer">
-<a aria-label="BuildingBlocks 🧩" class="md-nav__button md-logo" data-md-component="logo" href="../../../.." title="BuildingBlocks 🧩">
+<a aria-label="ForgingBlocks" class="md-nav__button md-logo" data-md-component="logo" href="../../../.." title="ForgingBlocks">
 <img alt="logo" src="../../../../assets/logo.png"/>
 </a>
-    BuildingBlocks 🧩
+    ForgingBlocks
   </label>
 <div class="md-nav__source">
-<a class="md-source" data-md-component="source" href="https://github.com/building-blocks-org/building-blocks" title="Go to repository">
+<a class="md-source" data-md-component="source" href="https://github.com/forging-blocks-org/forging-blocks" title="Go to repository">
 <div class="md-source__icon md-icon">
 <svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
 </div>
 <div class="md-source__repository">
-    building-blocks-org/building-blocks
+    forging-blocks-org/forging-blocks
   </div>
 </a>
 </div>
@@ -504,7 +506,7 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#building_blocks.domain.aggregate_root">
+<a class="md-nav__link" href="#forging_blocks.domain.aggregate_root">
 <span class="md-ellipsis">
       aggregate_root
     </span>
@@ -512,7 +514,7 @@
 <nav aria-label="aggregate_root" class="md-nav">
 <ul class="md-nav__list">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#building_blocks.domain.aggregate_root.AggregateVersion">
+<a class="md-nav__link" href="#forging_blocks.domain.aggregate_root.AggregateVersion">
 <span class="md-ellipsis">
       AggregateVersion
     </span>
@@ -520,14 +522,14 @@
 <nav aria-label="AggregateVersion" class="md-nav">
 <ul class="md-nav__list">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#building_blocks.domain.aggregate_root.AggregateVersion.value">
+<a class="md-nav__link" href="#forging_blocks.domain.aggregate_root.AggregateVersion.value">
 <span class="md-ellipsis">
       value
     </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#building_blocks.domain.aggregate_root.AggregateVersion.increment">
+<a class="md-nav__link" href="#forging_blocks.domain.aggregate_root.AggregateVersion.increment">
 <span class="md-ellipsis">
       increment
     </span>
@@ -537,7 +539,7 @@
 </nav>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#building_blocks.domain.aggregate_root.AggregateRoot">
+<a class="md-nav__link" href="#forging_blocks.domain.aggregate_root.AggregateRoot">
 <span class="md-ellipsis">
       AggregateRoot
     </span>
@@ -545,37 +547,30 @@
 <nav aria-label="AggregateRoot" class="md-nav">
 <ul class="md-nav__list">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#building_blocks.domain.aggregate_root.AggregateRoot.version">
+<a class="md-nav__link" href="#forging_blocks.domain.aggregate_root.AggregateRoot.version">
 <span class="md-ellipsis">
       version
     </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#building_blocks.domain.aggregate_root.AggregateRoot.__init__">
+<a class="md-nav__link" href="#forging_blocks.domain.aggregate_root.AggregateRoot.collect_events">
 <span class="md-ellipsis">
-      __init__
+      collect_events
     </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#building_blocks.domain.aggregate_root.AggregateRoot.uncommitted_changes">
-<span class="md-ellipsis">
-      uncommitted_changes
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#building_blocks.domain.aggregate_root.AggregateRoot.record_event">
+<a class="md-nav__link" href="#forging_blocks.domain.aggregate_root.AggregateRoot.record_event">
 <span class="md-ellipsis">
       record_event
     </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#building_blocks.domain.aggregate_root.AggregateRoot.mark_changes_as_committed">
+<a class="md-nav__link" href="#forging_blocks.domain.aggregate_root.AggregateRoot.uncommitted_changes">
 <span class="md-ellipsis">
-      mark_changes_as_committed
+      uncommitted_changes
     </span>
 </a>
 </li>
@@ -870,7 +865,7 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#building_blocks.domain.aggregate_root">
+<a class="md-nav__link" href="#forging_blocks.domain.aggregate_root">
 <span class="md-ellipsis">
       aggregate_root
     </span>
@@ -878,7 +873,7 @@
 <nav aria-label="aggregate_root" class="md-nav">
 <ul class="md-nav__list">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#building_blocks.domain.aggregate_root.AggregateVersion">
+<a class="md-nav__link" href="#forging_blocks.domain.aggregate_root.AggregateVersion">
 <span class="md-ellipsis">
       AggregateVersion
     </span>
@@ -886,14 +881,14 @@
 <nav aria-label="AggregateVersion" class="md-nav">
 <ul class="md-nav__list">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#building_blocks.domain.aggregate_root.AggregateVersion.value">
+<a class="md-nav__link" href="#forging_blocks.domain.aggregate_root.AggregateVersion.value">
 <span class="md-ellipsis">
       value
     </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#building_blocks.domain.aggregate_root.AggregateVersion.increment">
+<a class="md-nav__link" href="#forging_blocks.domain.aggregate_root.AggregateVersion.increment">
 <span class="md-ellipsis">
       increment
     </span>
@@ -903,7 +898,7 @@
 </nav>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#building_blocks.domain.aggregate_root.AggregateRoot">
+<a class="md-nav__link" href="#forging_blocks.domain.aggregate_root.AggregateRoot">
 <span class="md-ellipsis">
       AggregateRoot
     </span>
@@ -911,37 +906,30 @@
 <nav aria-label="AggregateRoot" class="md-nav">
 <ul class="md-nav__list">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#building_blocks.domain.aggregate_root.AggregateRoot.version">
+<a class="md-nav__link" href="#forging_blocks.domain.aggregate_root.AggregateRoot.version">
 <span class="md-ellipsis">
       version
     </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#building_blocks.domain.aggregate_root.AggregateRoot.__init__">
+<a class="md-nav__link" href="#forging_blocks.domain.aggregate_root.AggregateRoot.collect_events">
 <span class="md-ellipsis">
-      __init__
+      collect_events
     </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#building_blocks.domain.aggregate_root.AggregateRoot.uncommitted_changes">
-<span class="md-ellipsis">
-      uncommitted_changes
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#building_blocks.domain.aggregate_root.AggregateRoot.record_event">
+<a class="md-nav__link" href="#forging_blocks.domain.aggregate_root.AggregateRoot.record_event">
 <span class="md-ellipsis">
       record_event
     </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#building_blocks.domain.aggregate_root.AggregateRoot.mark_changes_as_committed">
+<a class="md-nav__link" href="#forging_blocks.domain.aggregate_root.AggregateRoot.uncommitted_changes">
 <span class="md-ellipsis">
-      mark_changes_as_committed
+      uncommitted_changes
     </span>
 </a>
 </li>
@@ -958,30 +946,29 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<a class="md-content__button md-icon" href="https://github.com/building-blocks-org/building-blocks/edit/master/docs/reference/autodoc/domain/aggregate_root.md" rel="edit" title="Edit this page">
+<a class="md-content__button md-icon" href="https://github.com/forging-blocks-org/forging-blocks/edit/main/docs/reference/autodoc/domain/aggregate_root.md" rel="edit" title="Edit this page">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"></path></svg>
 </a>
 <h1 id="aggregate-root">Aggregate Root<a class="headerlink" href="#aggregate-root" title="Permanent link">¶</a></h1>
-<p>Module providing the base classes for Aggregate Roots.</p>
+<p>Module defining the base abstraction for Aggregate Roots and their version control.</p>
 <div class="doc doc-object doc-module">
-<h2 class="doc doc-heading" id="building_blocks.domain.aggregate_root">
+<h2 class="doc doc-heading" id="forging_blocks.domain.aggregate_root">
 <code>aggregate_root</code>
-<a class="headerlink" href="#building_blocks.domain.aggregate_root" title="Permanent link">¶</a></h2>
+<a class="headerlink" href="#forging_blocks.domain.aggregate_root" title="Permanent link">¶</a></h2>
 <div class="doc doc-contents first">
-<p>Module providing the base classes for Aggregate Roots.</p>
+<p>Module defining the base abstraction for Aggregate Roots and their version control.</p>
 <div class="doc doc-children">
 <div class="doc doc-object doc-class">
-<h3 class="doc doc-heading" id="building_blocks.domain.aggregate_root.AggregateVersion">
+<h3 class="doc doc-heading" id="forging_blocks.domain.aggregate_root.AggregateVersion">
 <code>AggregateVersion</code>
-<a class="headerlink" href="#building_blocks.domain.aggregate_root.AggregateVersion" title="Permanent link">¶</a></h3>
+<a class="headerlink" href="#forging_blocks.domain.aggregate_root.AggregateVersion" title="Permanent link">¶</a></h3>
 <div class="doc doc-contents">
 <p class="doc doc-class-bases">
-              Bases: <code><a class="autorefs autorefs-internal" href="../value_object/#building_blocks.domain.value_object.ValueObject" title="ValueObject (building_blocks.domain.value_object.ValueObject)">ValueObject</a>[<span title="int">int</span>]</code></p>
-<p>Value object representing the version of an aggregate root.</p>
-<p>This is used for optimistic concurrency control to ensure that updates
-to the aggregate are consistent and do not conflict with other changes.</p>
+              Bases: <code><a class="autorefs autorefs-internal" href="../value_object/#forging_blocks.domain.value_object.ValueObject" title="ValueObject (forging_blocks.domain.value_object.ValueObject)">ValueObject</a>[<span title="int">int</span>]</code></p>
+<p>Immutable value object representing the version of an aggregate root.</p>
+<p>Used for optimistic concurrency control to detect conflicting updates.</p>
 <details class="quote">
-<summary>Source code in <code>src/building_blocks/domain/aggregate_root.py</code></summary>
+<summary>Source code in <code>src/forging_blocks/domain/aggregate_root.py</code></summary>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">16</span>
 <span class="normal">17</span>
 <span class="normal">18</span>
@@ -1006,15 +993,10 @@ to the aggregate are consistent and do not conflict with other changes.</p>
 <span class="normal">37</span>
 <span class="normal">38</span>
 <span class="normal">39</span>
-<span class="normal">40</span>
-<span class="normal">41</span>
-<span class="normal">42</span>
-<span class="normal">43</span>
-<span class="normal">44</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">AggregateVersion</span><span class="p">(</span><span class="n">ValueObject</span><span class="p">[</span><span class="nb">int</span><span class="p">]):</span>
-<span class="w">    </span><span class="sd">"""Value object representing the version of an aggregate root.</span>
+<span class="normal">40</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">AggregateVersion</span><span class="p">(</span><span class="n">ValueObject</span><span class="p">[</span><span class="nb">int</span><span class="p">]):</span>
+<span class="w">    </span><span class="sd">"""Immutable value object representing the version of an aggregate root.</span>
 
-<span class="sd">    This is used for optimistic concurrency control to ensure that updates</span>
-<span class="sd">    to the aggregate are consistent and do not conflict with other changes.</span>
+<span class="sd">    Used for optimistic concurrency control to detect conflicting updates.</span>
 <span class="sd">    """</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
@@ -1026,7 +1008,7 @@ to the aggregate are consistent and do not conflict with other changes.</p>
 
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">value</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">"""Get the raw integer version value."""</span>
+<span class="w">        </span><span class="sd">"""Return the integer version value."""</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_value</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">increment</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AggregateVersion</span><span class="p">:</span>
@@ -1034,36 +1016,33 @@ to the aggregate are consistent and do not conflict with other changes.</p>
         <span class="k">return</span> <span class="n">AggregateVersion</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_value</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">_equality_components</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">Hashable</span><span class="p">,</span> <span class="o">...</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">"""Return the components used for equality comparison.</span>
-
-<span class="sd">        This is used by the ValueObject base class to determine equality.</span>
-<span class="sd">        """</span>
+<span class="w">        </span><span class="sd">"""Components used for equality comparison."""</span>
         <span class="k">return</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_value</span><span class="p">,)</span>
 </code></pre></div></td></tr></table></div>
 </details>
 <div class="doc doc-children">
 <div class="doc doc-object doc-attribute">
-<h4 class="doc doc-heading" id="building_blocks.domain.aggregate_root.AggregateVersion.value">
-<code class="highlight language-python"><span class="n">value</span></code>
+<h4 class="doc doc-heading" id="forging_blocks.domain.aggregate_root.AggregateVersion.value">
+<code class="highlight language-python"><span class="n">value</span><span class="p">:</span> <span class="nb">int</span></code>
 <span class="doc doc-labels">
 <small class="doc doc-label doc-label-property"><code>property</code></small>
 </span>
-<a class="headerlink" href="#building_blocks.domain.aggregate_root.AggregateVersion.value" title="Permanent link">¶</a></h4>
+<a class="headerlink" href="#forging_blocks.domain.aggregate_root.AggregateVersion.value" title="Permanent link">¶</a></h4>
 <div class="doc doc-contents">
-<p>Get the raw integer version value.</p>
+<p>Return the integer version value.</p>
 </div>
 </div>
 <div class="doc doc-object doc-function">
-<h4 class="doc doc-heading" id="building_blocks.domain.aggregate_root.AggregateVersion.increment">
-<code class="highlight language-python"><span class="n">increment</span><span class="p">()</span></code>
-<a class="headerlink" href="#building_blocks.domain.aggregate_root.AggregateVersion.increment" title="Permanent link">¶</a></h4>
+<h4 class="doc doc-heading" id="forging_blocks.domain.aggregate_root.AggregateVersion.increment">
+<code class="highlight language-python"><span class="n">increment</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">AggregateVersion</span></code>
+<a class="headerlink" href="#forging_blocks.domain.aggregate_root.AggregateVersion.increment" title="Permanent link">¶</a></h4>
 <div class="doc doc-contents">
 <p>Return a new AggregateVersion incremented by one.</p>
 <details class="quote">
-<summary>Source code in <code>src/building_blocks/domain/aggregate_root.py</code></summary>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">35</span>
-<span class="normal">36</span>
-<span class="normal">37</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">increment</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AggregateVersion</span><span class="p">:</span>
+<summary>Source code in <code>src/forging_blocks/domain/aggregate_root.py</code></summary>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">increment</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AggregateVersion</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">"""Return a new AggregateVersion incremented by one."""</span>
     <span class="k">return</span> <span class="n">AggregateVersion</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_value</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
@@ -1074,262 +1053,48 @@ to the aggregate are consistent and do not conflict with other changes.</p>
 </div>
 </div>
 <div class="doc doc-object doc-class">
-<h3 class="doc doc-heading" id="building_blocks.domain.aggregate_root.AggregateRoot">
+<h3 class="doc doc-heading" id="forging_blocks.domain.aggregate_root.AggregateRoot">
 <code>AggregateRoot</code>
-<a class="headerlink" href="#building_blocks.domain.aggregate_root.AggregateRoot" title="Permanent link">¶</a></h3>
+<a class="headerlink" href="#forging_blocks.domain.aggregate_root.AggregateRoot" title="Permanent link">¶</a></h3>
 <div class="doc doc-contents">
 <p class="doc doc-class-bases">
-              Bases: <code><a class="autorefs autorefs-internal" href="../entity/#building_blocks.domain.entity.Entity" title="Entity (building_blocks.domain.entity.Entity)">Entity</a>[<span title="building_blocks.domain.aggregate_root.TId">TId</span>]</code>, <code><span title="typing.Generic">Generic</span>[<span title="building_blocks.domain.aggregate_root.TId">TId</span>]</code>, <code><span title="abc.ABC">ABC</span></code></p>
-<p>Base class for aggregate roots.</p>
-<p>An AggregateRoot is a special type of Entity that serves as the entry point for managing a
-cluster of related entities and value objects. It encapsulates the business logic and
-invariants of the aggregate, ensuring that all changes to the aggregate are made through its
-methods.
-This class is designed to follow the principles of Domain-Driven Design (DDD) and is inspired
-by Vaughn Vernon's approach in "Implementing Domain-Driven Design".</p>
-<p>This implementation provides methods for managing the aggregate version,
-recording uncommitted domain events, and marking changes as committed.
-It is intended to be subclassed to create specific aggregate roots that
-represent business concepts in the domain.</p>
-<p>This implementation follows Vaughn Vernon's approach from
-"Implementing Domain-Driven Design" and is designed to be used in and
-with a Domain-Driven Design context.
-It provides a foundation for building aggregates that encapsulate business
-logic and maintain consistency across related entities and value objects.</p>
+              Bases: <code><a class="autorefs autorefs-internal" href="../entity/#forging_blocks.domain.entity.Entity" title="Entity (forging_blocks.domain.entity.Entity)">Entity</a>[<span title="forging_blocks.domain.aggregate_root.TId">TId</span>]</code>, <code><span title="typing.Generic">Generic</span>[<span title="forging_blocks.domain.aggregate_root.TId">TId</span>]</code>, <code><span title="abc.ABC">ABC</span></code></p>
+<p>Base class for Aggregate Roots in a Domain-Driven Design context.</p>
+<p>An Aggregate Root represents the entry point for manipulating
+a consistency boundary composed of entities and value objects.
+It encapsulates domain logic, maintains a version for concurrency control,
+and records uncommitted domain events.</p>
 <details class="quote">
-<summary>Source code in <code>src/building_blocks/domain/aggregate_root.py</code></summary>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 47</span>
-<span class="normal"> 48</span>
-<span class="normal"> 49</span>
-<span class="normal"> 50</span>
-<span class="normal"> 51</span>
-<span class="normal"> 52</span>
-<span class="normal"> 53</span>
-<span class="normal"> 54</span>
-<span class="normal"> 55</span>
-<span class="normal"> 56</span>
-<span class="normal"> 57</span>
-<span class="normal"> 58</span>
-<span class="normal"> 59</span>
-<span class="normal"> 60</span>
-<span class="normal"> 61</span>
-<span class="normal"> 62</span>
-<span class="normal"> 63</span>
-<span class="normal"> 64</span>
-<span class="normal"> 65</span>
-<span class="normal"> 66</span>
-<span class="normal"> 67</span>
-<span class="normal"> 68</span>
-<span class="normal"> 69</span>
-<span class="normal"> 70</span>
-<span class="normal"> 71</span>
-<span class="normal"> 72</span>
-<span class="normal"> 73</span>
-<span class="normal"> 74</span>
-<span class="normal"> 75</span>
-<span class="normal"> 76</span>
-<span class="normal"> 77</span>
-<span class="normal"> 78</span>
-<span class="normal"> 79</span>
-<span class="normal"> 80</span>
-<span class="normal"> 81</span>
-<span class="normal"> 82</span>
-<span class="normal"> 83</span>
-<span class="normal"> 84</span>
-<span class="normal"> 85</span>
-<span class="normal"> 86</span>
-<span class="normal"> 87</span>
-<span class="normal"> 88</span>
-<span class="normal"> 89</span>
-<span class="normal"> 90</span>
-<span class="normal"> 91</span>
-<span class="normal"> 92</span>
-<span class="normal"> 93</span>
-<span class="normal"> 94</span>
-<span class="normal"> 95</span>
-<span class="normal"> 96</span>
-<span class="normal"> 97</span>
-<span class="normal"> 98</span>
-<span class="normal"> 99</span>
-<span class="normal">100</span>
-<span class="normal">101</span>
-<span class="normal">102</span>
-<span class="normal">103</span>
-<span class="normal">104</span>
-<span class="normal">105</span>
-<span class="normal">106</span>
-<span class="normal">107</span>
-<span class="normal">108</span>
-<span class="normal">109</span>
-<span class="normal">110</span>
-<span class="normal">111</span>
-<span class="normal">112</span>
-<span class="normal">113</span>
-<span class="normal">114</span>
-<span class="normal">115</span>
-<span class="normal">116</span>
-<span class="normal">117</span>
-<span class="normal">118</span>
-<span class="normal">119</span>
-<span class="normal">120</span>
-<span class="normal">121</span>
-<span class="normal">122</span>
-<span class="normal">123</span>
-<span class="normal">124</span>
-<span class="normal">125</span>
-<span class="normal">126</span>
-<span class="normal">127</span>
-<span class="normal">128</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">AggregateRoot</span><span class="p">(</span><span class="n">Entity</span><span class="p">[</span><span class="n">TId</span><span class="p">],</span> <span class="n">Generic</span><span class="p">[</span><span class="n">TId</span><span class="p">],</span> <span class="n">ABC</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">"""Base class for aggregate roots.</span>
-
-<span class="sd">    An AggregateRoot is a special type of Entity that serves as the entry point for managing a</span>
-<span class="sd">    cluster of related entities and value objects. It encapsulates the business logic and</span>
-<span class="sd">    invariants of the aggregate, ensuring that all changes to the aggregate are made through its</span>
-<span class="sd">    methods.</span>
-<span class="sd">    This class is designed to follow the principles of Domain-Driven Design (DDD) and is inspired</span>
-<span class="sd">    by Vaughn Vernon's approach in "Implementing Domain-Driven Design".</span>
-
-<span class="sd">    This implementation provides methods for managing the aggregate version,</span>
-<span class="sd">    recording uncommitted domain events, and marking changes as committed.</span>
-<span class="sd">    It is intended to be subclassed to create specific aggregate roots that</span>
-<span class="sd">    represent business concepts in the domain.</span>
-
-<span class="sd">    This implementation follows Vaughn Vernon's approach from</span>
-<span class="sd">    "Implementing Domain-Driven Design" and is designed to be used in and</span>
-<span class="sd">    with a Domain-Driven Design context.</span>
-<span class="sd">    It provides a foundation for building aggregates that encapsulate business</span>
-<span class="sd">    logic and maintain consistency across related entities and value objects.</span>
-<span class="sd">    """</span>
-
-    <span class="n">_uncommitted_events</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Event</span><span class="p">]</span>
-
-    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">aggregate_id</span><span class="p">:</span> <span class="n">TId</span><span class="p">,</span> <span class="n">version</span><span class="p">:</span> <span class="n">AggregateVersion</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">"""Initialize the aggregate root.</span>
-
-<span class="sd">        Args:</span>
-<span class="sd">            aggregate_id: Unique identifier for this aggregate</span>
-<span class="sd">            version: Optional initial version for optimistic concurrency control.</span>
-<span class="sd">                     If not provided, defaults to AggregateVersion(0).</span>
-<span class="sd">        """</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">aggregate_id</span><span class="p">)</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">aggregate_id</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="n">EntityIdNoneError</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_version</span> <span class="o">=</span> <span class="n">version</span> <span class="ow">or</span> <span class="n">AggregateVersion</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_uncommitted_events</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Event</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
-
-    <span class="nd">@property</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">version</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AggregateVersion</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">"""Get the current version of this aggregate."""</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_version</span>
-
-    <span class="k">def</span><span class="w"> </span><span class="nf">uncommitted_changes</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">Event</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">"""Get the uncommitted domain events raised by this aggregate.</span>
-
-<span class="sd">        Returns a copy to prevent external modification.</span>
-<span class="sd">        Following Vaughn Vernon's naming convention.</span>
-
-<span class="sd">        Returns:</span>
-<span class="sd">            list[Event]: Copy of uncommitted domain events</span>
-<span class="sd">        """</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_uncommitted_events</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-
-    <span class="k">def</span><span class="w"> </span><span class="nf">record_event</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">domain_event</span><span class="p">:</span> <span class="n">Event</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">"""Record a domain event to be published.</span>
-
-<span class="sd">        This is the primary method for recording domain events when significant</span>
-<span class="sd">        business events occur. Following Vaughn Vernon's naming convention.</span>
-
-<span class="sd">        Args:</span>
-<span class="sd">            domain_event: The domain event to record</span>
-<span class="sd">        """</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_uncommitted_events</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">domain_event</span><span class="p">)</span>
-
-    <span class="k">def</span><span class="w"> </span><span class="nf">mark_changes_as_committed</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">"""Mark all uncommitted changes as committed and clear them.</span>
-
-<span class="sd">        This method should be called after events have been successfully</span>
-<span class="sd">        published and the aggregate has been persisted.</span>
-<span class="sd">        Following Vaughn Vernon's naming convention.</span>
-<span class="sd">        """</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_uncommitted_events</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_increment_version</span><span class="p">()</span>
-
-    <span class="k">def</span><span class="w"> </span><span class="nf">_increment_version</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">"""Increment the aggregate version.</span>
-
-<span class="sd">        Protected method to be called when the aggregate state changes.</span>
-<span class="sd">        Useful for optimistic concurrency control.</span>
-<span class="sd">        """</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_version</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_version</span><span class="o">.</span><span class="n">increment</span><span class="p">()</span>
-</code></pre></div></td></tr></table></div>
-</details>
-<div class="doc doc-children">
-<div class="doc doc-object doc-attribute">
-<h4 class="doc doc-heading" id="building_blocks.domain.aggregate_root.AggregateRoot.version">
-<code class="highlight language-python"><span class="n">version</span></code>
-<span class="doc doc-labels">
-<small class="doc doc-label doc-label-property"><code>property</code></small>
-</span>
-<a class="headerlink" href="#building_blocks.domain.aggregate_root.AggregateRoot.version" title="Permanent link">¶</a></h4>
-<div class="doc doc-contents">
-<p>Get the current version of this aggregate.</p>
-</div>
-</div>
-<div class="doc doc-object doc-function">
-<h4 class="doc doc-heading" id="building_blocks.domain.aggregate_root.AggregateRoot.__init__">
-<code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="n">aggregate_id</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
-<a class="headerlink" href="#building_blocks.domain.aggregate_root.AggregateRoot.__init__" title="Permanent link">¶</a></h4>
-<div class="doc doc-contents">
-<p>Initialize the aggregate root.</p>
-<p><span class="doc-section-title">Parameters:</span></p>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-<th>Default</th>
-</tr>
-</thead>
-<tbody>
-<tr class="doc-section-item">
-<td>
-<code>aggregate_id</code>
-</td>
-<td>
-<code><span title="building_blocks.domain.aggregate_root.TId">TId</span></code>
-</td>
-<td>
-<div class="doc-md-description">
-<p>Unique identifier for this aggregate</p>
-</div>
-</td>
-<td>
-<em>required</em>
-</td>
-</tr>
-<tr class="doc-section-item">
-<td>
-<code>version</code>
-</td>
-<td>
-<code><a class="autorefs autorefs-internal" href="#building_blocks.domain.aggregate_root.AggregateVersion" title="AggregateVersion (building_blocks.domain.aggregate_root.AggregateVersion)">AggregateVersion</a> | None</code>
-</td>
-<td>
-<div class="doc-md-description">
-<p>Optional initial version for optimistic concurrency control.
-     If not provided, defaults to AggregateVersion(0).</p>
-</div>
-</td>
-<td>
-<code>None</code>
-</td>
-</tr>
-</tbody>
-</table>
-<details class="quote">
-<summary>Source code in <code>src/building_blocks/domain/aggregate_root.py</code></summary>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">71</span>
+<summary>Source code in <code>src/forging_blocks/domain/aggregate_root.py</code></summary>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span>
+<span class="normal">67</span>
+<span class="normal">68</span>
+<span class="normal">69</span>
+<span class="normal">70</span>
+<span class="normal">71</span>
 <span class="normal">72</span>
 <span class="normal">73</span>
 <span class="normal">74</span>
@@ -1341,167 +1106,118 @@ logic and maintain consistency across related entities and value objects.</p>
 <span class="normal">80</span>
 <span class="normal">81</span>
 <span class="normal">82</span>
-<span class="normal">83</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">aggregate_id</span><span class="p">:</span> <span class="n">TId</span><span class="p">,</span> <span class="n">version</span><span class="p">:</span> <span class="n">AggregateVersion</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">"""Initialize the aggregate root.</span>
+<span class="normal">83</span>
+<span class="normal">84</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">AggregateRoot</span><span class="p">(</span><span class="n">Entity</span><span class="p">[</span><span class="n">TId</span><span class="p">],</span> <span class="n">Generic</span><span class="p">[</span><span class="n">TId</span><span class="p">],</span> <span class="n">ABC</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Base class for Aggregate Roots in a Domain-Driven Design context.</span>
 
-<span class="sd">    Args:</span>
-<span class="sd">        aggregate_id: Unique identifier for this aggregate</span>
-<span class="sd">        version: Optional initial version for optimistic concurrency control.</span>
-<span class="sd">                 If not provided, defaults to AggregateVersion(0).</span>
+<span class="sd">    An Aggregate Root represents the entry point for manipulating</span>
+<span class="sd">    a consistency boundary composed of entities and value objects.</span>
+<span class="sd">    It encapsulates domain logic, maintains a version for concurrency control,</span>
+<span class="sd">    and records uncommitted domain events.</span>
 <span class="sd">    """</span>
-    <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">aggregate_id</span><span class="p">)</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">aggregate_id</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="n">EntityIdNoneError</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">_version</span> <span class="o">=</span> <span class="n">version</span> <span class="ow">or</span> <span class="n">AggregateVersion</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">_uncommitted_events</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Event</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="n">_uncommitted_events</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Event</span><span class="p">]</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">aggregate_id</span><span class="p">:</span> <span class="n">TId</span><span class="p">,</span> <span class="n">version</span><span class="p">:</span> <span class="n">AggregateVersion</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">aggregate_id</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">EntityIdNoneError</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_version</span> <span class="o">=</span> <span class="n">version</span> <span class="ow">or</span> <span class="n">AggregateVersion</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_uncommitted_events</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">aggregate_id</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">version</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AggregateVersion</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Return the current version of the aggregate."""</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_version</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">collect_events</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">Event</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">"""Collect uncommitted events, clear array, increment the version and return events."""</span>
+        <span class="n">events</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_uncommitted_events</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_uncommitted_events</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_increment_version</span><span class="p">()</span>
+
+        <span class="k">return</span> <span class="n">events</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">record_event</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">domain_event</span><span class="p">:</span> <span class="n">Event</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Record a new domain event for later publication."""</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_uncommitted_events</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">domain_event</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">uncommitted_changes</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">Event</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">"""Return a copy of uncommitted domain events recorded by this aggregate."""</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_uncommitted_events</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_increment_version</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Increment the aggregate's version value."""</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_version</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_version</span><span class="o">.</span><span class="n">increment</span><span class="p">()</span>
+</code></pre></div></td></tr></table></div>
+</details>
+<div class="doc doc-children">
+<div class="doc doc-object doc-attribute">
+<h4 class="doc doc-heading" id="forging_blocks.domain.aggregate_root.AggregateRoot.version">
+<code class="highlight language-python"><span class="n">version</span><span class="p">:</span> <span class="n">AggregateVersion</span></code>
+<span class="doc doc-labels">
+<small class="doc doc-label doc-label-property"><code>property</code></small>
+</span>
+<a class="headerlink" href="#forging_blocks.domain.aggregate_root.AggregateRoot.version" title="Permanent link">¶</a></h4>
+<div class="doc doc-contents">
+<p>Return the current version of the aggregate.</p>
+</div>
+</div>
+<div class="doc doc-object doc-function">
+<h4 class="doc doc-heading" id="forging_blocks.domain.aggregate_root.AggregateRoot.collect_events">
+<code class="highlight language-python"><span class="n">collect_events</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">Event</span><span class="p">]</span></code>
+<a class="headerlink" href="#forging_blocks.domain.aggregate_root.AggregateRoot.collect_events" title="Permanent link">¶</a></h4>
+<div class="doc doc-contents">
+<p>Collect uncommitted events, clear array, increment the version and return events.</p>
+<details class="quote">
+<summary>Source code in <code>src/forging_blocks/domain/aggregate_root.py</code></summary>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">66</span>
+<span class="normal">67</span>
+<span class="normal">68</span>
+<span class="normal">69</span>
+<span class="normal">70</span>
+<span class="normal">71</span>
+<span class="normal">72</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">collect_events</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">Event</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">"""Collect uncommitted events, clear array, increment the version and return events."""</span>
+    <span class="n">events</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_uncommitted_events</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_uncommitted_events</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_increment_version</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="n">events</span>
 </code></pre></div></td></tr></table></div>
 </details>
 </div>
 </div>
 <div class="doc doc-object doc-function">
-<h4 class="doc doc-heading" id="building_blocks.domain.aggregate_root.AggregateRoot.uncommitted_changes">
-<code class="highlight language-python"><span class="n">uncommitted_changes</span><span class="p">()</span></code>
-<a class="headerlink" href="#building_blocks.domain.aggregate_root.AggregateRoot.uncommitted_changes" title="Permanent link">¶</a></h4>
+<h4 class="doc doc-heading" id="forging_blocks.domain.aggregate_root.AggregateRoot.record_event">
+<code class="highlight language-python"><span class="n">record_event</span><span class="p">(</span><span class="n">domain_event</span><span class="p">:</span> <span class="n">Event</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span></code>
+<a class="headerlink" href="#forging_blocks.domain.aggregate_root.AggregateRoot.record_event" title="Permanent link">¶</a></h4>
 <div class="doc doc-contents">
-<p>Get the uncommitted domain events raised by this aggregate.</p>
-<p>Returns a copy to prevent external modification.
-Following Vaughn Vernon's naming convention.</p>
-<p><span class="doc-section-title">Returns:</span></p>
-<table>
-<thead>
-<tr>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="doc-section-item">
-<td>
-<code><span title="list">list</span>[<a class="autorefs autorefs-internal" href="../messages/event/#building_blocks.domain.messages.event.Event" title="Event (building_blocks.domain.messages.event.Event)">Event</a>]</code>
-</td>
-<td>
-<div class="doc-md-description">
-<p>list[Event]: Copy of uncommitted domain events</p>
-</div>
-</td>
-</tr>
-</tbody>
-</table>
+<p>Record a new domain event for later publication.</p>
 <details class="quote">
-<summary>Source code in <code>src/building_blocks/domain/aggregate_root.py</code></summary>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">90</span>
-<span class="normal">91</span>
-<span class="normal">92</span>
-<span class="normal">93</span>
-<span class="normal">94</span>
-<span class="normal">95</span>
-<span class="normal">96</span>
-<span class="normal">97</span>
-<span class="normal">98</span>
-<span class="normal">99</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">uncommitted_changes</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">Event</span><span class="p">]:</span>
-<span class="w">    </span><span class="sd">"""Get the uncommitted domain events raised by this aggregate.</span>
-
-<span class="sd">    Returns a copy to prevent external modification.</span>
-<span class="sd">    Following Vaughn Vernon's naming convention.</span>
-
-<span class="sd">    Returns:</span>
-<span class="sd">        list[Event]: Copy of uncommitted domain events</span>
-<span class="sd">    """</span>
-    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_uncommitted_events</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-</code></pre></div></td></tr></table></div>
-</details>
-</div>
-</div>
-<div class="doc doc-object doc-function">
-<h4 class="doc doc-heading" id="building_blocks.domain.aggregate_root.AggregateRoot.record_event">
-<code class="highlight language-python"><span class="n">record_event</span><span class="p">(</span><span class="n">domain_event</span><span class="p">)</span></code>
-<a class="headerlink" href="#building_blocks.domain.aggregate_root.AggregateRoot.record_event" title="Permanent link">¶</a></h4>
-<div class="doc doc-contents">
-<p>Record a domain event to be published.</p>
-<p>This is the primary method for recording domain events when significant
-business events occur. Following Vaughn Vernon's naming convention.</p>
-<p><span class="doc-section-title">Parameters:</span></p>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-<th>Default</th>
-</tr>
-</thead>
-<tbody>
-<tr class="doc-section-item">
-<td>
-<code>domain_event</code>
-</td>
-<td>
-<code><a class="autorefs autorefs-internal" href="../messages/event/#building_blocks.domain.messages.event.Event" title="Event (building_blocks.domain.messages.event.Event)">Event</a></code>
-</td>
-<td>
-<div class="doc-md-description">
-<p>The domain event to record</p>
-</div>
-</td>
-<td>
-<em>required</em>
-</td>
-</tr>
-</tbody>
-</table>
-<details class="quote">
-<summary>Source code in <code>src/building_blocks/domain/aggregate_root.py</code></summary>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">101</span>
-<span class="normal">102</span>
-<span class="normal">103</span>
-<span class="normal">104</span>
-<span class="normal">105</span>
-<span class="normal">106</span>
-<span class="normal">107</span>
-<span class="normal">108</span>
-<span class="normal">109</span>
-<span class="normal">110</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">record_event</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">domain_event</span><span class="p">:</span> <span class="n">Event</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">"""Record a domain event to be published.</span>
-
-<span class="sd">    This is the primary method for recording domain events when significant</span>
-<span class="sd">    business events occur. Following Vaughn Vernon's naming convention.</span>
-
-<span class="sd">    Args:</span>
-<span class="sd">        domain_event: The domain event to record</span>
-<span class="sd">    """</span>
+<summary>Source code in <code>src/forging_blocks/domain/aggregate_root.py</code></summary>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">74</span>
+<span class="normal">75</span>
+<span class="normal">76</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">record_event</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">domain_event</span><span class="p">:</span> <span class="n">Event</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Record a new domain event for later publication."""</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">_uncommitted_events</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">domain_event</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
 </details>
 </div>
 </div>
 <div class="doc doc-object doc-function">
-<h4 class="doc doc-heading" id="building_blocks.domain.aggregate_root.AggregateRoot.mark_changes_as_committed">
-<code class="highlight language-python"><span class="n">mark_changes_as_committed</span><span class="p">()</span></code>
-<a class="headerlink" href="#building_blocks.domain.aggregate_root.AggregateRoot.mark_changes_as_committed" title="Permanent link">¶</a></h4>
+<h4 class="doc doc-heading" id="forging_blocks.domain.aggregate_root.AggregateRoot.uncommitted_changes">
+<code class="highlight language-python"><span class="n">uncommitted_changes</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">Event</span><span class="p">]</span></code>
+<a class="headerlink" href="#forging_blocks.domain.aggregate_root.AggregateRoot.uncommitted_changes" title="Permanent link">¶</a></h4>
 <div class="doc doc-contents">
-<p>Mark all uncommitted changes as committed and clear them.</p>
-<p>This method should be called after events have been successfully
-published and the aggregate has been persisted.
-Following Vaughn Vernon's naming convention.</p>
+<p>Return a copy of uncommitted domain events recorded by this aggregate.</p>
 <details class="quote">
-<summary>Source code in <code>src/building_blocks/domain/aggregate_root.py</code></summary>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">112</span>
-<span class="normal">113</span>
-<span class="normal">114</span>
-<span class="normal">115</span>
-<span class="normal">116</span>
-<span class="normal">117</span>
-<span class="normal">118</span>
-<span class="normal">119</span>
-<span class="normal">120</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">mark_changes_as_committed</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">"""Mark all uncommitted changes as committed and clear them.</span>
-
-<span class="sd">    This method should be called after events have been successfully</span>
-<span class="sd">    published and the aggregate has been persisted.</span>
-<span class="sd">    Following Vaughn Vernon's naming convention.</span>
-<span class="sd">    """</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">_uncommitted_events</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">_increment_version</span><span class="p">()</span>
+<summary>Source code in <code>src/forging_blocks/domain/aggregate_root.py</code></summary>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">78</span>
+<span class="normal">79</span>
+<span class="normal">80</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">uncommitted_changes</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">Event</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">"""Return a copy of uncommitted domain events recorded by this aggregate."""</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_uncommitted_events</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
 </code></pre></div></td></tr></table></div>
 </details>
 </div>
@@ -1536,7 +1252,7 @@ Following Vaughn Vernon's naming convention.</p>
 <div class="md-dialog" data-md-component="dialog">
 <div class="md-dialog__inner md-typeset"></div>
 </div>
-<script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.tabs", "navigation.instant", "navigation.sections", "toc.follow", "content.code.copy", "content.action.edit", "content.tabs.link"], "search": "../../../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+<script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.tabs", "navigation.instant", "navigation.sections", "toc.follow", "content.code.copy", "content.action.edit", "content.tabs.link"], "search": "../../../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
 <script src="../../../../assets/javascripts/bundle.f55a23d4.min.js"></script>
 </body>
 </html>

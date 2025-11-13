@@ -1,80 +1,287 @@
-/* Primary Navbar Background */
+/* --- ForgingBlocks MkDocs Theme (Terminal-Like Badwolf + Gruvbox Orange Navbar) --- */
+
+/* Primary Navbar (orange, terminal-like text) */
 .md-header {
-    background-color: #d65d0e; /* Rich Gruvbox dark orange */
-    color: #ffffff; /* White text for contrast */
+  background-color: #d65d0e; /* Gruvbox orange */
+  border-bottom: 1px solid #35322d;
+  --md-primary-fg-color: #c4b7a6; /* slightly darker beige text */
+  --md-primary-bg-color: #d65d0e;
 }
 
-/* Secondary Bar (Search and Links) */
+/* Title and nav links */
+.md-header,
+.md-header__inner,
+.md-header__title,
+.md-header__topic,
+.md-header__button,
+.md-header__button.md-icon,
+.md-header__link,
+.md-nav__link--primary {
+  color: #d9cec3 !important; /* Badwolf brightgravel */
+  fill: #d9cec3 !important;
+  font-weight: 500;
+  text-transform: none;
+  letter-spacing: 0.02em;
+}
+
+/* Hover effect */
+.md-header a:hover,
+.md-header__link:hover,
+.md-header__title:hover,
+.md-header__topic:hover {
+  color: #f4cf86 !important; /* dirtyblonde hover */
+  fill: #f4cf86 !important;
+}
+
+/* Active top nav link (Guide) */
+.md-header a.md-nav__link--active,
+.md-header a.md-nav__link--primary.md-nav__link--active,
+.md-tabs .md-tab--active {
+  color: #f4cf86 !important; /* golden highlight */
+  font-weight: 700 !important; /* bold active link */
+  border-bottom: 2px solid #f4cf86; /* underline accent */
+}
+
+/* Secondary meta bar */
 .md-header__meta {
-    background-color: #cc4e02; /* Slightly darker orange for secondary bar */
-    color: #ffffff; /* White text for readability */
+  background-color: #cc4e02;
+  color: #d9cec3 !important;
 }
 
-/* Icon and clipboard hover styling */
-.md-header__meta .md-clipboard {
-    color: #ffffff; /* Maintain contrast with secondary bar */
-}
-
-.md-header__meta .md-clipboard:hover {
-    color: #fabd2f; /* Bright Gruvbox yellow for hover */
-}
-
-/* Navigation Tabs */
+/* Tabs styling */
 .md-tabs {
-    background-color: #d65d0e; /* Primary orange tone for tabs */
-    border-bottom: 2px solid #282828; /* Divider for tabs */
+  background-color: #1c1b1a; /* blackgravel */
+  border-bottom: 1px solid #35322d;
 }
 
 .md-tabs .md-tab {
-    color: #ebdbb2; /* Gruvbox light-text for tabs */
+  color: #998f84 !important;
+  font-weight: 500;
 }
 
 .md-tabs .md-tab:hover {
-    background: #cc4e02; /* Slightly darker hover state */
-    color: #ffffff; /* White text for hover */
+  color: #f4cf86 !important;
 }
 
-/* Sidebar and TOC Styling */
+.md-tabs .md-tab--active {
+  color: #f4cf86 !important;
+  font-weight: 700 !important;
+  border-bottom: 2px solid #f4cf86;
+}
+
+/* Sidebar */
 .md-sidebar__title,
 .md-nav__title,
 .md-nav__link {
-    background-color: #1d2021; /* Gruvbox very dark background */
-    color: #fabd2f; /* Bright yellow Gruvbox text */
+  background-color: #1c1b1a;
+  color: #c7915b;
 }
 
 .md-nav__link:hover {
-    background-color: #32302f; /* Subtle hover effect */
-    color: #83a598; /* Gruvbox aqua for hover text */
+  background-color: #35322d;
+  color: #f4cf86;
 }
 
-/* Body Content */
+.md-nav__link--active {
+  color: #f4cf86 !important;
+  font-weight: 600;
+}
+
+/* Body */
 .md-content {
-    color: #ebdbb2; /* Gruvbox light text */
-    background-color: #282828; /* Gruvbox dark background */
+  color: #d9cec3;
+  background-color: #1c1b1a;
 }
 
-/* Code block styling */
+/* Code */
 .md-typeset pre code {
-    color: #bdae93; /* Gruvbox muted text */
-    background-color: #1d2021; /* Gruvbox very dark */
-    border-radius: 4px; /* Rounded edges */
-    border: 1px solid #3c3836; /* Subtle border */
+  color: #d9cec3;
+  background-color: #242321;
+  border-radius: 4px;
+  border: 1px solid #35322d;
 }
 
 /* Buttons */
 .md-button {
-    background-color: #d65d0e; /* Primary orange for button background */
-    color: #ffffff; /* White text */
-    border: 1px solid #cc4e02; /* Slightly darker orange border */
+  background-color: #d65d0e;
+  color: #f8f6f2;
+  border: 1px solid #cc4e02;
 }
 
 .md-button:hover {
-    background-color: #cc4e02; /* Rich orange hover state */
-    color: #ffffff; /* Maintain white text */
+  background-color: #cc4e02;
+  color: #f4cf86;
 }
 
-/* Footer Styling */
+/* Footer */
 .md-footer {
-    background-color: #1d2021; /* Gruvbox very dark background */
-    color: #fabd2f; /* Gruvbox yellow text */
+  background-color: #1c1b1a;
+  color: #998f84;
 }
+
+/* Links */
+a,
+.md-typeset a {
+  color: #f4cf86;
+}
+
+a:hover,
+.md-typeset a:hover {
+  color: #ffa724;
+}
+
+/* Tables */
+.md-typeset table {
+  background-color: #1c1b1a;
+  border: 1px solid #35322d;
+}
+
+.md-typeset th {
+  background-color: #242321;
+  color: #d9cec3;
+}
+
+.md-typeset td {
+  background-color: #1c1b1a;
+  color: #998f84;
+}
+
+/* Blockquotes */
+.md-typeset blockquote {
+  border-left: 4px solid #c7915b;
+  background-color: #242321;
+  color: #d9cec3;
+}
+
+/* Horizontal rule */
+hr {
+  border: 0;
+  border-top: 1px solid #35322d;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1c1b1a;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #35322d;
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #45413b;
+}
+
+/* --- FINAL FIX: force Badwolf terminal tone for navbar text --- */
+:root {
+  --md-primary-fg-color: #d9cec3 !important; /* beige text for header */
+  --md-primary-fg-color--light: #f4cf86 !important; /* hover accent */
+  --md-primary-fg-color--dark: #998f84 !important; /* muted contrast */
+}
+
+.md-header,
+.md-header__inner {
+  color: var(--md-primary-fg-color) !important;
+}
+
+.md-header__title,
+.md-header__topic,
+.md-header__button,
+.md-header__link,
+.md-header__link--active {
+  color: var(--md-primary-fg-color) !important;
+  fill: var(--md-primary-fg-color) !important;
+}
+
+.md-header__title:hover,
+.md-header__topic:hover,
+.md-header__link:hover,
+.md-header__button:hover {
+  color: var(--md-primary-fg-color--light) !important;
+  fill: var(--md-primary-fg-color--light) !important;
+}
+
+/* Keep active top nav link bold and visible */
+.md-tabs__link[aria-selected="true"],
+.md-tabs .md-tab--active {
+  color: var(--md-primary-fg-color--light) !important;
+  font-weight: 700 !important;
+  border-bottom: 2px solid var(--md-primary-fg-color--light) !important;
+}
+
+
+/* --- FORCE Navbar Text Color (terminal beige) --- */
+.md-header .md-header__title,
+.md-header .md-header__topic,
+.md-header .md-tabs__link,
+.md-header a,
+.md-header__button,
+.md-header__button.md-icon {
+  color: #d9cec3 !important; /* Badwolf brightgravel */
+  color: #333 !important;
+  fill: #d9cec3 !important;
+}
+
+.md-header a:hover,
+.md-header__button:hover {
+  color: #f4cf86 !important; /* dirtyblonde hover */
+  fill: #f4cf86 !important;
+}
+
+.md-tabs__link[aria-selected="true"],
+.md-tabs .md-tab--active,
+.md-tabs__item--active > .md-tabs__link {
+  color: #f4cf86 !important;
+  font-weight: 700 !important;
+  border-bottom: 2px solid #f4cf86 !important;
+}
+
+/* ===== TOP NAV TABS: readable, hover, and active ===== */
+
+/* Default state on the dark bar */
+.md-header + .md-tabs .md-tabs__link {
+  color: #d9cec3 !important;           /* Badwolf brightgravel */
+  font-weight: 500;
+}
+
+/* Active/current page: bold + visible underline */
+.md-header + .md-tabs .md-tabs__link[aria-selected="true"],
+.md-header + .md-tabs .md-tabs__link[aria-current="page"],
+.md-header + .md-tabs .md-tab--active .md-tabs__link,
+.md-header + .md-tabs .md-tabs__item--active > .md-tabs__link {
+  color: #f4cf86 !important;            /* dirtyblonde highlight */
+  font-weight: 700 !important;
+  box-shadow: inset 0 -2px 0 #f4cf86 !important; /* underline */
+}
+
+/* Ensure navbar title/links are not white */
+.md-header,
+.md-header__inner,
+.md-header__title,
+.md-header__topic,
+.md-header__button,
+.md-header__link {
+  color: #d9cec3 !important;
+  fill:  #d9cec3 !important;
+}
+
+/* Hover on items in orange header */
+.md-header a:hover,
+.md-header__button:hover {
+  color: #f8f6f2 !important;
+  fill:  #f8f6f2 !important;
+}
+
+/* Hover/focus: higher contrast + subtle bg */
+.md-header + .md-tabs .md-tabs__link:hover,
+.md-header + .md-tabs .md-tabs__link:focus,
+.md-tabs .md-tabs__link:hover {
+  color: #f4cf86;
+  text-decoration: underline;
+}
+

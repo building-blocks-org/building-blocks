@@ -7,12 +7,12 @@
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <meta content="A composable architecture toolkit for clean, testable, and maintainable Python applications." name="description"/>
 <meta content="Glauber Brennon" name="author"/>
-<link href="https://building-blocks-org.github.io/building-blocks/reference/autodoc/domain/entity/" rel="canonical"/>
+<link href="https://forging-blocks-org.github.io/forging-blocks/reference/autodoc/domain/entity/" rel="canonical"/>
 <link href="../aggregate_root/" rel="prev"/>
 <link href="../value_object/" rel="next"/>
 <link href="../../../../assets/favicon.ico" rel="icon"/>
 <meta content="mkdocs-1.6.1, mkdocs-material-9.6.23" name="generator"/>
-<title>Entity - BuildingBlocks 🧩</title>
+<title>Entity - ForgingBlocks</title>
 <link href="../../../../assets/stylesheets/main.84d31ad4.min.css" rel="stylesheet"/>
 <link href="../../../../assets/stylesheets/palette.06af60db.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -34,9 +34,11 @@
 </div>
 <div data-md-component="announce">
 </div>
+<div data-md-color-scheme="default" data-md-component="outdated" hidden="">
+</div>
 <header class="md-header" data-md-component="header">
 <nav aria-label="Header" class="md-header__inner md-grid">
-<a aria-label="BuildingBlocks 🧩" class="md-header__button md-logo" data-md-component="logo" href="../../../.." title="BuildingBlocks 🧩">
+<a aria-label="ForgingBlocks" class="md-header__button md-logo" data-md-component="logo" href="../../../.." title="ForgingBlocks">
 <img alt="logo" src="../../../../assets/logo.png"/>
 </a>
 <label class="md-header__button md-icon" for="__drawer">
@@ -46,7 +48,7 @@
 <div class="md-header__ellipsis">
 <div class="md-header__topic">
 <span class="md-ellipsis">
-            BuildingBlocks 🧩
+            ForgingBlocks
           </span>
 </div>
 <div class="md-header__topic" data-md-component="header-topic">
@@ -89,12 +91,12 @@
 </div>
 </div>
 <div class="md-header__source">
-<a class="md-source" data-md-component="source" href="https://github.com/building-blocks-org/building-blocks" title="Go to repository">
+<a class="md-source" data-md-component="source" href="https://github.com/forging-blocks-org/forging-blocks" title="Go to repository">
 <div class="md-source__icon md-icon">
 <svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
 </div>
 <div class="md-source__repository">
-    building-blocks-org/building-blocks
+    forging-blocks-org/forging-blocks
   </div>
 </a>
 </div>
@@ -165,18 +167,18 @@
 <div class="md-sidebar__inner">
 <nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
 <label class="md-nav__title" for="__drawer">
-<a aria-label="BuildingBlocks 🧩" class="md-nav__button md-logo" data-md-component="logo" href="../../../.." title="BuildingBlocks 🧩">
+<a aria-label="ForgingBlocks" class="md-nav__button md-logo" data-md-component="logo" href="../../../.." title="ForgingBlocks">
 <img alt="logo" src="../../../../assets/logo.png"/>
 </a>
-    BuildingBlocks 🧩
+    ForgingBlocks
   </label>
 <div class="md-nav__source">
-<a class="md-source" data-md-component="source" href="https://github.com/building-blocks-org/building-blocks" title="Go to repository">
+<a class="md-source" data-md-component="source" href="https://github.com/forging-blocks-org/forging-blocks" title="Go to repository">
 <div class="md-source__icon md-icon">
 <svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
 </div>
 <div class="md-source__repository">
-    building-blocks-org/building-blocks
+    forging-blocks-org/forging-blocks
   </div>
 </a>
 </div>
@@ -512,7 +514,7 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#building_blocks.domain.entity">
+<a class="md-nav__link" href="#forging_blocks.domain.entity">
 <span class="md-ellipsis">
       entity
     </span>
@@ -520,7 +522,7 @@
 <nav aria-label="entity" class="md-nav">
 <ul class="md-nav__list">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#building_blocks.domain.entity.Entity">
+<a class="md-nav__link" href="#forging_blocks.domain.entity.Entity">
 <span class="md-ellipsis">
       Entity
     </span>
@@ -528,58 +530,58 @@
 <nav aria-label="Entity" class="md-nav">
 <ul class="md-nav__list">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#building_blocks.domain.entity.Entity.id">
+<a class="md-nav__link" href="#forging_blocks.domain.entity.Entity.id">
 <span class="md-ellipsis">
       id
     </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#building_blocks.domain.entity.Entity.__setattr__">
+<a class="md-nav__link" href="#forging_blocks.domain.entity.Entity.__setattr__">
 <span class="md-ellipsis">
       __setattr__
     </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#building_blocks.domain.entity.Entity.__delattr__">
+<a class="md-nav__link" href="#forging_blocks.domain.entity.Entity.__delattr__">
 <span class="md-ellipsis">
       __delattr__
     </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#building_blocks.domain.entity.Entity.is_persisted">
-<span class="md-ellipsis">
-      is_persisted
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#building_blocks.domain.entity.Entity.__eq__">
+<a class="md-nav__link" href="#forging_blocks.domain.entity.Entity.__eq__">
 <span class="md-ellipsis">
       __eq__
     </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#building_blocks.domain.entity.Entity.__hash__">
+<a class="md-nav__link" href="#forging_blocks.domain.entity.Entity.__hash__">
 <span class="md-ellipsis">
       __hash__
     </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#building_blocks.domain.entity.Entity.__str__">
+<a class="md-nav__link" href="#forging_blocks.domain.entity.Entity.__str__">
 <span class="md-ellipsis">
       __str__
     </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#building_blocks.domain.entity.Entity.__repr__">
+<a class="md-nav__link" href="#forging_blocks.domain.entity.Entity.__repr__">
 <span class="md-ellipsis">
       __repr__
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#forging_blocks.domain.entity.Entity.is_persisted">
+<span class="md-ellipsis">
+      is_persisted
     </span>
 </a>
 </li>
@@ -866,7 +868,7 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#building_blocks.domain.entity">
+<a class="md-nav__link" href="#forging_blocks.domain.entity">
 <span class="md-ellipsis">
       entity
     </span>
@@ -874,7 +876,7 @@
 <nav aria-label="entity" class="md-nav">
 <ul class="md-nav__list">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#building_blocks.domain.entity.Entity">
+<a class="md-nav__link" href="#forging_blocks.domain.entity.Entity">
 <span class="md-ellipsis">
       Entity
     </span>
@@ -882,58 +884,58 @@
 <nav aria-label="Entity" class="md-nav">
 <ul class="md-nav__list">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#building_blocks.domain.entity.Entity.id">
+<a class="md-nav__link" href="#forging_blocks.domain.entity.Entity.id">
 <span class="md-ellipsis">
       id
     </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#building_blocks.domain.entity.Entity.__setattr__">
+<a class="md-nav__link" href="#forging_blocks.domain.entity.Entity.__setattr__">
 <span class="md-ellipsis">
       __setattr__
     </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#building_blocks.domain.entity.Entity.__delattr__">
+<a class="md-nav__link" href="#forging_blocks.domain.entity.Entity.__delattr__">
 <span class="md-ellipsis">
       __delattr__
     </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#building_blocks.domain.entity.Entity.is_persisted">
-<span class="md-ellipsis">
-      is_persisted
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#building_blocks.domain.entity.Entity.__eq__">
+<a class="md-nav__link" href="#forging_blocks.domain.entity.Entity.__eq__">
 <span class="md-ellipsis">
       __eq__
     </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#building_blocks.domain.entity.Entity.__hash__">
+<a class="md-nav__link" href="#forging_blocks.domain.entity.Entity.__hash__">
 <span class="md-ellipsis">
       __hash__
     </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#building_blocks.domain.entity.Entity.__str__">
+<a class="md-nav__link" href="#forging_blocks.domain.entity.Entity.__str__">
 <span class="md-ellipsis">
       __str__
     </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#building_blocks.domain.entity.Entity.__repr__">
+<a class="md-nav__link" href="#forging_blocks.domain.entity.Entity.__repr__">
 <span class="md-ellipsis">
       __repr__
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#forging_blocks.domain.entity.Entity.is_persisted">
+<span class="md-ellipsis">
+      is_persisted
     </span>
 </a>
 </li>
@@ -950,43 +952,34 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<a class="md-content__button md-icon" href="https://github.com/building-blocks-org/building-blocks/edit/master/docs/reference/autodoc/domain/entity.md" rel="edit" title="Edit this page">
+<a class="md-content__button md-icon" href="https://github.com/forging-blocks-org/forging-blocks/edit/main/docs/reference/autodoc/domain/entity.md" rel="edit" title="Edit this page">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"></path></svg>
 </a>
 <h1 id="entity">Entity<a class="headerlink" href="#entity" title="Permanent link">¶</a></h1>
-<p>Domain entities module.</p>
-<p>This module provides base classes for domain entities.</p>
+<p>Base Entity class for domain layer.</p>
 <div class="doc doc-object doc-module">
-<h2 class="doc doc-heading" id="building_blocks.domain.entity">
+<h2 class="doc doc-heading" id="forging_blocks.domain.entity">
 <code>entity</code>
-<a class="headerlink" href="#building_blocks.domain.entity" title="Permanent link">¶</a></h2>
+<a class="headerlink" href="#forging_blocks.domain.entity" title="Permanent link">¶</a></h2>
 <div class="doc doc-contents first">
-<p>Domain entities module.</p>
-<p>This module provides base classes for domain entities.</p>
+<p>Base Entity class for domain layer.</p>
 <div class="doc doc-children">
 <div class="doc doc-object doc-class">
-<h3 class="doc doc-heading" id="building_blocks.domain.entity.Entity">
+<h3 class="doc doc-heading" id="forging_blocks.domain.entity.Entity">
 <code>Entity</code>
-<a class="headerlink" href="#building_blocks.domain.entity.Entity" title="Permanent link">¶</a></h3>
+<a class="headerlink" href="#forging_blocks.domain.entity.Entity" title="Permanent link">¶</a></h3>
 <div class="doc doc-contents">
 <p class="doc doc-class-bases">
-              Bases: <code><span title="typing.Generic">Generic</span>[<span title="building_blocks.domain.entity.TId">TId</span>]</code>, <code><span title="abc.ABC">ABC</span></code></p>
-<p>Base class for domain entities.</p>
-<p>Entities represent objects with identity. The identity (ID) may be:
-  - <code>None</code>: Draft entity before persistence (e.g., DB autogenerates ID)
-  - A valid ID: Assigned before or during construction</p>
-<details class="behavior" open="">
-<summary>Behavior</summary>
-<ul>
-<li>Equality: by ID if both have IDs, otherwise by identity (<code>is</code>)</li>
-<li>Hashing: allowed only for persisted entities (ID is not None)</li>
-<li>ID immutability: <code>_id</code> cannot be modified or deleted once set</li>
-<li>No <code>set_id()</code> method — lifecycle controlled by Python data model</li>
-</ul>
-</details>
+              Bases: <code><span title="typing.Generic">Generic</span>[<span title="forging_blocks.domain.entity.TId">TId</span>]</code>, <code><span title="abc.ABC">ABC</span></code></p>
+<p>Base class for all domain entities.</p>
+<p>An entity is defined by its identity rather than its attributes. Two entities with the same
+identifier are considered equal, regardless of their other attributes.</p>
 <details class="quote">
-<summary>Source code in <code>src/building_blocks/domain/entity.py</code></summary>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">19</span>
+<summary>Source code in <code>src/forging_blocks/domain/entity.py</code></summary>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
 <span class="normal">20</span>
 <span class="normal">21</span>
 <span class="normal">22</span>
@@ -1055,17 +1048,10 @@
 <span class="normal">85</span>
 <span class="normal">86</span>
 <span class="normal">87</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Entity</span><span class="p">(</span><span class="n">Generic</span><span class="p">[</span><span class="n">TId</span><span class="p">],</span> <span class="n">ABC</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">"""Base class for domain entities.</span>
+<span class="w">    </span><span class="sd">"""Base class for all domain entities.</span>
 
-<span class="sd">    Entities represent objects with identity. The identity (ID) may be:</span>
-<span class="sd">      - `None`: Draft entity before persistence (e.g., DB autogenerates ID)</span>
-<span class="sd">      - A valid ID: Assigned before or during construction</span>
-
-<span class="sd">    Behavior:</span>
-<span class="sd">      - Equality: by ID if both have IDs, otherwise by identity (`is`)</span>
-<span class="sd">      - Hashing: allowed only for persisted entities (ID is not None)</span>
-<span class="sd">      - ID immutability: `_id` cannot be modified or deleted once set</span>
-<span class="sd">      - No `set_id()` method — lifecycle controlled by Python data model</span>
+<span class="sd">    An entity is defined by its identity rather than its attributes. Two entities with the same</span>
+<span class="sd">    identifier are considered equal, regardless of their other attributes.</span>
 <span class="sd">    """</span>
 
     <span class="n">_id</span><span class="p">:</span> <span class="n">TId</span> <span class="o">|</span> <span class="kc">None</span>
@@ -1076,140 +1062,198 @@
         <span class="nb">object</span><span class="o">.</span><span class="fm">__setattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">"_Entity__is_frozen"</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__setattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">"""Prevent reassignment of the ID after initialization."""</span>
-        <span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="s2">"_id"</span> <span class="ow">and</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">"_id"</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Cannot modify 'id' once set (</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_id</span><span class="si">!r}</span><span class="s2">)."</span><span class="p">)</span>
+<span class="w">        </span><span class="sd">"""Prevent modification of '_id' once set."""</span>
+        <span class="k">if</span> <span class="p">(</span>
+            <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">"_Entity__is_frozen"</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+            <span class="ow">and</span> <span class="n">name</span> <span class="o">==</span> <span class="s2">"_id"</span>
+            <span class="ow">and</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">"_id"</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+            <span class="ow">and</span> <span class="n">value</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_id</span>
+        <span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">: cannot modify '</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">' once set "</span>
+                <span class="sa">f</span><span class="s2">"(current value=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_id</span><span class="si">!r}</span><span class="s2">)."</span>
+            <span class="p">)</span>
         <span class="nb">object</span><span class="o">.</span><span class="fm">__setattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__delattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">"""Prevent deletion of the ID."""</span>
+<span class="w">        </span><span class="sd">"""Prevent deletion of '_id'."""</span>
         <span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="s2">"_id"</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="s2">"Cannot delete 'id'."</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">: cannot delete 'id'."</span><span class="p">)</span>
         <span class="nb">object</span><span class="o">.</span><span class="fm">__delattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
 
-    <span class="nd">@property</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">id</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TId</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">"""Unique identifier (may be None for drafts)."""</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_id</span>
-
-    <span class="k">def</span><span class="w"> </span><span class="nf">is_persisted</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">"""Check if the entity has a defined (non-None) ID."""</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_id</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
-
     <span class="k">def</span><span class="w"> </span><span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="nb">object</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">"""Entity equality comparison magic method.</span>
+<span class="w">        </span><span class="sd">"""Check equality based on type and identifier."""</span>
+        <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="nb">type</span><span class="p">(</span><span class="n">other</span><span class="p">):</span>
+            <span class="k">return</span> <span class="kc">False</span>
 
-<span class="sd">        Entities are equal if:</span>
-<span class="sd">        - They are of the same class AND</span>
-<span class="sd">        - Both have IDs and IDs are equal</span>
-<span class="sd">        Otherwise, identity equality (same instance).</span>
-<span class="sd">        """</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">):</span>
-            <span class="k">return</span> <span class="bp">NotImplemented</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_id</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">other</span><span class="o">.</span><span class="n">_id</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="k">return</span> <span class="bp">self</span> <span class="ow">is</span> <span class="n">other</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_id</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">_id</span>
+        <span class="n">other_entty</span> <span class="o">=</span> <span class="n">cast</span><span class="p">(</span><span class="n">Entity</span><span class="p">[</span><span class="n">TId</span><span class="p">],</span> <span class="n">other</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_id</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">other_entty</span><span class="o">.</span><span class="n">_id</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span> <span class="ow">is</span> <span class="n">other_entty</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_id</span> <span class="o">==</span> <span class="n">other_entty</span><span class="o">.</span><span class="n">_id</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__hash__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">"""Hash based on ID; drafts are not hashable."""</span>
+<span class="w">        </span><span class="sd">"""Return the hash based on the entity's identifier.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            DraftEntityIsNotHashableError: If the entity is a draft (id is None).</span>
+<span class="sd">        """</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_id</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">raise</span> <span class="n">DraftEntityIsNotHashableError</span><span class="o">.</span><span class="n">from_class_name</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
         <span class="k">return</span> <span class="nb">hash</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_id</span><span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">"""Readable representation showing ID."""</span>
+<span class="w">        </span><span class="sd">"""Return a user-friendly string representation of the entity."""</span>
         <span class="k">return</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">(id=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_id</span><span class="si">}</span><span class="s2">)"</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">"""Concise representation for debugging."""</span>
+<span class="w">        </span><span class="sd">"""Return a developer-friendly string representation of the entity."""</span>
         <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">id</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TId</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Return the entity's identifier, or None if it's a draft entity."""</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_id</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">is_persisted</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Return True if the entity has a defined identifier (i.e., is persisted)."""</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_id</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
 </code></pre></div></td></tr></table></div>
 </details>
 <div class="doc doc-children">
 <div class="doc doc-object doc-attribute">
-<h4 class="doc doc-heading" id="building_blocks.domain.entity.Entity.id">
-<code class="highlight language-python"><span class="nb">id</span></code>
+<h4 class="doc doc-heading" id="forging_blocks.domain.entity.Entity.id">
+<code class="highlight language-python"><span class="nb">id</span><span class="p">:</span> <span class="n">TId</span> <span class="o">|</span> <span class="kc">None</span></code>
 <span class="doc doc-labels">
 <small class="doc doc-label doc-label-property"><code>property</code></small>
 </span>
-<a class="headerlink" href="#building_blocks.domain.entity.Entity.id" title="Permanent link">¶</a></h4>
+<a class="headerlink" href="#forging_blocks.domain.entity.Entity.id" title="Permanent link">¶</a></h4>
 <div class="doc doc-contents">
-<p>Unique identifier (may be None for drafts).</p>
+<p>Return the entity's identifier, or None if it's a draft entity.</p>
 </div>
 </div>
 <div class="doc doc-object doc-function">
-<h4 class="doc doc-heading" id="building_blocks.domain.entity.Entity.__setattr__">
-<code class="highlight language-python"><span class="fm">__setattr__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span></code>
-<a class="headerlink" href="#building_blocks.domain.entity.Entity.__setattr__" title="Permanent link">¶</a></h4>
+<h4 class="doc doc-heading" id="forging_blocks.domain.entity.Entity.__setattr__">
+<code class="highlight language-python"><span class="fm">__setattr__</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span></code>
+<a class="headerlink" href="#forging_blocks.domain.entity.Entity.__setattr__" title="Permanent link">¶</a></h4>
 <div class="doc doc-contents">
-<p>Prevent reassignment of the ID after initialization.</p>
+<p>Prevent modification of '_id' once set.</p>
 <details class="quote">
-<summary>Source code in <code>src/building_blocks/domain/entity.py</code></summary>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">40</span>
+<summary>Source code in <code>src/forging_blocks/domain/entity.py</code></summary>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
 <span class="normal">41</span>
-<span class="normal">42</span>
-<span class="normal">43</span>
-<span class="normal">44</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__setattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">"""Prevent reassignment of the ID after initialization."""</span>
-    <span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="s2">"_id"</span> <span class="ow">and</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">"_id"</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Cannot modify 'id' once set (</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_id</span><span class="si">!r}</span><span class="s2">)."</span><span class="p">)</span>
+<span class="normal">42</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__setattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Prevent modification of '_id' once set."""</span>
+    <span class="k">if</span> <span class="p">(</span>
+        <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">"_Entity__is_frozen"</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+        <span class="ow">and</span> <span class="n">name</span> <span class="o">==</span> <span class="s2">"_id"</span>
+        <span class="ow">and</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">"_id"</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+        <span class="ow">and</span> <span class="n">value</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_id</span>
+    <span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">: cannot modify '</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">' once set "</span>
+            <span class="sa">f</span><span class="s2">"(current value=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_id</span><span class="si">!r}</span><span class="s2">)."</span>
+        <span class="p">)</span>
     <span class="nb">object</span><span class="o">.</span><span class="fm">__setattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
 </details>
 </div>
 </div>
 <div class="doc doc-object doc-function">
-<h4 class="doc doc-heading" id="building_blocks.domain.entity.Entity.__delattr__">
-<code class="highlight language-python"><span class="fm">__delattr__</span><span class="p">(</span><span class="n">name</span><span class="p">)</span></code>
-<a class="headerlink" href="#building_blocks.domain.entity.Entity.__delattr__" title="Permanent link">¶</a></h4>
+<h4 class="doc doc-heading" id="forging_blocks.domain.entity.Entity.__delattr__">
+<code class="highlight language-python"><span class="fm">__delattr__</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span></code>
+<a class="headerlink" href="#forging_blocks.domain.entity.Entity.__delattr__" title="Permanent link">¶</a></h4>
 <div class="doc doc-contents">
-<p>Prevent deletion of the ID.</p>
+<p>Prevent deletion of '_id'.</p>
 <details class="quote">
-<summary>Source code in <code>src/building_blocks/domain/entity.py</code></summary>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">46</span>
+<summary>Source code in <code>src/forging_blocks/domain/entity.py</code></summary>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
 <span class="normal">47</span>
-<span class="normal">48</span>
-<span class="normal">49</span>
-<span class="normal">50</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__delattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">"""Prevent deletion of the ID."""</span>
+<span class="normal">48</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__delattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Prevent deletion of '_id'."""</span>
     <span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="s2">"_id"</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="s2">"Cannot delete 'id'."</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">: cannot delete 'id'."</span><span class="p">)</span>
     <span class="nb">object</span><span class="o">.</span><span class="fm">__delattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
 </details>
 </div>
 </div>
 <div class="doc doc-object doc-function">
-<h4 class="doc doc-heading" id="building_blocks.domain.entity.Entity.is_persisted">
-<code class="highlight language-python"><span class="n">is_persisted</span><span class="p">()</span></code>
-<a class="headerlink" href="#building_blocks.domain.entity.Entity.is_persisted" title="Permanent link">¶</a></h4>
+<h4 class="doc doc-heading" id="forging_blocks.domain.entity.Entity.__eq__">
+<code class="highlight language-python"><span class="fm">__eq__</span><span class="p">(</span><span class="n">other</span><span class="p">:</span> <span class="nb">object</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span></code>
+<a class="headerlink" href="#forging_blocks.domain.entity.Entity.__eq__" title="Permanent link">¶</a></h4>
 <div class="doc doc-contents">
-<p>Check if the entity has a defined (non-None) ID.</p>
+<p>Check equality based on type and identifier.</p>
 <details class="quote">
-<summary>Source code in <code>src/building_blocks/domain/entity.py</code></summary>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">57</span>
+<summary>Source code in <code>src/forging_blocks/domain/entity.py</code></summary>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
 <span class="normal">58</span>
-<span class="normal">59</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">is_persisted</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">"""Check if the entity has a defined (non-None) ID."""</span>
-    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_id</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+<span class="normal">59</span>
+<span class="normal">60</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="nb">object</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Check equality based on type and identifier."""</span>
+    <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="nb">type</span><span class="p">(</span><span class="n">other</span><span class="p">):</span>
+        <span class="k">return</span> <span class="kc">False</span>
+
+    <span class="n">other_entty</span> <span class="o">=</span> <span class="n">cast</span><span class="p">(</span><span class="n">Entity</span><span class="p">[</span><span class="n">TId</span><span class="p">],</span> <span class="n">other</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_id</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">other_entty</span><span class="o">.</span><span class="n">_id</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span> <span class="ow">is</span> <span class="n">other_entty</span>
+
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_id</span> <span class="o">==</span> <span class="n">other_entty</span><span class="o">.</span><span class="n">_id</span>
 </code></pre></div></td></tr></table></div>
 </details>
 </div>
 </div>
 <div class="doc doc-object doc-function">
-<h4 class="doc doc-heading" id="building_blocks.domain.entity.Entity.__eq__">
-<code class="highlight language-python"><span class="fm">__eq__</span><span class="p">(</span><span class="n">other</span><span class="p">)</span></code>
-<a class="headerlink" href="#building_blocks.domain.entity.Entity.__eq__" title="Permanent link">¶</a></h4>
+<h4 class="doc doc-heading" id="forging_blocks.domain.entity.Entity.__hash__">
+<code class="highlight language-python"><span class="fm">__hash__</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">int</span></code>
+<a class="headerlink" href="#forging_blocks.domain.entity.Entity.__hash__" title="Permanent link">¶</a></h4>
 <div class="doc doc-contents">
-<p>Entity equality comparison magic method.</p>
-<p>Entities are equal if:
-- They are of the same class AND
-- Both have IDs and IDs are equal
-Otherwise, identity equality (same instance).</p>
+<p>Return the hash based on the entity's identifier.</p>
+<p><span class="doc-section-title">Raises:</span></p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="doc-section-item">
+<td>
+<code><a class="autorefs autorefs-internal" href="../errors/draft_entity_is_not_hashable_error/#forging_blocks.domain.errors.draft_entity_is_not_hashable_error.DraftEntityIsNotHashableError" title="DraftEntityIsNotHashableError (forging_blocks.domain.errors.draft_entity_is_not_hashable_error.DraftEntityIsNotHashableError)">DraftEntityIsNotHashableError</a></code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>If the entity is a draft (id is None).</p>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
 <details class="quote">
-<summary>Source code in <code>src/building_blocks/domain/entity.py</code></summary>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">61</span>
-<span class="normal">62</span>
+<summary>Source code in <code>src/forging_blocks/domain/entity.py</code></summary>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">62</span>
 <span class="normal">63</span>
 <span class="normal">64</span>
 <span class="normal">65</span>
@@ -1217,40 +1261,12 @@ Otherwise, identity equality (same instance).</p>
 <span class="normal">67</span>
 <span class="normal">68</span>
 <span class="normal">69</span>
-<span class="normal">70</span>
-<span class="normal">71</span>
-<span class="normal">72</span>
-<span class="normal">73</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="nb">object</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">"""Entity equality comparison magic method.</span>
+<span class="normal">70</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__hash__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Return the hash based on the entity's identifier.</span>
 
-<span class="sd">    Entities are equal if:</span>
-<span class="sd">    - They are of the same class AND</span>
-<span class="sd">    - Both have IDs and IDs are equal</span>
-<span class="sd">    Otherwise, identity equality (same instance).</span>
+<span class="sd">    Raises:</span>
+<span class="sd">        DraftEntityIsNotHashableError: If the entity is a draft (id is None).</span>
 <span class="sd">    """</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">NotImplemented</span>
-    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_id</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">other</span><span class="o">.</span><span class="n">_id</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="k">return</span> <span class="bp">self</span> <span class="ow">is</span> <span class="n">other</span>
-    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_id</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">_id</span>
-</code></pre></div></td></tr></table></div>
-</details>
-</div>
-</div>
-<div class="doc doc-object doc-function">
-<h4 class="doc doc-heading" id="building_blocks.domain.entity.Entity.__hash__">
-<code class="highlight language-python"><span class="fm">__hash__</span><span class="p">()</span></code>
-<a class="headerlink" href="#building_blocks.domain.entity.Entity.__hash__" title="Permanent link">¶</a></h4>
-<div class="doc doc-contents">
-<p>Hash based on ID; drafts are not hashable.</p>
-<details class="quote">
-<summary>Source code in <code>src/building_blocks/domain/entity.py</code></summary>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">75</span>
-<span class="normal">76</span>
-<span class="normal">77</span>
-<span class="normal">78</span>
-<span class="normal">79</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__hash__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">"""Hash based on ID; drafts are not hashable."""</span>
     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_id</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">raise</span> <span class="n">DraftEntityIsNotHashableError</span><span class="o">.</span><span class="n">from_class_name</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
     <span class="k">return</span> <span class="nb">hash</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_id</span><span class="p">)</span>
@@ -1259,35 +1275,52 @@ Otherwise, identity equality (same instance).</p>
 </div>
 </div>
 <div class="doc doc-object doc-function">
-<h4 class="doc doc-heading" id="building_blocks.domain.entity.Entity.__str__">
-<code class="highlight language-python"><span class="fm">__str__</span><span class="p">()</span></code>
-<a class="headerlink" href="#building_blocks.domain.entity.Entity.__str__" title="Permanent link">¶</a></h4>
+<h4 class="doc doc-heading" id="forging_blocks.domain.entity.Entity.__str__">
+<code class="highlight language-python"><span class="fm">__str__</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">str</span></code>
+<a class="headerlink" href="#forging_blocks.domain.entity.Entity.__str__" title="Permanent link">¶</a></h4>
 <div class="doc doc-contents">
-<p>Readable representation showing ID.</p>
+<p>Return a user-friendly string representation of the entity.</p>
 <details class="quote">
-<summary>Source code in <code>src/building_blocks/domain/entity.py</code></summary>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">81</span>
-<span class="normal">82</span>
-<span class="normal">83</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">"""Readable representation showing ID."""</span>
+<summary>Source code in <code>src/forging_blocks/domain/entity.py</code></summary>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">72</span>
+<span class="normal">73</span>
+<span class="normal">74</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Return a user-friendly string representation of the entity."""</span>
     <span class="k">return</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">(id=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_id</span><span class="si">}</span><span class="s2">)"</span>
 </code></pre></div></td></tr></table></div>
 </details>
 </div>
 </div>
 <div class="doc doc-object doc-function">
-<h4 class="doc doc-heading" id="building_blocks.domain.entity.Entity.__repr__">
-<code class="highlight language-python"><span class="fm">__repr__</span><span class="p">()</span></code>
-<a class="headerlink" href="#building_blocks.domain.entity.Entity.__repr__" title="Permanent link">¶</a></h4>
+<h4 class="doc doc-heading" id="forging_blocks.domain.entity.Entity.__repr__">
+<code class="highlight language-python"><span class="fm">__repr__</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">str</span></code>
+<a class="headerlink" href="#forging_blocks.domain.entity.Entity.__repr__" title="Permanent link">¶</a></h4>
 <div class="doc doc-contents">
-<p>Concise representation for debugging.</p>
+<p>Return a developer-friendly string representation of the entity.</p>
 <details class="quote">
-<summary>Source code in <code>src/building_blocks/domain/entity.py</code></summary>
+<summary>Source code in <code>src/forging_blocks/domain/entity.py</code></summary>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">76</span>
+<span class="normal">77</span>
+<span class="normal">78</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Return a developer-friendly string representation of the entity."""</span>
+    <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+</details>
+</div>
+</div>
+<div class="doc doc-object doc-function">
+<h4 class="doc doc-heading" id="forging_blocks.domain.entity.Entity.is_persisted">
+<code class="highlight language-python"><span class="n">is_persisted</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">bool</span></code>
+<a class="headerlink" href="#forging_blocks.domain.entity.Entity.is_persisted" title="Permanent link">¶</a></h4>
+<div class="doc doc-contents">
+<p>Return True if the entity has a defined identifier (i.e., is persisted).</p>
+<details class="quote">
+<summary>Source code in <code>src/forging_blocks/domain/entity.py</code></summary>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">85</span>
 <span class="normal">86</span>
-<span class="normal">87</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">"""Concise representation for debugging."""</span>
-    <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+<span class="normal">87</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">is_persisted</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Return True if the entity has a defined identifier (i.e., is persisted)."""</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_id</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
 </code></pre></div></td></tr></table></div>
 </details>
 </div>
@@ -1322,7 +1355,7 @@ Otherwise, identity equality (same instance).</p>
 <div class="md-dialog" data-md-component="dialog">
 <div class="md-dialog__inner md-typeset"></div>
 </div>
-<script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.tabs", "navigation.instant", "navigation.sections", "toc.follow", "content.code.copy", "content.action.edit", "content.tabs.link"], "search": "../../../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+<script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.tabs", "navigation.instant", "navigation.sections", "toc.follow", "content.code.copy", "content.action.edit", "content.tabs.link"], "search": "../../../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
 <script src="../../../../assets/javascripts/bundle.f55a23d4.min.js"></script>
 </body>
 </html>

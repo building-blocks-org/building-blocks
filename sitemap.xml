@@ -1,191 +1,195 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-         <loc>https://building-blocks-org.github.io/building-blocks/</loc>
-         <lastmod>2025-11-09</lastmod>
+         <loc>https://forging-blocks-org.github.io/forging-blocks/</loc>
+         <lastmod>2025-11-13</lastmod>
     </url>
     <url>
-         <loc>https://building-blocks-org.github.io/building-blocks/CONTRIBUTING/</loc>
-         <lastmod>2025-11-09</lastmod>
+         <loc>https://forging-blocks-org.github.io/forging-blocks/CONTRIBUTING/</loc>
+         <lastmod>2025-11-13</lastmod>
     </url>
     <url>
-         <loc>https://building-blocks-org.github.io/building-blocks/LICENSE/</loc>
-         <lastmod>2025-11-09</lastmod>
+         <loc>https://forging-blocks-org.github.io/forging-blocks/LICENSE/</loc>
+         <lastmod>2025-11-13</lastmod>
     </url>
     <url>
-         <loc>https://building-blocks-org.github.io/building-blocks/test_mermaid/</loc>
-         <lastmod>2025-11-09</lastmod>
+         <loc>https://forging-blocks-org.github.io/forging-blocks/test_mermaid/</loc>
+         <lastmod>2025-11-13</lastmod>
     </url>
     <url>
-         <loc>https://building-blocks-org.github.io/building-blocks/guide/</loc>
-         <lastmod>2025-11-09</lastmod>
+         <loc>https://forging-blocks-org.github.io/forging-blocks/guide/</loc>
+         <lastmod>2025-11-13</lastmod>
     </url>
     <url>
-         <loc>https://building-blocks-org.github.io/building-blocks/guide/architecture/</loc>
-         <lastmod>2025-11-09</lastmod>
+         <loc>https://forging-blocks-org.github.io/forging-blocks/guide/architecture/</loc>
+         <lastmod>2025-11-13</lastmod>
     </url>
     <url>
-         <loc>https://building-blocks-org.github.io/building-blocks/guide/example_tests/</loc>
-         <lastmod>2025-11-09</lastmod>
+         <loc>https://forging-blocks-org.github.io/forging-blocks/guide/example_tests/</loc>
+         <lastmod>2025-11-13</lastmod>
     </url>
     <url>
-         <loc>https://building-blocks-org.github.io/building-blocks/guide/examples/</loc>
-         <lastmod>2025-11-09</lastmod>
+         <loc>https://forging-blocks-org.github.io/forging-blocks/guide/examples/</loc>
+         <lastmod>2025-11-13</lastmod>
     </url>
     <url>
-         <loc>https://building-blocks-org.github.io/building-blocks/guide/getting-started/</loc>
-         <lastmod>2025-11-09</lastmod>
+         <loc>https://forging-blocks-org.github.io/forging-blocks/guide/getting-started/</loc>
+         <lastmod>2025-11-13</lastmod>
     </url>
     <url>
-         <loc>https://building-blocks-org.github.io/building-blocks/guide/packages_and_layers/</loc>
-         <lastmod>2025-11-09</lastmod>
+         <loc>https://forging-blocks-org.github.io/forging-blocks/guide/packages_and_layers/</loc>
+         <lastmod>2025-11-13</lastmod>
     </url>
     <url>
-         <loc>https://building-blocks-org.github.io/building-blocks/guide/principles/</loc>
-         <lastmod>2025-11-09</lastmod>
+         <loc>https://forging-blocks-org.github.io/forging-blocks/guide/principles/</loc>
+         <lastmod>2025-11-13</lastmod>
     </url>
     <url>
-         <loc>https://building-blocks-org.github.io/building-blocks/guide/testing/</loc>
-         <lastmod>2025-11-09</lastmod>
+         <loc>https://forging-blocks-org.github.io/forging-blocks/guide/release_guide/</loc>
+         <lastmod>2025-11-13</lastmod>
     </url>
     <url>
-         <loc>https://building-blocks-org.github.io/building-blocks/reference/</loc>
-         <lastmod>2025-11-09</lastmod>
+         <loc>https://forging-blocks-org.github.io/forging-blocks/guide/testing/</loc>
+         <lastmod>2025-11-13</lastmod>
     </url>
     <url>
-         <loc>https://building-blocks-org.github.io/building-blocks/reference/application/</loc>
-         <lastmod>2025-11-09</lastmod>
+         <loc>https://forging-blocks-org.github.io/forging-blocks/reference/</loc>
+         <lastmod>2025-11-13</lastmod>
     </url>
     <url>
-         <loc>https://building-blocks-org.github.io/building-blocks/reference/domain/</loc>
-         <lastmod>2025-11-09</lastmod>
+         <loc>https://forging-blocks-org.github.io/forging-blocks/reference/application/</loc>
+         <lastmod>2025-11-13</lastmod>
     </url>
     <url>
-         <loc>https://building-blocks-org.github.io/building-blocks/reference/foundation/</loc>
-         <lastmod>2025-11-09</lastmod>
+         <loc>https://forging-blocks-org.github.io/forging-blocks/reference/domain/</loc>
+         <lastmod>2025-11-13</lastmod>
     </url>
     <url>
-         <loc>https://building-blocks-org.github.io/building-blocks/reference/infrastructure/</loc>
-         <lastmod>2025-11-09</lastmod>
+         <loc>https://forging-blocks-org.github.io/forging-blocks/reference/foundation/</loc>
+         <lastmod>2025-11-13</lastmod>
     </url>
     <url>
-         <loc>https://building-blocks-org.github.io/building-blocks/reference/presentation/</loc>
-         <lastmod>2025-11-09</lastmod>
+         <loc>https://forging-blocks-org.github.io/forging-blocks/reference/infrastructure/</loc>
+         <lastmod>2025-11-13</lastmod>
     </url>
     <url>
-         <loc>https://building-blocks-org.github.io/building-blocks/reference/autodoc/application/ports/inbound/message_handler/</loc>
-         <lastmod>2025-11-09</lastmod>
+         <loc>https://forging-blocks-org.github.io/forging-blocks/reference/presentation/</loc>
+         <lastmod>2025-11-13</lastmod>
     </url>
     <url>
-         <loc>https://building-blocks-org.github.io/building-blocks/reference/autodoc/application/ports/inbound/use_case/</loc>
-         <lastmod>2025-11-09</lastmod>
+         <loc>https://forging-blocks-org.github.io/forging-blocks/reference/autodoc/application/ports/inbound/message_handler/</loc>
+         <lastmod>2025-11-13</lastmod>
     </url>
     <url>
-         <loc>https://building-blocks-org.github.io/building-blocks/reference/autodoc/application/ports/outbound/command_sender/</loc>
-         <lastmod>2025-11-09</lastmod>
+         <loc>https://forging-blocks-org.github.io/forging-blocks/reference/autodoc/application/ports/inbound/use_case/</loc>
+         <lastmod>2025-11-13</lastmod>
     </url>
     <url>
-         <loc>https://building-blocks-org.github.io/building-blocks/reference/autodoc/application/ports/outbound/event_publisher/</loc>
-         <lastmod>2025-11-09</lastmod>
+         <loc>https://forging-blocks-org.github.io/forging-blocks/reference/autodoc/application/ports/outbound/command_sender/</loc>
+         <lastmod>2025-11-13</lastmod>
     </url>
     <url>
-         <loc>https://building-blocks-org.github.io/building-blocks/reference/autodoc/application/ports/outbound/message_bus/</loc>
-         <lastmod>2025-11-09</lastmod>
+         <loc>https://forging-blocks-org.github.io/forging-blocks/reference/autodoc/application/ports/outbound/event_publisher/</loc>
+         <lastmod>2025-11-13</lastmod>
     </url>
     <url>
-         <loc>https://building-blocks-org.github.io/building-blocks/reference/autodoc/application/ports/outbound/notifier/</loc>
-         <lastmod>2025-11-09</lastmod>
+         <loc>https://forging-blocks-org.github.io/forging-blocks/reference/autodoc/application/ports/outbound/message_bus/</loc>
+         <lastmod>2025-11-13</lastmod>
     </url>
     <url>
-         <loc>https://building-blocks-org.github.io/building-blocks/reference/autodoc/application/ports/outbound/query_fetcher/</loc>
-         <lastmod>2025-11-09</lastmod>
+         <loc>https://forging-blocks-org.github.io/forging-blocks/reference/autodoc/application/ports/outbound/notifier/</loc>
+         <lastmod>2025-11-13</lastmod>
     </url>
     <url>
-         <loc>https://building-blocks-org.github.io/building-blocks/reference/autodoc/application/ports/outbound/repository/</loc>
-         <lastmod>2025-11-09</lastmod>
+         <loc>https://forging-blocks-org.github.io/forging-blocks/reference/autodoc/application/ports/outbound/query_fetcher/</loc>
+         <lastmod>2025-11-13</lastmod>
     </url>
     <url>
-         <loc>https://building-blocks-org.github.io/building-blocks/reference/autodoc/application/ports/outbound/unit_of_work/</loc>
-         <lastmod>2025-11-09</lastmod>
+         <loc>https://forging-blocks-org.github.io/forging-blocks/reference/autodoc/application/ports/outbound/repository/</loc>
+         <lastmod>2025-11-13</lastmod>
     </url>
     <url>
-         <loc>https://building-blocks-org.github.io/building-blocks/reference/autodoc/domain/aggregate_root/</loc>
-         <lastmod>2025-11-09</lastmod>
+         <loc>https://forging-blocks-org.github.io/forging-blocks/reference/autodoc/application/ports/outbound/unit_of_work/</loc>
+         <lastmod>2025-11-13</lastmod>
     </url>
     <url>
-         <loc>https://building-blocks-org.github.io/building-blocks/reference/autodoc/domain/entity/</loc>
-         <lastmod>2025-11-09</lastmod>
+         <loc>https://forging-blocks-org.github.io/forging-blocks/reference/autodoc/domain/aggregate_root/</loc>
+         <lastmod>2025-11-13</lastmod>
     </url>
     <url>
-         <loc>https://building-blocks-org.github.io/building-blocks/reference/autodoc/domain/value_object/</loc>
-         <lastmod>2025-11-09</lastmod>
+         <loc>https://forging-blocks-org.github.io/forging-blocks/reference/autodoc/domain/entity/</loc>
+         <lastmod>2025-11-13</lastmod>
     </url>
     <url>
-         <loc>https://building-blocks-org.github.io/building-blocks/reference/autodoc/domain/errors/draft_entity_is_not_hashable_error/</loc>
-         <lastmod>2025-11-09</lastmod>
+         <loc>https://forging-blocks-org.github.io/forging-blocks/reference/autodoc/domain/value_object/</loc>
+         <lastmod>2025-11-13</lastmod>
     </url>
     <url>
-         <loc>https://building-blocks-org.github.io/building-blocks/reference/autodoc/domain/errors/entity_id_none_error/</loc>
-         <lastmod>2025-11-09</lastmod>
+         <loc>https://forging-blocks-org.github.io/forging-blocks/reference/autodoc/domain/errors/draft_entity_is_not_hashable_error/</loc>
+         <lastmod>2025-11-13</lastmod>
     </url>
     <url>
-         <loc>https://building-blocks-org.github.io/building-blocks/reference/autodoc/domain/messages/command/</loc>
-         <lastmod>2025-11-09</lastmod>
+         <loc>https://forging-blocks-org.github.io/forging-blocks/reference/autodoc/domain/errors/entity_id_none_error/</loc>
+         <lastmod>2025-11-13</lastmod>
     </url>
     <url>
-         <loc>https://building-blocks-org.github.io/building-blocks/reference/autodoc/domain/messages/event/</loc>
-         <lastmod>2025-11-09</lastmod>
+         <loc>https://forging-blocks-org.github.io/forging-blocks/reference/autodoc/domain/messages/command/</loc>
+         <lastmod>2025-11-13</lastmod>
     </url>
     <url>
-         <loc>https://building-blocks-org.github.io/building-blocks/reference/autodoc/domain/messages/message/</loc>
-         <lastmod>2025-11-09</lastmod>
+         <loc>https://forging-blocks-org.github.io/forging-blocks/reference/autodoc/domain/messages/event/</loc>
+         <lastmod>2025-11-13</lastmod>
     </url>
     <url>
-         <loc>https://building-blocks-org.github.io/building-blocks/reference/autodoc/domain/messages/query/</loc>
-         <lastmod>2025-11-09</lastmod>
+         <loc>https://forging-blocks-org.github.io/forging-blocks/reference/autodoc/domain/messages/message/</loc>
+         <lastmod>2025-11-13</lastmod>
     </url>
     <url>
-         <loc>https://building-blocks-org.github.io/building-blocks/reference/autodoc/foundation/debuggable/</loc>
-         <lastmod>2025-11-09</lastmod>
+         <loc>https://forging-blocks-org.github.io/forging-blocks/reference/autodoc/domain/messages/query/</loc>
+         <lastmod>2025-11-13</lastmod>
     </url>
     <url>
-         <loc>https://building-blocks-org.github.io/building-blocks/reference/autodoc/foundation/mapper/</loc>
-         <lastmod>2025-11-09</lastmod>
+         <loc>https://forging-blocks-org.github.io/forging-blocks/reference/autodoc/foundation/debuggable/</loc>
+         <lastmod>2025-11-13</lastmod>
     </url>
     <url>
-         <loc>https://building-blocks-org.github.io/building-blocks/reference/autodoc/foundation/ports/</loc>
-         <lastmod>2025-11-09</lastmod>
+         <loc>https://forging-blocks-org.github.io/forging-blocks/reference/autodoc/foundation/mapper/</loc>
+         <lastmod>2025-11-13</lastmod>
     </url>
     <url>
-         <loc>https://building-blocks-org.github.io/building-blocks/reference/autodoc/foundation/result/</loc>
-         <lastmod>2025-11-09</lastmod>
+         <loc>https://forging-blocks-org.github.io/forging-blocks/reference/autodoc/foundation/ports/</loc>
+         <lastmod>2025-11-13</lastmod>
     </url>
     <url>
-         <loc>https://building-blocks-org.github.io/building-blocks/reference/autodoc/foundation/result_mapper/</loc>
-         <lastmod>2025-11-09</lastmod>
+         <loc>https://forging-blocks-org.github.io/forging-blocks/reference/autodoc/foundation/result/</loc>
+         <lastmod>2025-11-13</lastmod>
     </url>
     <url>
-         <loc>https://building-blocks-org.github.io/building-blocks/reference/autodoc/foundation/errors/base/</loc>
-         <lastmod>2025-11-09</lastmod>
+         <loc>https://forging-blocks-org.github.io/forging-blocks/reference/autodoc/foundation/result_mapper/</loc>
+         <lastmod>2025-11-13</lastmod>
     </url>
     <url>
-         <loc>https://building-blocks-org.github.io/building-blocks/reference/autodoc/foundation/errors/cant_modify_immutable_attribute_error/</loc>
-         <lastmod>2025-11-09</lastmod>
+         <loc>https://forging-blocks-org.github.io/forging-blocks/reference/autodoc/foundation/errors/base/</loc>
+         <lastmod>2025-11-13</lastmod>
     </url>
     <url>
-         <loc>https://building-blocks-org.github.io/building-blocks/reference/autodoc/foundation/errors/core/</loc>
-         <lastmod>2025-11-09</lastmod>
+         <loc>https://forging-blocks-org.github.io/forging-blocks/reference/autodoc/foundation/errors/cant_modify_immutable_attribute_error/</loc>
+         <lastmod>2025-11-13</lastmod>
     </url>
     <url>
-         <loc>https://building-blocks-org.github.io/building-blocks/reference/autodoc/foundation/errors/rule_violation_error/</loc>
-         <lastmod>2025-11-09</lastmod>
+         <loc>https://forging-blocks-org.github.io/forging-blocks/reference/autodoc/foundation/errors/core/</loc>
+         <lastmod>2025-11-13</lastmod>
     </url>
     <url>
-         <loc>https://building-blocks-org.github.io/building-blocks/reference/autodoc/foundation/errors/validation_error/</loc>
-         <lastmod>2025-11-09</lastmod>
+         <loc>https://forging-blocks-org.github.io/forging-blocks/reference/autodoc/foundation/errors/rule_violation_error/</loc>
+         <lastmod>2025-11-13</lastmod>
     </url>
     <url>
-         <loc>https://building-blocks-org.github.io/building-blocks/reference/autodoc/foundation/meta/final_meta/</loc>
-         <lastmod>2025-11-09</lastmod>
+         <loc>https://forging-blocks-org.github.io/forging-blocks/reference/autodoc/foundation/errors/validation_error/</loc>
+         <lastmod>2025-11-13</lastmod>
+    </url>
+    <url>
+         <loc>https://forging-blocks-org.github.io/forging-blocks/reference/autodoc/foundation/meta/final_meta/</loc>
+         <lastmod>2025-11-13</lastmod>
     </url>
 </urlset>
